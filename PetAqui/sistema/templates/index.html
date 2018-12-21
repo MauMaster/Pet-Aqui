@@ -1,0 +1,41 @@
+{%extends 'bases/base.html' %}
+
+{% block main %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<br>
+<br>
+<br>
+<main role="main" class="col-md-12 ml-sm-auto col-lg-10 px-50">
+<div class="row">
+    <div class="col-12">
+        <br>
+        <br>
+        <br>
+        <h2>Seja bem vindo ao sistema</h2>
+        <div class='col-sm-3'>
+          </div>
+        <div class='col-sm-6'>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class='col-sm-3'>
+          </div>
+          <form action="#" method="POST" novalidate>
+             {% csrf_token %}
+
+        {{ form.as_p }}
+
+
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+</main>
+
+{% endblock %}
+ 
+  
