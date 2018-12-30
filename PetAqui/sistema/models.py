@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.files.images import ImageFile
+from django.core.mail import send_mail
+import math
 
 
 STATE_CHOICES = (
@@ -28,7 +31,7 @@ class Usuario(models.Model):
     nome = models.CharField(max_length=50, blank=False)
     sobrenome = models.CharField(max_length=50, blank=False)
     email = models.EmailField(unique=True,blank=False)
-    foto = models.ImageField(upload_to='foto_usuario')
+    foto = models.ImageField(height_field=300, width_field=300, upload_to='foto_usuario')
     telefone = models.CharField(max_length=20, blank=False)
     cpf = models.CharField(unique=True, max_length=11)
     pet = models.CharField(default='dog', max_length=2, choices=PET_CHOICES)
@@ -42,12 +45,12 @@ class Usuario(models.Model):
     senha = models.CharField(max_length=15, blank=False)
 
 
-class estabelecimentos(models.Model):
+class Negocio(models.Model):
     id = models.AutoField(primary_key=True)
     estabelecimento = models.CharField(max_length=50, blank=False)
     telefone = models.CharField(max_length=20, blank=False)
     site = models.CharField(max_length=50, blank=False)
-    foto = models.ImageField(upload_to='foto_estabelecimento')
+    foto = models.ImageField(height_field=500, width_field=500, upload_to='foto_estabelecimento')
     pet_aceitos = models.CharField(default='dog', max_length=2, choices=PET_CHOICES)
     horario = models.CharField(max_length=50, blank=False)
     endereco = models.CharField(max_length=50)

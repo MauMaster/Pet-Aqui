@@ -3,7 +3,7 @@ from django import forms
 
 from .models import (
     Usuario,
-    estabelecimentos
+    Negocio
 )
 
 class UsuarioForm(forms.ModelForm):
@@ -12,7 +12,7 @@ class UsuarioForm(forms.ModelForm):
         fields = '__all__'
 
 
-class estabelecimentosForm(forms.ModelForm):
+class NegocioForm(forms.ModelForm):
      class Meta:
-        model = estabelecimentos
+        model = Negocio
         fields = '__all__'
