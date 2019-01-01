@@ -1,6 +1,7 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light .bg-white">
+<nav class="navbar navbar-expand-lg  navbar-light .bg-white">
+
     <a class="navbar-brand" href="#"></a>
     <img class="img-fluid" alt="Responsive image" src="{% static 'img/logo_indexx.jpg' %}" width="150" height="50">
 
@@ -29,10 +30,11 @@
                 
             </li>
         </ul>
+        
         </div>
             {% else %}
 
-            <nav class="navbar navbar-light .bg-white">
+            
                 <div class="form-row">
                     <div class="col">
                         <form class="form-inline">
@@ -46,20 +48,49 @@
                             <a class="btn btn-outline-primary btn-sm" href="{% url 'sistema_cadastro' %}" role="button"> Cadastre-se </a>
                         </form>
                     </div>
-                    <!--
-            <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="{% static 'svg/user.svg' %}" width="20" height="20" alt=""> Login |</a>
-            </li>
-            -->
+          
                     <div class="col">
                         <form class="form-inline">
                             <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#entrar" data-whatever="@Entrar"> Entrar </button>
                             
                     </div>
                     </form>
-            </nav>
+           
             {% endif %}
         
 
         </div>
+        
+    
+</nav>
+<nav class="navbar navbar-expand-md bg-light navbar-light">
+    
+        <ul class="nav navbar-nav">
+
+          
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hotéis |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Restaurantes |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cafés |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PetShops |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hotel Pet |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Veterinários |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dicas </a>
+            </li>
+
+           
+        </ul>
+   
 </nav>

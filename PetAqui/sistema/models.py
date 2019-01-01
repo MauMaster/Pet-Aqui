@@ -44,9 +44,13 @@ class Usuario(models.Model):
     estado = models.CharField(default='RS', max_length=2, choices=STATE_CHOICES)
     senha = models.CharField(max_length=15, blank=False)
 
+    def __str__(self):
+        return str(self.nome) + ' - ' + str(self.email) + ' - ' + str(self.telefone) 
+
 
 class Negocio(models.Model):
     id = models.AutoField(primary_key=True)
+    responsavel =  models.ForeignKey( Usuario, on_delete=models.CASCADE, blank=False)
     estabelecimento = models.CharField(max_length=50, blank=False)
     telefone = models.CharField(max_length=20, blank=False)
     site = models.CharField(max_length=50, blank=False)
