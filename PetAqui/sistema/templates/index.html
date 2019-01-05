@@ -5,29 +5,7 @@
 
 {% block main %}
 
-
-<br>
-<br>
-<br>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    
-  </div>
-</nav>
-<main role="main" class="col-md-12 ml-sm-auto col-lg-10 px-50">
-<div class="row">
-    <div class="col-12">
-        <br>
-        <br>
-        <br>
-        <h2>Seja bem vindo ao sistema</h2>
-        <div class='col-sm-3'>
-          </div>
-        <div class='col-sm-6'>
-            <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
-        <div class='col-sm-3'>
-          </div>
+<h2>Seja bem vindo ao sistema</h2>
           <form action="#" method="POST" novalidate>
              {% csrf_token %}
 
@@ -37,14 +15,8 @@
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
 
         </form>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-</main>
-
 {% endblock %}
- 
-  
+
+{% block rightcol %}
+{% include 'bases/rightcol.html' %}
+{% endblock %}

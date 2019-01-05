@@ -4,41 +4,52 @@
 
 
 {% block main %}
-
-
 <br>
-<br>
-<br>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<p class="text-secondary">Home / Cadastro</p>
+<div class="card text-white bg-primary">
+  <div class="card-header">Cadastro de Usúario</div>
+  <div class="card bg-light  ">
+  <div class="card-body text-secondary">
+    <form action="#" method="POST" novalidate>
+             {% csrf_token %}
+<div class="form-row"> 
+         <div class="form-group col-md-6">
+         
+    <label for="colFormLabelSm" class="col-form-label">Nome:</label>
+    <input type="text" class="form-control form-control-sm" id="nome" aria-describedby="nomeHelp" placeholder="Primeiro Nome">
     
   </div>
-</nav>
-<main role="main" class="col-md-12 ml-sm-auto col-lg-10 px-50">
-<div class="row">
-    <div class="col-12">
-        <br>
-        <br>
-        <br>
-        <h2>Seja bem vindo ao sistema</h2>
-        
-          <form action="#" method="POST" novalidate>
-             {% csrf_token %}
-
-        {{ form.as_p }}
+  
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1" class="col-form-label">Sobrenome:</label>
+    <input type="text" class="form-control form-control-sm" id="sobrenome" placeholder="Último Nome">
+  </div>
+    </div>
+    <div class="form-row"> 
+ <div class="form-group col-md-6">
+<label for="colFormLabelSm" class="col-form-label">Email:</label>
+    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="cadastre um email válido">
+    </div>
+     <div class="form-group col-md-6">
+<label for="colFormLabelSm" class="col-form-label">Repita o Email:</label>
+    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="repita o email">
+    </div>
+    </div>
 
 
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
 
         </form>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-</main>
+  </div>
+</div>
+</div>
 
 {% endblock %}
- 
-  
+
+{% block rightcol %}
+{% include 'bases/rightcol.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'bases/footer.html' %}
+{% endblock %}
