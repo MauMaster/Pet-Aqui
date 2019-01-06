@@ -1,7 +1,7 @@
 {%extends 'bases/base.html' %}
 {% load static %}
-
-
+{% load bootstrap %}
+{% load widget_tweaks %}
 
 {% block main %}
 <br>
@@ -10,32 +10,98 @@
   <div class="card-header">Cadastro de Usúario</div>
   <div class="card bg-light  ">
   <div class="card-body text-secondary">
-    <form action="#" method="POST" novalidate>
+    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" novalidate>
              {% csrf_token %}
+         
 <div class="form-row"> 
          <div class="form-group col-md-6">
          
-    <label for="colFormLabelSm" class="col-form-label">Nome:</label>
-    <input type="text" class="form-control form-control-sm" id="nome" aria-describedby="nomeHelp" placeholder="Primeiro Nome">
     
+    {{ form.nome | bootstrap }}
+   
+  </div>
+ 
+  <div class="form-group col-md-6">
+   
+     {{ form.sobrenome | bootstrap}}
   </div>
   
-  <div class="form-group col-md-6">
-    <label for="exampleInputPassword1" class="col-form-label">Sobrenome:</label>
-    <input type="text" class="form-control form-control-sm" id="sobrenome" placeholder="Último Nome">
-  </div>
     </div>
     <div class="form-row"> 
  <div class="form-group col-md-6">
-<label for="colFormLabelSm" class="col-form-label">Email:</label>
-    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="cadastre um email válido">
+
+    {{ form.email | bootstrap}}
     </div>
      <div class="form-group col-md-6">
-<label for="colFormLabelSm" class="col-form-label">Repita o Email:</label>
-    <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="repita o email">
+
+
+    {{ form.email | bootstrap}}
+    
+    </div>
+    </div>
+    <div class="form-row"> 
+ <div class="form-group col-md-6">
+
+     {{ form.cpf | bootstrap}}
+    </div>
+     <div class="form-group col-md-6">
+
+     {{ form.telefone | bootstrap}}
+    </div>
+    </div>
+<div class="form-row"> 
+ <div class="form-group col-md-12">
+   
+     {{ form.foto | bootstrap}}
+  </div>
+    </div>
+        <div class="form-row"> 
+ <div class="form-group col-md-6">
+
+     {{ form.endereco | bootstrap}}
+    </div>
+     <div class="form-group col-md-2">
+
+    {{ form.numero | bootstrap}}
+    </div>
+    <div class="form-group col-md-4">
+
+     {{ form.bairro | bootstrap}}
+    </div>
+    </div>
+         <div class="form-row"> 
+ <div class="form-group col-md-6">
+
+   {{ form.cidade | bootstrap}}
+    </div>
+     <div class="form-group col-md-4">
+
+    {{ form.estado | bootstrap}}
+    </div>
+    <div class="form-group col-md-2">
+
+    {{ form.cep | bootstrap}}
     </div>
     </div>
 
+             <div class="form-row"> 
+
+   {{ form.pet | bootstrap }}
+    </div>
+    
+    
+     
+                 <div class="form-row"> 
+ <div class="form-group col-md-6">
+
+   {{ form.senha | bootstrap}}
+    </div>
+     <div class="form-group col-md-6">
+
+    {{ form.senha | bootstrap}}
+    </div>
+    
+    </div>
 
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
 
