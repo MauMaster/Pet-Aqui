@@ -2,7 +2,7 @@
 {% load static %}
 {% load bootstrap %}
 {% load widget_tweaks %}
-
+{% load crispy_forms_tags %}
 {% block main %}
 <br>
 <p class="text-secondary">Home / Cadastro</p>
@@ -10,100 +10,102 @@
   <div class="card-header">Cadastro de Usúario</div>
   <div class="card bg-light  ">
   <div class="card-body text-secondary">
-    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" novalidate>
+    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" enctype="multipart/form-data" novalidate>
              {% csrf_token %}
          
 <div class="form-row"> 
          <div class="form-group col-md-6">
          
     
-    {{ form.nome | bootstrap }}
+    {{ form.nome | as_crispy_field }}
    
   </div>
  
   <div class="form-group col-md-6">
    
-     {{ form.sobrenome | bootstrap}}
+     {{ form.sobrenome | as_crispy_field}}
   </div>
   
     </div>
     <div class="form-row"> 
  <div class="form-group col-md-6">
 
-    {{ form.email | bootstrap}}
+    {{ form.email | as_crispy_field}}
     </div>
      <div class="form-group col-md-6">
 
 
-    {{ form.email | bootstrap}}
+
     
     </div>
     </div>
     <div class="form-row"> 
  <div class="form-group col-md-6">
 
-     {{ form.cpf | bootstrap}}
+     {{ form.cpf | as_crispy_field}}
     </div>
      <div class="form-group col-md-6">
 
-     {{ form.telefone | bootstrap}}
+     {{ form.telefone | as_crispy_field}}
     </div>
     </div>
 <div class="form-row"> 
  <div class="form-group col-md-12">
    
-     {{ form.foto | bootstrap}}
+     {{ form.foto | as_crispy_field}}
   </div>
     </div>
         <div class="form-row"> 
  <div class="form-group col-md-6">
 
-     {{ form.endereco | bootstrap}}
+     {{ form.endereco | as_crispy_field}}
     </div>
      <div class="form-group col-md-2">
 
-    {{ form.numero | bootstrap}}
+    {{ form.numero | as_crispy_field}}
     </div>
     <div class="form-group col-md-4">
 
-     {{ form.bairro | bootstrap}}
+     {{ form.bairro | as_crispy_field}}
     </div>
     </div>
          <div class="form-row"> 
  <div class="form-group col-md-6">
 
-   {{ form.cidade | bootstrap}}
+   {{ form.cidade | as_crispy_field}}
     </div>
      <div class="form-group col-md-4">
 
-    {{ form.estado | bootstrap}}
+    {{ form.estado | as_crispy_field}}
     </div>
     <div class="form-group col-md-2">
 
-    {{ form.cep | bootstrap}}
+    {{ form.cep | as_crispy_field}}
     </div>
     </div>
 
              <div class="form-row"> 
-
-   {{ form.pet | bootstrap }}
+<div class="form-group col-md-6">
+   {{ form.pet | as_crispy_field }}
     </div>
+    <div class="form-group col-md-6">
+     {{ form.quantidade | as_crispy_field }}
+</div>
     
-    
-     
+     </div>
                  <div class="form-row"> 
  <div class="form-group col-md-6">
 
-   {{ form.senha | bootstrap}}
+   {{ form.senha | as_crispy_field}}
     </div>
      <div class="form-group col-md-6">
 
-    {{ form.senha | bootstrap}}
+  
     </div>
     
     </div>
 
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
 
         </form>
   </div>

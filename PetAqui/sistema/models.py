@@ -2,6 +2,7 @@ from django.db import models
 from django.core.files.images import ImageFile
 from django.core.mail import send_mail
 import math
+from multiselectfield import MultiSelectField
 
 
 STATE_CHOICES = (
@@ -18,7 +19,7 @@ STATE_CHOICES = (
 )
 
 PET_CHOICES = (
-    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Passáros'), ('fish','Peixes'), ('rep','Reptéis'), ('naosei','Cavalos'), ('rat','Roedores')
+    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('naosei','Cavalos'), ('rat','Roedores')
 )
 
 QUANTIDADE_CHOICES = (
@@ -27,15 +28,15 @@ QUANTIDADE_CHOICES = (
 
 
 class Usuario(models.Model):
-    id = models.AutoField(primary_key=True)
+    
     nome = models.CharField(max_length=50, blank=False)
     sobrenome = models.CharField(max_length=50, blank=False)
     email = models.EmailField(unique=True,blank=False)
-    foto = models.ImageField(height_field=300, width_field=300, upload_to='foto_usuario')
+    foto = models.ImageField( blank=False)
     telefone = models.CharField(max_length=20, blank=False)
     cpf = models.CharField(unique=True, max_length=11)
-    pet = models.CharField(default='dog', max_length=2, choices=PET_CHOICES)
-    quantidade = models.CharField(default='one', max_length=2, choices=QUANTIDADE_CHOICES)
+    pet = MultiSelectField( max_length=30, choices=PET_CHOICES)
+    quantidade = models.CharField(default='one', max_length=10, choices=QUANTIDADE_CHOICES)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)

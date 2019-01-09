@@ -1,15 +1,12 @@
 from django.forms import ModelForm
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
+from input_mask.widgets import InputMask
 
 from .models import (
     Usuario,
     Negocio
 )
-PET_CHOICES = (
-    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Passáros'), ('fish','Peixes'), ('rep','Reptéis'), ('naosei','Cavalos'), ('rat','Roedores')
-)
-
 
 class UsuarioForm(forms.ModelForm):
      nome = forms.CharField(
@@ -67,18 +64,13 @@ class UsuarioForm(forms.ModelForm):
                                             'placeholder': 'Mínimo 8 digitos'}))
 
                                             
-     pet =  forms.MultipleChoiceField(choices=PET_CHOICES, widget=forms.CheckboxSelectMultiple)
+     
      
      class Meta:
         model = Usuario
         fields = '__all__'
 
-     def clean(self):
-        cleaned_data = super(UsuarioForm, self).clean()
-        nome = cleaned_data.get('nome')
-        email = cleaned_data.get('email')
-        if not nome and not email:
-            raise forms.ValidationError('Campos obriatorios')
+     
        
 
 

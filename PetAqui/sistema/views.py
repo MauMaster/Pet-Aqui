@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
+
 from .models import (
     Usuario, 
     Negocio
@@ -28,7 +29,7 @@ def cadastro(request):
 
 def cadastro_novo(request): 
     if request.method == 'POST':
-        form = UsuarioForm(request.POST or None)
+        form = UsuarioForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, "Pessoas adicionado com sucesso")
