@@ -20,11 +20,11 @@ class UsuarioForm(forms.ModelForm):
      email = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'Email Válido'}))
-     email = forms.CharField(
+                                            'placeholder': 'Email Válido' , 'id': 'email'}))
+     email2 = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'Repita seu email'}))
+                                            'placeholder': 'Repita seu email', 'id': 'email2'}))
      cpf = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
@@ -61,7 +61,11 @@ class UsuarioForm(forms.ModelForm):
 
      senha = forms.CharField(widget=forms.PasswordInput(
                                     attrs={
-                                            'placeholder': 'Mínimo 8 digitos'}))
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'senha'}))
+
+     senha2 = forms.CharField(widget=forms.PasswordInput(
+                                    attrs={
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'senha2', 'label': 'Repita a senha'}))
 
      data_nascimento = forms.CharField(
             widget=forms.TextInput(

@@ -10,7 +10,7 @@
   <div class="card-header">Cadastro de Usúario</div>
   <div class="card bg-light  ">
   <div class="card-body text-secondary">
-    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" enctype="multipart/form-data" name="form" novalidate>
+    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" onsubmit="return myFunction()" enctype="multipart/form-data" name="form" novalidate>
              {% csrf_token %}
          
 <div class="form-row"> 
@@ -28,13 +28,17 @@
   
     </div>
     <div class="form-row"> 
- <div class="form-group col-md-6">
+ <div class="form-group col-md-4">
 
     {{ form.email | as_crispy_field}}
     </div>
-     <div class="form-group col-md-6">
+     <div class="form-group col-md-4">
 
 
+    {{ form.email2 | as_crispy_field}}
+    <div id="message"></div>
+    </div>
+ <div class="form-group col-md-4">
  {{ form.cpf | as_crispy_field}}
     
     </div>
@@ -102,12 +106,13 @@
     </div>
      <div class="form-group col-md-6">
  
-  
+    {{ form.senha2 | as_crispy_field}}
+    <div id="divCheckPassword"></div>
     </div>
     
     </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                <button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
 
         </form>
   </div>
@@ -136,6 +141,38 @@ $(document).ready(function(){
   $('.cpf').unmask();
 }); 
 </script>
+<script>
+ $('#validator').prop('disabled' , true);
+$('#senha2').on('keyup', function () {
+    var password = $("#senha").val();
+    var confirmPassword = $("#senha2").val();
+
+    if (password != confirmPassword) {
+        $("#divCheckPassword").html("As senhas não são").css('color', 'red');
+         $('#validator').prop('disabled' , true);
+    } else {
+        $("#divCheckPassword").html("Senhas identicas").css('color', 'green');
+        $('#validator').prop('disabled' , false);
+    }
+});
+</script>
+<script>
+  $('#validator').prop('disabled' , true);
+$('#email2').on('keyup', function () {
+    var password = $("#email").val();
+    var confirmPassword = $("#email2").val();
+
+    if (password != confirmPassword) {
+        $("#message").html("Os email não são identicos").css('color', 'red');
+         $('#validator').prop('disabled' , true);
+    } else {
+        $("#message").html("Os email são identicos").css('color', 'green');
+        $('#validator').prop('disabled' , false);
+    }
+});
+</script>
+
+
 
 {% endblock %}
 
