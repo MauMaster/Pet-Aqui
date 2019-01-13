@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
-from input_mask.widgets import InputMask
+
 
 from .models import (
     Usuario,
@@ -28,11 +28,11 @@ class UsuarioForm(forms.ModelForm):
      cpf = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'somente números'}))
+                                            'placeholder':'000.000.000-00', 'class': 'cpf'} ))
      telefone = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'somente números'}))
+                                           'placeholder':'(00)0000-0000', 'class': 'phone_with_ddd'}))
                                             
      cidade = forms.CharField(
             widget=forms.TextInput(
@@ -57,11 +57,17 @@ class UsuarioForm(forms.ModelForm):
      cep = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'somente números'}))
+                                            'placeholder':'00000-000', 'class': 'cep'}))
 
      senha = forms.CharField(widget=forms.PasswordInput(
                                     attrs={
                                             'placeholder': 'Mínimo 8 digitos'}))
+
+     data_nascimento = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder':'00/00/000', 'class': 'data'}))
+
 
                                             
      

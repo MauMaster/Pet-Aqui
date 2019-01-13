@@ -22,8 +22,9 @@ PET_CHOICES = (
     ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('naosei','Cavalos'), ('rat','Roedores')
 )
 
-QUANTIDADE_CHOICES = (
-    ('one','1'), ('two','2'), ('tree','3'), ('four','4'), ('five','5'), ('six','6'), ('more', 'mais de 6')
+
+SEXO_CHOICES = (
+    ('M','Masculino'), ('F','Feminino')
 )
 
 
@@ -34,14 +35,15 @@ class Usuario(models.Model):
     email = models.EmailField(unique=True,blank=False)
     foto = models.ImageField( blank=False)
     telefone = models.CharField(max_length=20, blank=False)
-    cpf = models.CharField(unique=True, max_length=11)
+    cpf = models.CharField(unique=True, max_length=19)
+    data_nascimento = models.CharField(max_length=8, blank=False)
+    sexo = models.CharField(default='M', max_length=2, choices=SEXO_CHOICES)
     pet = MultiSelectField( max_length=30, choices=PET_CHOICES)
-    quantidade = models.CharField(default='one', max_length=10, choices=QUANTIDADE_CHOICES)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)
-    cep = models.CharField(max_length=30)
-    cidade = models.CharField(max_length=20)
+    cep = models.CharField(max_length=25)
+    cidade = models.CharField(max_length=30)
     estado = models.CharField(default='RS', max_length=2, choices=STATE_CHOICES)
     senha = models.CharField(max_length=15, blank=False)
 
@@ -61,7 +63,7 @@ class Negocio(models.Model):
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)
-    cep = models.CharField(max_length=30)
+    cep = models.CharField(max_length=25)
     cidade = models.CharField(max_length=20)
     estado = models.CharField(default='RS', max_length=2, choices=STATE_CHOICES)
     senha = models.CharField(max_length=15, blank=False)
