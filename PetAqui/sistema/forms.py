@@ -9,6 +9,14 @@ from .models import (
 )
 
 class UsuarioForm(forms.ModelForm):
+     def __init__(self, *args, **kwargs):
+        super(UsuarioForm, self).__init__(*args, **kwargs)
+        self.fields["senha2"].label = "Repita a senha"
+        self.fields["email2"].label = "Repita o email"
+         # pode fazer isso com todos os campos
+
+  
+          
      nome = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
@@ -72,13 +80,15 @@ class UsuarioForm(forms.ModelForm):
                                     attrs={
                                             'placeholder':'00/00/000', 'class': 'data'}))
 
-
+        
                                             
      
      
      class Meta:
         model = Usuario
         fields = '__all__'
+       
+        
 
      
        

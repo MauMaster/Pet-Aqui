@@ -3,6 +3,7 @@ from django.core.files.images import ImageFile
 from django.core.mail import send_mail
 import math
 from multiselectfield import MultiSelectField
+from django.core.validators import RegexValidator
 
 
 STATE_CHOICES = (
