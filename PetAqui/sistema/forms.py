@@ -56,7 +56,7 @@ class UsuarioForm(forms.ModelForm):
      numero = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder': 'numero'}))
+                                            'placeholder': 'numero', 'class': 'numero'}))
                                             
      bairro = forms.CharField(
             widget=forms.TextInput(
@@ -81,7 +81,7 @@ class UsuarioForm(forms.ModelForm):
                                             'placeholder':'00/00/000', 'class': 'data'}))
 
         
-                                            
+                                     
      
      
      class Meta:
