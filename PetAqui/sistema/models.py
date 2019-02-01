@@ -4,7 +4,9 @@ from django.core.mail import send_mail
 import math
 from multiselectfield import MultiSelectField
 from django.core.validators import RegexValidator
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 STATE_CHOICES = (
     ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
@@ -33,10 +35,12 @@ class Usuario(models.Model):
     
     nome = models.CharField(max_length=50, blank=False)
     sobrenome = models.CharField(max_length=50, blank=False)
-    email = models.EmailField(unique=True,blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email_confirmed = models.BooleanField(default=False)
+    email = models.EmailField(blank=False)
     foto = models.ImageField( blank=False, verbose_name="Foto para seu perfil")
     telefone = models.CharField(max_length=20, blank=False, verbose_name="Celular")
-    cpf = models.CharField(unique=True, max_length=19)
+    cpf = models.CharField(max_length=19)
     data_nascimento = models.CharField(max_length=8, blank=False, verbose_name="Data de nascimento")
     sexo = models.CharField(default='M', max_length=2, choices=SEXO_CHOICES)
     pet = MultiSelectField( max_length=30, choices=PET_CHOICES, verbose_name="Selecione seus pets")
@@ -45,12 +49,19 @@ class Usuario(models.Model):
     bairro = models.CharField(max_length=30)
     cep = models.CharField(max_length=25)
     cidade = models.CharField(max_length=30)
-    estado = models.CharField(default='RS', max_length=2, choices=STATE_CHOICES)
-    senha = models.CharField(max_length=15, blank=False)
+    estado = models.CharField(default='RS', max_length=3, choices=STATE_CHOICES)
+    password1 = models.CharField(max_length=15, blank=False)
 
+    @receiver(post_save, sender=User)
+    def cadastro_novo(sender, instance, created, **kwargs):
+        if created:
+            Usuario.objects.create(user=instance)
+        instance.usuario.save()
+        
     def __str__(self):
         return str(self.nome) + ' - ' + str(self.email) + ' - ' + str(self.telefone) 
 
+    
 
 class Negocio(models.Model):
     id = models.AutoField(primary_key=True)

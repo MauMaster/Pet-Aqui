@@ -1,6 +1,8 @@
 from django.forms import ModelForm
 from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 from .models import (
@@ -8,28 +10,44 @@ from .models import (
     Negocio
 )
 
-class UsuarioForm(forms.ModelForm):
+PET_CHOICES = (
+    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
+)
+
+STATE_CHOICES = (
+    ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
+    ('AM', 'Amazonas'), ('BA', 'Bahia'), ('CE', 'Ceará'),
+    ('DF', 'Distrito Federal'), ('ES', 'Espírito Santo'),
+    ('GO', 'Goiás'), ('MA', 'Maranhão'), ('MT', 'Mato Grosso'),
+    ('MS', 'Mato Grosso do Sul'), ('MG', 'Minas Gerais'),
+    ('PA', 'Pará'), ('PB', 'Paraíba'), ('PR', 'Paraná'),
+    ('PE', 'Pernambuco'), ('PI', 'Piauí'), ('RJ', 'Rio de Janeiro'),
+    ('RN', 'Rio Grande do Norte'), ('RS', 'Rio Grande do Sul'),
+    ('RO', 'Rondônia'), ('RR', 'Roraima'), ('SC', 'Santa Catarina'),
+    ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
+)
+SEXO_CHOICES = (
+    ('M','Masculino'), ('F','Feminino')
+)
+class UsuarioForm(UserCreationForm):
      def __init__(self, *args, **kwargs):
         super(UsuarioForm, self).__init__(*args, **kwargs)
-        self.fields["senha2"].label = "Repita a senha"
-        self.fields["email2"].label = "Repita o email"
+        self.fields["password1"].label = "Repita a senha"
+        self.fields["password2"].label = "Repita o email"
          # pode fazer isso com todos os campos
 
   
           
-     nome = forms.CharField(
-            widget=forms.TextInput(
-                                    attrs={
-                                            'placeholder': 'Nome'}))
+     nome = forms.CharField()
      sobrenome = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
                                             'placeholder': 'Sobrenome'}))
-     email = forms.CharField(
+     email = forms.EmailField(
             widget=forms.TextInput(
                                     attrs={
                                             'placeholder': 'Email Válido' , 'id': 'email'}))
-     email2 = forms.CharField(
+     email2 = forms.EmailField(
             widget=forms.TextInput(
                                     attrs={
                                             'placeholder': 'Repita seu email', 'id': 'email2'}))
@@ -67,26 +85,33 @@ class UsuarioForm(forms.ModelForm):
                                     attrs={
                                             'placeholder':'00000-000', 'class': 'cep'}))
 
-     senha = forms.CharField(widget=forms.PasswordInput(
+     password1  = forms.CharField(widget=forms.PasswordInput(
                                     attrs={
-                                            'placeholder': 'Mínimo 8 digitos', 'id': 'senha'}))
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'password1'}))
 
-     senha2 = forms.CharField(widget=forms.PasswordInput(
+     password2 = forms.CharField(widget=forms.PasswordInput(
                                     attrs={
-                                            'placeholder': 'Mínimo 8 digitos', 'id': 'senha2', 'label': 'Repita a senha'}))
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'password2', 'label': 'Repita a senha'}))
 
      data_nascimento = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
                                             'placeholder':'00/00/000', 'class': 'data'}))
 
-        
+     pet = forms.MultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES,)
                                      
-     
-     
+     foto = forms.FileField(
+            widget=forms.ClearableFileInput(attrs={'multiple':'False' }))
+
+     sexo = forms.ChoiceField( choices=SEXO_CHOICES)
+
+     estado = forms.ChoiceField( choices=STATE_CHOICES)
+            
+    
      class Meta:
-        model = Usuario
-        fields = '__all__'
+        model = User
+        fields = ( 'username', 'email', 'email2',  'telefone', 'data_nascimento', 'sexo', 'foto','endereco', 'numero','bairro','cidade', 'estado',   'cep',  'pet')
        
         
 
