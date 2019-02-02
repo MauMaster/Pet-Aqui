@@ -1,5 +1,17 @@
-{% extends 'base.html' %}
+{%extends 'bases/base.html' %}
+{% load static %}
+ {% block main %}
+ <br>
+<p class="text-secondary">Home / Cadastro / Confirmação de Email</p>
+<div class="card text-white bg-warning mb-3">
+  <div class="card-header text-center">Cadastro de Usúario envido por email</div>
+  <div class="card bg-light  ">
+  <div class="card-body text-secondary text-center">
 
-{% block content %}
-  <p>Please confirm your email address to complete the registration. </p>
+  <p>Email enviado {{ user.email_user }} para  Por favor confirme seu email para completar o registro. </p>
+
+  </div>
+</div>
+</div>
+  
 {% endblock %}

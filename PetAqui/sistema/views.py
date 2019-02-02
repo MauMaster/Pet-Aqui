@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -13,6 +12,7 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from sistema.tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
+
 
 from .models import (
     Usuario, 
@@ -65,7 +65,7 @@ def cadastro_novo(request):
             user.usuario.estado = form.cleaned_data.get('estado')
             user.save()
             current_site = get_current_site(request)
-            subject = 'Activate Your MySite Account'
+            subject = 'Ative seu registro no PetAqui'
             message = render_to_string('account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -77,6 +77,10 @@ def cadastro_novo(request):
     else:
         form = UsuarioForm()
     return render(request, 'cadastro.html', {'form': form})
+
+
+def account_activation_sent(request):
+    return render(request, 'account_activation_sent.html')
 
 
 def activate(request, uidb64, token):
@@ -92,7 +96,7 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return render(request, 'account_activation.html')
     else:
         return render(request, 'account_activation_invalid.html')
         

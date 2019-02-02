@@ -3,3 +3,4 @@ myvenv
 .idea
 *.sqlite3
 *pyc
+/petaqui/img

@@ -6,7 +6,8 @@ from .views import (
     cadastro,
     cadastro_novo,
     cadastro_negocio,
-    activate
+    activate,
+    account_activation_sent
     
 )
 
@@ -15,7 +16,7 @@ urlpatterns = [
     url(r'^cadastro/$', cadastro, name='sistema_cadastro'),
     url(r'^cadastro-novo/$', cadastro_novo, name='sistema_cadastro_novo'),
     url(r'^cadastro-negocio/$', cadastro_negocio, name='sistema_cadastro_negocio'),
-    url(r'^account_activation_sent/$', views.cadastro_novo, name='account_activation_sent'),
+    url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     
     
