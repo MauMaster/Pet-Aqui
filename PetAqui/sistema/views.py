@@ -32,6 +32,13 @@ def index(request):
     data = {'usuario': usuario, 'form': form}
     return render(request, 'index.html', data)
 
+def perfil(request):
+    usuario = Usuario.objects.all()
+    form = UsuarioForm()
+    data = {'usuario': usuario, 'form': form}
+    return render(request, 'perfil.html', data)
+    
+
 
 def cadastro(request):
     usuario = Usuario.objects.all()

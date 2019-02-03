@@ -1,15 +1,21 @@
 {%extends 'bases/base.html' %}
+{
+{% load static %}
+ {% block main %}
+ <br>
+<p class="text-secondary">Home / Login</p>
+<div class="card text-white bg-success mb-3">
+  <div class="card-header text-center">Cadastro Confirmado</div>
+  <div class="card bg-light  ">
+  <div class="card-body text-secondary text-center">
 
-{% block main %}
-<body class="text-center">
-
-
+  <p>
 {% if next %}
     {% if user.is_authenticated %}
     <p>Sua conta não tem acesso a esta página. 
     Para prosseguir, por favor, faça o login com uma conta que tenha acesso.</p>
     {% else %}
-    <p>Por favor, faça o login para ver esta página.</p>
+    <p></p>
     {% endif %}
 {% endif %}
 
@@ -18,7 +24,7 @@
     <p>Sua conta não tem acesso a esta página. 
     Para prosseguir, por favor, faça o login com uma conta que tenha acesso.</p>
     {% else %}
-    <p>Por favor, faça o login para ver esta página.</p>
+    <p></p>
     {% endif %}
 {% endif %}
 {% if form.errors %}
@@ -44,4 +50,8 @@
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
 
+  </div>
+</div>
+</div>
+  
 {% endblock %}
