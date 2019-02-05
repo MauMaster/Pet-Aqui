@@ -3,6 +3,9 @@ from django import forms
 from django.forms.widgets import CheckboxSelectMultiple
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from PIL import Image
+from django import forms
+from django.core.files import File
 
 
 from .models import (
@@ -35,7 +38,7 @@ class UsuarioForm(UserCreationForm):
         self.fields["password1"].label = "Repita a senha"
         self.fields["password2"].label = "Repita o email"
          # pode fazer isso com todos os campos
-
+    
   
           
      nome = forms.CharField()

@@ -19,10 +19,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Mensagens |</a>
             </li>
+            <li class="nav-item">
+               <img src="{{ user.usuario.foto.thumbnail.url}}" class="rounded-circle" width="40" height="40">
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{% static 'svg/settings.svg' %}" width="20" height="20" alt="">{{user}} |
                 </a>
+                
+                    
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Ver perfil</a>
                     <a class="dropdown-item" href="#">Avaliações</a>

@@ -4,12 +4,16 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block main %}
-<br>
-<p class="text-secondary">Home / Cadastro</p>
 <div class="card text-white bg-primary">
-  <div class="card-header">Cadastro de Usúario</div>
-  <div class="card bg-light  ">
+  <div class="card-header"><p class="card-text">
+      <small class="text-muted">
+         <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+         <a href="" class="text-white">Perfil</a>
+      </small></a></p> Cadastro de Usúario 
+</div>
+  <div class="card title  ">
   <div class="card-body text-secondary">
+
          {% if user.is_authenticated %} 
 <div class="form-row"> 
          <div class="form-group col-md-4">
@@ -59,8 +63,8 @@
     </div>
 <div class="form-row"> 
  <div class="form-group col-md-12">
-   
-    <img src="{{ user.usuario.foto.url}}"class="rounded-circle" width="200" height="200">
+
+    <img src="{{ user.usuario.foto.medium.url}}"class="rounded-circle" width="200" height="200">
      
     
   </div>
@@ -96,7 +100,7 @@
     </div>
 
              <div class="form-check form-check-inline"> 
-<div class="form-group col-md-12">
+
    {{ user.usuario.pet }}
      {% endif %}
   </div>
@@ -322,7 +326,7 @@ $(function(){
 </script>
 
 
-
+ <script src="{% static 'cropper/cropper.min.js' %}"></script>
 {% endblock %}
 
 {% block rightcol %}

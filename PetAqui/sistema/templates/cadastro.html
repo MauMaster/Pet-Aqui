@@ -3,12 +3,18 @@
 {% load bootstrap %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
+
 {% block main %}
-<br>
-<p class="text-secondary">Home / Cadastro</p>
+
+
 <div class="card text-white bg-primary">
-  <div class="card-header">Cadastro de Usúario</div>
-  <div class="card bg-light  ">
+  <div class="card-header"><p class="card-text">
+      <small class="text-muted">
+         <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+         <a href="" class="text-white">Cadastro</a>
+      </small></a></p> Cadastro de Usúario 
+</div>
+   <div class="card title  ">
   <div class="card-body text-secondary">
     <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" onsubmit="return myFunction()" enctype="multipart/form-data" id="form" name="form" novalidate>
              {% csrf_token %}
@@ -349,7 +355,7 @@ $(function(){
 </script>
 
 
-
+ <script src="{% static 'cropper/cropper.min.js' %}"></script>
 {% endblock %}
 
 {% block rightcol %}

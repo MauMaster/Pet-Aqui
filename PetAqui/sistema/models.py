@@ -7,6 +7,7 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from stdimage.models import StdImageField
 
 STATE_CHOICES = (
     ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
@@ -38,7 +39,11 @@ class Usuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
     email = models.EmailField(blank=False)
-    foto = models.ImageField( blank=False, verbose_name="Foto para seu perfil")
+    foto = StdImageField( blank=False,  variations={
+        'large': (600, 400),
+        'thumbnail': (100, 100, True),
+        'medium': (300, 200),
+    })
     telefone = models.CharField(max_length=20, blank=False, verbose_name="Celular")
     cpf = models.CharField(max_length=19)
     data_nascimento = models.CharField(max_length=8, blank=False, verbose_name="Data de nascimento")

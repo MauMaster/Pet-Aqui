@@ -16,11 +16,20 @@
   <link rel="stylesheet" href="{% static 'bar_loading/pace-theme-minimal.css' %}">
  
 </head>
-<body>
+<body >
   
 
 {% include 'bases/menu.html' %}
-<div class="container">
+<div class="p-3 mb-2 bg-light text-dark">
+<div class="container" >
+{% block way %}
+
+<div class="row">
+    
+    <div class="col-9">
+    </div>
+    </div>
+    {% endblock %}
 <div class="row">
    
     <div class="col-9">
@@ -43,6 +52,7 @@
   {% include 'bases/footer.html' %}
 </div>
 {% endblock %}
+</div>
 </div>
 
 </body>
