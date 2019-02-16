@@ -11,7 +11,8 @@ from .views import (
     cadastro_negocio,
     activate,
     account_activation_sent,
-    perfil
+    perfil,
+    profile_detail
     
 )
 
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^cadastro-novo/$', cadastro_novo, name='sistema_cadastro_novo'),
     url(r'^cadastro-negocio/$', cadastro_negocio, name='sistema_cadastro_negocio'),
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
+    url(r'^profile/(?P<username>[\w.@+-]+)/$', views.profile_detail, name='profile'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     
     

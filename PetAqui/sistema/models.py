@@ -22,6 +22,8 @@ STATE_CHOICES = (
     ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
 )
 
+cat = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
+gato = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
 PET_CHOICES = (
     ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
 )
@@ -58,6 +60,9 @@ class Usuario(models.Model):
     password1 = models.CharField(max_length=15, blank=False)
 
     
+    def __unicode__(self):
+	    return self.nome
+        
     @receiver(post_save, sender=User)
     def cadastro_novo(sender, instance, created, **kwargs):
         if created:
@@ -85,3 +90,5 @@ class Negocio(models.Model):
     cidade = models.CharField(max_length=20)
     estado = models.CharField(default='RS', max_length=2, choices=STATE_CHOICES)
     senha = models.CharField(max_length=15, blank=False)
+
+    

@@ -1,0 +1,44 @@
+      {%extends 'bases/base.html' %}
+      {% load static %}
+      {% load bootstrap %}
+      {% load widget_tweaks %}
+      {% load crispy_forms_tags %}
+      {% block main %}
+    
+      <div class="card text-white bg-primary">
+      <div class="card-header"><p class="card-text">
+            <small class="text-muted">
+               <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+               <a class="text-white">Perfil </a>
+            </small></a></p> {{ user_details.usuario.nome }}  {{ user_details.usuario.sobrenome }}
+      </div>
+      <div class="card title  ">
+      <div class="card-body text-secondary">
+   <img src="{{user_details.usuario.foto.medium.url}}"class="rounded-circle" width="150" height="150">
+            
+               
+              
+                <hr>
+                 <label >Localização: </label>
+                 {{ user_details.usuario.cidade }} - {{ user_details.usuario.estado }}
+               <hr>
+            <label >Galeria: </label>
+             
+            
+            
+          
+      
+      </div>
+      </div>
+      </div>
+
+     
+      {% endblock %}
+
+      {% block rightcol %}
+      {% include 'bases/rightcol.html' %}
+      {% endblock %}
+
+      {% block footer %}
+      {% include 'bases/footer.html' %}
+      {% endblock %}

@@ -24,6 +24,14 @@ from .forms import (
     NegocioForm
 )
 
+def profile_detail(request, username):
+    if User.objects.get(username__iexact=username):
+        user_details = User.objects.get(username__iexact=username)
+        return render(request, "profile.html", {
+            "user_details": user_details,
+        })
+    else:
+        return render("User not found")
 
 
 def index(request):
@@ -70,6 +78,8 @@ def cadastro_novo(request):
             user.usuario.foto = form.cleaned_data.get('foto')
             user.usuario.sexo = form.cleaned_data.get('sexo')
             user.usuario.estado = form.cleaned_data.get('estado')
+            username = form.cleaned_data.get('username')
+            user.username = username.lower()
             user.save()
             current_site = get_current_site(request)
             subject = 'Ative seu registro no PetAqui'

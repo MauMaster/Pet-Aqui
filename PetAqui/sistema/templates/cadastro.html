@@ -7,6 +7,7 @@
 {% block main %}
 
 
+
 <div class="card text-white bg-primary">
   <div class="card-header"><p class="card-text">
       <small class="text-muted">
@@ -15,8 +16,8 @@
       </small></a></p> Cadastro de Usúario 
 </div>
    <div class="card title  ">
-  <div class="card-body text-secondary">
-    <form action="{%  url 'sistema_cadastro_novo'  %}" method="POST" onsubmit="return myFunction()" enctype="multipart/form-data" id="form" name="form" novalidate>
+  <div class="card-body text-secondary">  
+    <form class="exampleone" action="{%  url 'sistema_cadastro_novo'  %}" method="POST" enctype="multipart/form-data" id="form" name="form" novalidate >
              {% csrf_token %}
          
 <div class="form-row"> 
@@ -125,20 +126,21 @@
     <div id="divCheckPassword"></div>
     <div id="divCheckPassword2"></div>
     
-    
+   
     </div>
     
     </div>
-
+   
                 <button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
 
         </form>
+        
+
   </div>
 </div>
 </div>
 
-<script>
-</script>
+
 <script>
 $(document).ready(function(){
    $('.cpf').mask('999.999.999-99').on("keydown", function(e){
@@ -354,8 +356,11 @@ $(function(){
 });
 </script>
 
-
- <script src="{% static 'cropper/cropper.min.js' %}"></script>
+ <script src="{% static 'selector_img/jquery.imgcheckbox.js' %}"></script>
+ <script src="{% static 'selector_img/jquery.scrolly.min.js' %}"></script>
+ <script src="{% static 'selector_img/bower.json' %}"></script>
+ <script src="{% static 'selector_img/package.json' %}"></script>
+ <script src="{% static 'crop/cropper.js' %}"></script>
 {% endblock %}
 
 {% block rightcol %}

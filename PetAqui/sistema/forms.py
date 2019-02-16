@@ -13,6 +13,8 @@ from .models import (
     Negocio
 )
 
+cat = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
+gato = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
 PET_CHOICES = (
     ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
 )
@@ -102,7 +104,7 @@ class UsuarioForm(UserCreationForm):
                                             'placeholder':'00/00/000', 'class': 'data'}))
 
      pet = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES,)
+            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES)
                                      
      foto = forms.FileField(
             widget=forms.ClearableFileInput(attrs={'multiple':'False' }))
