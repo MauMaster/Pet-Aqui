@@ -13,10 +13,8 @@ from .models import (
     Negocio
 )
 
-cat = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
-gato = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
 PET_CHOICES = (
-    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
+    ('dog','Cachorro'), ('https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02-303x228.jpg','https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02-303x228.jpg'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
 )
 
 STATE_CHOICES = (
@@ -101,7 +99,7 @@ class UsuarioForm(UserCreationForm):
      data_nascimento = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder':'00/00/000', 'class': 'data'}))
+                                            'placeholder':'00/00/000', 'class': 'data', }))
 
      pet = forms.MultipleChoiceField(
             widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES)
