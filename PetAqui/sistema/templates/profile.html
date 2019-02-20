@@ -15,8 +15,8 @@
       <div class="card title  ">
       <div class="card-body text-secondary">
    <img src="{{user_details.usuario.foto.medium.url}}"class="rounded-circle" width="150" height="150">
-            {{ user_details.usuario.pet }}
-               
+           
+            {{ user_details.usuario.pet}}
               
                 <hr>
                  <label >Localizaçãoo: </label>
@@ -33,11 +33,7 @@
       </div>
 
      <script>
-$(document).ready(function(){
-  $("#dog").after('<img src="/images/thumb_up.gif"/>')
-  $("user_details.usuario.pet.cat").after('<img src="/images/thumb_down.gif"/>')
-  $("user_details.usuario.pet").after('<img src="/images/thumb_down.gif"/>')
-});
+
 </script>
       {% endblock %}
 

@@ -12,6 +12,11 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from sistema.tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+
 
 
 from .models import (
@@ -116,7 +121,24 @@ def activate(request, uidb64, token):
         return render(request, 'account_activation.html')
     else:
         return render(request, 'account_activation_invalid.html')
-        
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Corriga os erros.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })
+
 def cadastro_negocio(request):
     negocio = Negocio.objects.all()
     form = NegocioForm()

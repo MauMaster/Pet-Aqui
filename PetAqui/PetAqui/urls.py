@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from sistema.views import index, profile_detail
+from sistema.views import index, profile_detail, change_password
 from django.conf.urls import url
 from django.contrib.auth import logout
 
@@ -15,4 +15,3 @@ urlpatterns = [
     path(r'', include('sistema.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
-
