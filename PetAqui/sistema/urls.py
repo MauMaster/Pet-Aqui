@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from django.urls import include, path
+from django.urls import include, path, re_path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
 
 from .views import (
     index,
@@ -28,6 +30,14 @@ urlpatterns = [
     url(r'^profile/(?P<username>[\w.@+-]+)/$', views.profile_detail, name='profile'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     url(r'^password/$', views.change_password, name='change_password'),
+    
+    
+    
+
+   
+    
+  
+    
     
    
     
