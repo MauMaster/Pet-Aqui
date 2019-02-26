@@ -29,7 +29,7 @@
                 
                     
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Ver perfil</a>
+                    <a class="dropdown-item" href="{% url 'sistema_perfil' %}">Ver perfil</a>
                     <a class="dropdown-item" href="{% url 'change_password' %}">Avaliações</a>
                     <a class="dropdown-item" href="#">Configurações</a>
                     <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
@@ -57,7 +57,7 @@
           
                     <div class="col">
                         <form class="form-inline">
-<a class="btn btn-primary btn-sm" href="{% url 'login' %}" role="button"> Entrar </a>
+<a class="btn btn-primary btn-sm" href="{% url 'login' %}"> Entrar </a>
                             
                     </div>
                     </form>

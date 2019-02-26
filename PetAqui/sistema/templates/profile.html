@@ -14,16 +14,30 @@
       </div>
       <div class="card title  ">
       <div class="card-body text-secondary">
+                  <div class="form-row"> 
+                  <div class="form-group col-md-43">
+
    <img src="{{user_details.usuario.foto.medium.url}}"class="rounded-circle" width="150" height="150">
-           
-            {{ user_details.usuario.pet}}
+</div>
+   <div class="form-group col-md-9">
+   {{ user_details.usuario.about}}
+</div>
+</div>
+
+<hr>
+<div class="form-row"> 
+<div class="form-group col-md-12">
+   <img src="{% static 'img/perfil/pet.svg' %}"  width="30" height="30" alt="">
+            {{ user_details.usuario.pet}}  
               
-                <hr>
-                 <label >Localizaçãoo: </label>
+              
+                <img src="{% static 'img/perfil/map2.svg' %}"  width="40" height="40" alt="">
+                
                  {{ user_details.usuario.cidade }} - {{ user_details.usuario.estado }}
+            </div></div>
                <hr>
             <label >Galeria: </label>
-             
+           
             
             
           

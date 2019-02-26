@@ -14,7 +14,7 @@ from .models import (
 )
 
 PET_CHOICES = (
-    ('dog','Cachorro'), ('https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02-303x228.jpg','https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02-303x228.jpg'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
+    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
 )
 
 STATE_CHOICES = (
@@ -38,7 +38,8 @@ class UsuarioForm(UserCreationForm):
         self.fields["password1"].label = "Repita a senha"
         self.fields["password2"].label = "Repita o email"
          # pode fazer isso com todos os campos
-    
+         
+     
   
           
      nome = forms.CharField()
@@ -101,8 +102,8 @@ class UsuarioForm(UserCreationForm):
                                     attrs={
                                             'placeholder':'00/00/000', 'class': 'data', }))
 
-     pet = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES)
+     pet = forms.MultipleChoiceField(     
+            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES, )
                                      
      foto = forms.FileField(
             widget=forms.ClearableFileInput(attrs={'multiple':'False' }))
@@ -110,11 +111,15 @@ class UsuarioForm(UserCreationForm):
      sexo = forms.ChoiceField( choices=SEXO_CHOICES)
 
      estado = forms.ChoiceField( choices=STATE_CHOICES)
-            
+
+     about = forms.CharField(
+            widget=forms.Textarea(
+                                    attrs={
+                                            'width':"100%", 'cols' : "80", 'rows': "7",'placeholder':'Uma breve descrição sobre você' }))  
     
      class Meta:
         model = User
-        fields = ( 'username', 'email', 'email2',  'telefone', 'data_nascimento', 'sexo', 'foto','endereco', 'numero','bairro','cidade', 'estado',   'cep',  'pet')
+        fields = ( 'username', 'email', 'email2',  'telefone', 'data_nascimento', 'sexo', 'foto','endereco', 'numero','bairro','cidade', 'estado',   'cep',  'pet', 'about')
        
         
 

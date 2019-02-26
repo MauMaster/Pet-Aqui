@@ -16,6 +16,11 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.urls import reverse_lazy
+from django.views import generic
+from django.views.generic.edit import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 
 
 
@@ -83,6 +88,7 @@ def cadastro_novo(request):
             user.usuario.foto = form.cleaned_data.get('foto')
             user.usuario.sexo = form.cleaned_data.get('sexo')
             user.usuario.estado = form.cleaned_data.get('estado')
+            user.usuario.about = form.cleaned_data.get('about')
             username = form.cleaned_data.get('username')
             user.username = username.lower()
             user.save()
@@ -103,6 +109,30 @@ def cadastro_novo(request):
 
 def account_activation_sent(request):
     return render(request, 'account_activation_sent.html')
+
+class PhotoUpdate(LoginRequiredMixin, UpdateView):
+    model= Usuario  
+    fields = ['foto']
+    template_name='change-photo.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
 
 
 def activate(request, uidb64, token):

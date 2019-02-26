@@ -22,8 +22,7 @@ STATE_CHOICES = (
     ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
 )
 
-cat = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
-gato = 'https://www.petz.com.br/blog/wp-content/uploads/2017/07/gato02.jpg'
+
 PET_CHOICES = (
     ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('horse','Cavalos'), ('rat','Roedores')
 )
@@ -50,7 +49,7 @@ class Usuario(models.Model):
     cpf = models.CharField(max_length=19)
     data_nascimento = models.CharField(max_length=8, blank=False, verbose_name="Data de nascimento")
     sexo = models.CharField(default='M', max_length=2, choices=SEXO_CHOICES)
-    pet = MultiSelectField( max_length=30, choices=PET_CHOICES, verbose_name="Selecione seus pets")
+    pet = MultiSelectField( max_length=100, choices=PET_CHOICES, verbose_name="Selecione seus pets")
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)
@@ -58,6 +57,7 @@ class Usuario(models.Model):
     cidade = models.CharField(max_length=30)
     estado = models.CharField(default='RS', max_length=3, choices=STATE_CHOICES)
     password1 = models.CharField(max_length=15, blank=False)
+    about = models.TextField(max_length=1000, blank=False, verbose_name="Sobre você")
 
     
     def __unicode__(self):

@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap %}
+
+{% if user.is_authenticated %}
+      <div class=" col-md-2">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup"></div>
+      <ul class="nav navbar-nav">
+
+        
+       
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editar
+                  <img src="{% static 'svg/settings3.svg' %}" width="20" height="20" alt="">
+              </a>
+              
+                  
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'sistema_perfil' %}">Ver perfil</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_photo' %}">Trocar Foto</a>
+                  <a class="dropdown-item" href="{% url 'change_password' %}">Trocar Senha</a>
+                  <a class="dropdown-item" href="#">Configurações</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
+              
+          </li>
+      </ul>
+      {% else %}
+
+          
+         
+      {% endif %}
+   </div>
+</nav>

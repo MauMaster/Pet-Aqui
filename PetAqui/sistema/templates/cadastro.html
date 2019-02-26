@@ -78,6 +78,7 @@
  <div class="form-group col-md-12">
    
      {{ form.foto | as_crispy_field}}
+     {{ form.foto.errors }}
   </div>
     </div>
         <div class="form-row"> 
@@ -116,6 +117,13 @@
    
     
      </div>
+     <div class="form-row"> 
+         <div class="form-group col-md-12">
+               {{ form.about | as_crispy_field}}
+             </div>
+            
+             
+              </div>
      {{ user.usuario.pet.url}}
                  <div class="form-row"> 
  <div class="form-group col-md-6">

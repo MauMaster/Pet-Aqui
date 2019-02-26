@@ -20,42 +20,38 @@
   
 
 {% include 'bases/menu.html' %}
+
 <div class="p-3 mb-2 bg-light text-dark">
-<div class="container" >
-{% block way %}
+<div class="container">
 
 <div class="row">
-    
-    <div class="col-9">
-    </div>
-    </div>
-    {% endblock %}
-<div class="row">
-   
-    <div class="col-9">
+       <div class="col-12 col-md-9 ">
      {% block main %}
 {% endblock %}
     </div>
-    <div class="col-3">
+
+    <div class="col">
      {% block rightcol %}
-     
-{% include 'bases/rightcol.html' %}
+     {% include 'bases/rightcol.html' %}
 {% endblock %}
     </div>
     </div>
-    
-    
+ 
 
-
+    <div class="row">
+        <div class="col-12 col-md-9">
  {% block footer %}
- <div class="col-12">
+ 
   {% include 'bases/footer.html' %}
-</div>
+
 {% endblock %}
 </div>
 </div>
+
 {% block js %}
 {% endblock %}
 </body>
 
 </html>
+</div>
+</div>

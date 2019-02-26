@@ -15,7 +15,7 @@ from .views import (
     account_activation_sent,
     perfil,
     profile_detail,
-    change_password,
+    change_password
     
     
 )
@@ -30,18 +30,11 @@ urlpatterns = [
     url(r'^profile/(?P<username>[\w.@+-]+)/$', views.profile_detail, name='profile'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     url(r'^password/$', views.change_password, name='change_password'),
+    url(r'^change-photo/$', views.PhotoUpdate.as_view(), 
+     name='sistema_change_photo'),
+        
     
     
-    
-
-   
-    
-  
-    
-    
-   
-    
-    
-    
+     
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
