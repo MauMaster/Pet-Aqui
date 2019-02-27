@@ -13,11 +13,15 @@
                   <img src="{% static 'svg/settings3.svg' %}" width="20" height="20" alt="">
               </a>
               
-                  
+             
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'sistema_perfil' %}">Ver perfil</a>
-                  <a class="dropdown-item" href="{% url 'sistema_change_photo' %}">Trocar Foto</a>
-                  <a class="dropdown-item" href="{% url 'change_password' %}">Trocar Senha</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_photo' %}">Alterar Foto</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_pet' %}">Alterar Pets</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_username' %}">Alterar Nome Usúario</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_email' %}">Alterar Email</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_data' %}">Alterar Dados</a>
+                  <a class="dropdown-item" href="{% url 'change_password' %}">Alterar Senha</a>
                   <a class="dropdown-item" href="#">Configurações</a>
                   <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
               

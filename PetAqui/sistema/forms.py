@@ -120,10 +120,12 @@ class UsuarioForm(UserCreationForm):
      class Meta:
         model = User
         fields = ( 'username', 'email', 'email2',  'telefone', 'data_nascimento', 'sexo', 'foto','endereco', 'numero','bairro','cidade', 'estado',   'cep',  'pet', 'about')
-       
+        labels = {
+              "username": "Nome de usúario"
+       }
         
 
-     
+
        
 
 

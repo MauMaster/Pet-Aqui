@@ -113,7 +113,31 @@ def account_activation_sent(request):
 class PhotoUpdate(LoginRequiredMixin, UpdateView):
     model= Usuario  
     fields = ['foto']
-    template_name='change-photo.html'
+    template_name='profile/change-photo.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+        
+class UserNameUpdate(LoginRequiredMixin, UpdateView):
+    model= User 
+    fields = ['username']
+    template_name='profile/change-username.html'
 
     def get_object(self, queryset=None):
         if queryset is None:
@@ -134,6 +158,77 @@ class PhotoUpdate(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('sistema_perfil')
 
+class EmailUpdate(LoginRequiredMixin, UpdateView):
+    model= Usuario
+    fields = ['email']
+    template_name='profile/change-email.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+class PetUpdate(LoginRequiredMixin, UpdateView):
+    model= Usuario
+    fields = ['pet']
+    template_name='profile/change-pet.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+class DataUpdate(LoginRequiredMixin, UpdateView):
+    model= Usuario
+    fields = ['nome','sobrenome','cpf','telefone','data_nascimento','sexo','endereco','numero','bairro','cidade','estado', 'cep']
+    template_name='profile/change-data.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
 
 def activate(request, uidb64, token):
     try:
@@ -168,6 +263,7 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', {
         'form': form
     })
+    
 
 def cadastro_negocio(request):
     negocio = Negocio.objects.all()

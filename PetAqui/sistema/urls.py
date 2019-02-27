@@ -32,7 +32,14 @@ urlpatterns = [
     url(r'^password/$', views.change_password, name='change_password'),
     url(r'^change-photo/$', views.PhotoUpdate.as_view(), 
      name='sistema_change_photo'),
-        
+    url(r'^change-username/$', views.UserNameUpdate.as_view(), 
+     name='sistema_change_username'),
+    url(r'^change-email/$', views.EmailUpdate.as_view(), 
+     name='sistema_change_email'),
+    url(r'^change-data/$', views.DataUpdate.as_view(), 
+     name='sistema_change_data'),
+    url(r'^change-pet/$', views.PetUpdate.as_view(), 
+     name='sistema_change_pet'),
     
     
      
