@@ -137,7 +137,7 @@ class PhotoUpdate(LoginRequiredMixin, UpdateView):
 class UserNameUpdate(LoginRequiredMixin, UpdateView):
     model= User 
     fields = ['username']
-    template_name='profile/change-username.html'
+    template_name=' profile/change-username.html'
 
     def get_object(self, queryset=None):
         if queryset is None:
@@ -157,6 +157,11 @@ class UserNameUpdate(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('sistema_perfil')
+
+    def form_valid(self, form):
+        form.save()
+        user = User.objects.get(id=self.user_id)
+        return HttpResponse(render_to_string('myapp/item_edit_form_success.html', {'user': user}))
 
 class EmailUpdate(LoginRequiredMixin, UpdateView):
     model= Usuario

@@ -58,7 +58,7 @@ class UsuarioForm(UserCreationForm):
      cpf = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
-                                            'placeholder':'000.000.000-00', 'class': 'cpf'} ))
+                                            'placeholder':'000.000.000-00', 'class': 'cpf', 'id':'cpf'} ))
      telefone = forms.CharField(
             widget=forms.TextInput(
                                     attrs={

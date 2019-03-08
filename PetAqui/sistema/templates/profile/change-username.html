@@ -1,10 +1,11 @@
-{%extends 'bases/base.html' %}
+
 {% load static %}
 {% load bootstrap %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block main %}
 <div class="container">
+  
 <div class="card text-white bg-primary mb-3">
         <div class="card-header"><small class="text">
           <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
@@ -18,9 +19,10 @@
     
 <form method="post" action="{% url 'sistema_change_username' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
 {% csrf_token %}
+
 <div class="form-row "> 
- 
-  
+    
+    
     <div class="form-group col-md-6 text-center">
         {{ form.username| as_crispy_field}}
       </div>
