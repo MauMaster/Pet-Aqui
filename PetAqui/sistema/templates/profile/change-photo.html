@@ -16,7 +16,7 @@
         
           
       
-  <form method="post" action="{% url 'sistema_change_photo' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
+  <form method="post" action="{% url 'sistema_change_photo' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" novalidate>
   {% csrf_token %}
   <div class="form-row "> 
     <div class="form-group col-md-6 ">

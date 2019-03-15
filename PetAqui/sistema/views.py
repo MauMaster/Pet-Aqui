@@ -26,12 +26,14 @@ from django.http import Http404
 
 from .models import (
     Usuario, 
-    Negocio
+    Negocio,
+    Gallery
 )
 
 from .forms import (
     UsuarioForm, 
-    NegocioForm
+    NegocioForm,
+    GalleryForm
 )
 
 def profile_detail(request, username):
@@ -50,12 +52,37 @@ def index(request):
     data = {'usuario': usuario, 'form': form}
     return render(request, 'index.html', data)
 
+
 def perfil(request):
     usuario = Usuario.objects.all()
     form = UsuarioForm()
     data = {'usuario': usuario, 'form': form}
-    return render(request, 'perfil.html', data)
+    gallery = Gallery.objects.all()
+    form2 = GalleryForm()
+    data2 = {'gallery': gallery, 'form2': form2}
+    return render(request, 'perfil.html', data, data2)
+
+
+
+def gallery(request):
+    gallery = Gallery.objects.all()
+    form = GalleryForm()
+    data = {'gallery': gallery, 'form': form}
+    return render(request, 'gallery.html', data)   
+
     
+
+def gallery_novo(request):
+    if request.method == 'POST':
+        form = GalleryForm(request.POST, request.FILES)
+        if form.is_valid():
+            my_novo_gallery = form.save(commit=False)  #save no commit
+            my_novo_gallery.user=request.user          #set user
+            my_novo_gallery.save()                     #save to db
+            return redirect('sistema_perfil')
+    else:
+        form = GalleryForm
+    return render(request, 'gallery.html', {'form': form})
 
 
 def cadastro(request):
@@ -137,7 +164,7 @@ class PhotoUpdate(LoginRequiredMixin, UpdateView):
 class UserNameUpdate(LoginRequiredMixin, UpdateView):
     model= User 
     fields = ['username']
-    template_name=' profile/change-username.html'
+    template_name='profile/change-username.html'
 
     def get_object(self, queryset=None):
         if queryset is None:
@@ -158,10 +185,6 @@ class UserNameUpdate(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('sistema_perfil')
 
-    def form_valid(self, form):
-        form.save()
-        user = User.objects.get(id=self.user_id)
-        return HttpResponse(render_to_string('myapp/item_edit_form_success.html', {'user': user}))
 
 class EmailUpdate(LoginRequiredMixin, UpdateView):
     model= Usuario

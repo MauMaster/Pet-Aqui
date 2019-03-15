@@ -1,4 +1,4 @@
-
+{%extends 'bases/base.html' %}
 {% load static %}
 {% load bootstrap %}
 {% load widget_tweaks %}
@@ -17,7 +17,7 @@
       
         
     
-<form method="post" action="{% url 'sistema_change_username' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
+<form method="post" action="{% url 'sistema_change_username' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" novalidate>
 {% csrf_token %}
 
 <div class="form-row "> 

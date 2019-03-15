@@ -15,18 +15,15 @@
               
              
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{% url 'sistema_perfil' %}">Ver perfil</a>
+                  
                   <a class="dropdown-item" href="{% url 'sistema_change_photo' %}">Alterar Foto</a>
                   <a class="dropdown-item" href="{% url 'sistema_change_pet' %}">Alterar Pets</a>
-                  <a class="dropdown-item" href="{% url 'sistema_change_username' %}">Alterar Nome Usúario</a>
+                  <a class="dropdown-item" href="{% url 'sistema_change_username' %}">Alterar Nome Usuário</a>
                   <a class="dropdown-item" href="{% url 'sistema_change_email' %}">Alterar Email</a>
                   <a class="dropdown-item" href="{% url 'sistema_change_data' %}">Alterar Dados</a>
                   <a class="dropdown-item" href="{% url 'change_password' %}">Alterar Senha</a>
-                  <a class="dropdown-item" href="#">Configurações</a>
-                  <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-                  </button>
+                  
+                  
               
                   
           </li>
@@ -39,29 +36,4 @@
    </div>
 
 </nav>
-
-    
-        
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                
-        {% include 'profile/change-username.html' %}
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-
-                        
+     

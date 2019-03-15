@@ -1,0 +1,65 @@
+{%extends 'bases/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+<div class="card text-white bg-primary">
+      <div class="card-header"><p class="card-text">
+          <small class="text-muted">
+             <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+             <a  class="text-white">Cadastro</a>
+             
+          </small></a></p> Cadastro de Usúario 
+    </div>
+       <div class="card title  ">
+      <div class="card-body text-secondary">  
+        <form class="exampleone" action="{%  url 'sistema_gallery_novo'  %}" method="POST" enctype="multipart/form-data" id="form" name="form" validate >
+                 {% csrf_token %}
+             
+    <div class="form-row"> 
+             <div class="form-group col-md-4">
+             
+        
+        {{ form.gallery | as_crispy_field }}
+       
+      </div>
+             <div class="form-group col-md-4">
+             
+        
+        {{ form.titulo | as_crispy_field }}
+       
+      </div>
+     
+      <div class="form-group col-md-4">
+       
+        
+      </div>
+      
+        </div>
+        
+        
+        </div>
+       
+                    <button type="submit"  class="btn btn-primary btn-block">Cadastrar</button>
+    
+            </form>
+            
+    
+      </div>
+    </div>
+    </div>
+
+
+ 
+{% endblock %}
+
+{% block rightcol %}
+{% include 'bases/rightcol.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'bases/footer.html' %}
+{% endblock %}

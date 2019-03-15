@@ -37,19 +37,22 @@
 <div class="form-group col-md-12">
 <img src="{% static 'img/perfil/pet.svg' %}"  width="30" height="30" alt="">
       {{ user.usuario.pet}}  
-        
-        
+   </div>
+</div>
+      <div class="form-row"> 
+         <div class="form-group col-md-12">
           <img src="{% static 'img/perfil/map2.svg' %}"  width="40" height="40" alt="">
           
            {{ user.usuario.cidade }} - {{ user.usuario.estado }}
       </div></div>
          <hr>
       <label >Galeria: </label>
+      <img src="{{user.usuario.gallery.medium.url}}"class="rounded-circle" width="150" height="150">
+      {% for g in user.usuario.gallery_set.all %}
+      <img src="{{ g.medium.url}}">
      
-      
-      
-    
-
+  {% endfor %}
+     
 </div>
 </div>
 </div>
