@@ -17,7 +17,7 @@
 </div>
    <div class="card title  ">
   <div class="card-body text-secondary">  
-    <form class="exampleone" action="{%  url 'sistema_cadastro_negocio'  %}" method="POST" enctype="multipart/form-data" id="form" name="form" novalidate >
+    <form class="exampleone" action="{%  url 'sistema_cadastro_negocio_novo'  %}" method="POST" enctype="multipart/form-data" id="form" name="form" novalidate >
              {% csrf_token %}
              <div class="form-row"> 
                   <div class="form-group col-md-6">
@@ -96,7 +96,7 @@
            </div>
            <div class="form-group col-md-4">
    
-              {{ form.data | as_crispy_field}}
+             
            </div>
     </div>
     <div class="form-row"> 

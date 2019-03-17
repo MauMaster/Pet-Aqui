@@ -144,8 +144,6 @@ class NegocioForm(UserCreationForm):
             widget=forms.TextInput(
                                     attrs={
                                             'placeholder': 'Nome da Empresa'}))
-     data = forms.CharField()
-
      cnpj = forms.CharField(
             widget=forms.TextInput(
                                     attrs={
@@ -220,7 +218,7 @@ class NegocioForm(UserCreationForm):
      sexta = forms.CharField(initial="Sexta")
      sabado = forms.CharField(initial="Sábado")
      domingo = forms.CharField(initial="Domingo")
-     
+
      horario_segunda1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
      horario_segunda2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
      horario_segunda3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
@@ -262,12 +260,12 @@ class NegocioForm(UserCreationForm):
      horario_domingo3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
      horario_domingo4 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
      domingo_24 = forms.ChoiceField(required=False, label='24 Horas', choices=HOUR_CHOICES)
-     data = forms.DateField( label='Ano de Inauguração',  widget=DatePickerInput(format='%Y'))
+     
 
      
      class Meta:
         model = User
-        fields = ('username', 'empresa', 'data',  'cnpj', 'telefone', 'whatsapp', 'email',
+        fields = ('username', 'empresa',   'cnpj', 'telefone', 'whatsapp', 'email',
                   'site', 'foto', 'tipo', 'pet_aceitos', 'endereco',   'numero',  'bairro', 'cep',
                   'cidade', 'estado', 'sobre', 'password1',
                   'segunda', 'horario_segunda1', 'horario_segunda2', 'horario_segunda3', 'horario_segunda4',   'segunda_24', 
@@ -279,8 +277,8 @@ class NegocioForm(UserCreationForm):
                   'domingo', 'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4',   'domingo_24',)
         
         labels = {
-            
-            
+                "username": "Nome de usúario"
+                       
         }
 
 class GalleryForm(forms.ModelForm):
