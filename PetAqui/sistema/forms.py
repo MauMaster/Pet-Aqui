@@ -41,6 +41,14 @@ HOUR_CHOICES = (
     ('N','Não'), ('S','Sim')
 )
 
+TIPO_CHOICES = (
+    ('H','Hotéis'), ('PS','PetShops'), ('V','Veterinários'), ('R','Restaurantes'), ('C','Cafés'), ('HP','HotéisPet'),
+)
+
+PETN_CHOICES = (
+    ('PDog','Cachorro Pequeno Porte'), ('MDog','Cachorro Médio Porte'),('GDog','Cachorro Grande Porte'),('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('rat','Roedores')
+)
+
 class UsuarioForm(UserCreationForm):
      def __init__(self, *args, **kwargs):
         super(UsuarioForm, self).__init__(*args, **kwargs)
@@ -131,8 +139,88 @@ class UsuarioForm(UserCreationForm):
        }
 
 
-class NegocioForm(forms.ModelForm):
+class NegocioForm(UserCreationForm):
+     empresa = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Nome da Empresa'}))
+     data = forms.CharField()
 
+     cnpj = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'xx.xxx.xxx/xxxx-xx', 'class': 'cnpj'}))
+     email = forms.EmailField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Email Válido', 'id': 'email'}))
+     email2 = forms.EmailField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Repita seu email', 'id': 'email2'}))
+     telefone = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                           'placeholder': '(00)0000-0000', 'class': 'phone_with_ddd'}))
+     whatsapp = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                           'placeholder': '(00)0000-0000', 'class': 'phone_with_ddd'}))
+     site = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Site da Empresa'}))
+     foto = forms.FileField(
+            widget=forms.ClearableFileInput(attrs={'multiple': 'False'}))
+
+     tipo = forms.MultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple, choices=TIPO_CHOICES, )
+
+     pet_aceitos = forms.MultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple, choices=PETN_CHOICES, )
+
+     endereco = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Rua, Av, Estrada'}))
+     numero = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'numero', 'class': 'numero'}))
+     bairro = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'seu bairro'}))
+     cep = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': '00000-000', 'class': 'cep'}))
+     cidade = cidade = forms.CharField(
+            widget=forms.TextInput(
+                                    attrs={
+                                            'placeholder': 'Sua cidade'}))
+     estado = forms.ChoiceField(choices=STATE_CHOICES)
+     
+     sobre = forms.CharField(label='História da empresa',
+            widget=forms.Textarea(
+                                    attrs={
+                                            'width': "100%", 'cols': "80", 'rows': "7", 'placeholder': 'Uma breve descrição sobre a empresa'}))
+     password1 = forms.CharField(widget=forms.PasswordInput(
+                                    attrs={
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'password1'}))
+
+     password2 = forms.CharField(widget=forms.PasswordInput(
+                                    attrs={
+                                            'placeholder': 'Mínimo 8 digitos', 'id': 'password2', 'label': 'Repita a senha'}))
+
+     segunda = forms.CharField(initial="Segunda")
+     terca = forms.CharField(initial="Terça")
+     quarta = forms.CharField(initial="Quarta")
+     quinta = forms.CharField(initial="Quinta")
+     sexta = forms.CharField(initial="Sexta")
+     sabado = forms.CharField(initial="Sábado")
+     domingo = forms.CharField(initial="Domingo")
+     
      horario_segunda1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
      horario_segunda2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
      horario_segunda3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
@@ -176,13 +264,19 @@ class NegocioForm(forms.ModelForm):
      domingo_24 = forms.ChoiceField(required=False, label='24 Horas', choices=HOUR_CHOICES)
      data = forms.DateField( label='Ano de Inauguração',  widget=DatePickerInput(format='%Y'))
 
-     sobre = forms.CharField(label='História da empresa',
-            widget=forms.Textarea(
-                                    attrs={
-                                            'width': "100%", 'cols': "80", 'rows': "7", 'placeholder': 'Uma breve descrição sobre a empresa'}))
+     
      class Meta:
-        model = Negocio
-        fields = '__all__'
+        model = User
+        fields = ('username', 'empresa', 'data',  'cnpj', 'telefone', 'whatsapp', 'email',
+                  'site', 'foto', 'tipo', 'pet_aceitos', 'endereco',   'numero',  'bairro', 'cep',
+                  'cidade', 'estado', 'sobre', 'password1',
+                  'segunda', 'horario_segunda1', 'horario_segunda2', 'horario_segunda3', 'horario_segunda4',   'segunda_24', 
+                  'terca', 'horario_terca1', 'horario_terca2', 'horario_terca3', 'horario_terca4',   'terca_24',
+                  'quarta', 'horario_quarta1', 'horario_quarta2', 'horario_quarta3', 'horario_quarta4',   'quarta_24',
+                  'quinta', 'horario_quinta1', 'horario_quinta2', 'horario_quinta3', 'horario_quinta4',   'quinta_24',
+                  'sexta', 'horario_sexta1', 'horario_sexta2', 'horario_sexta3', 'horario_sexta4',   'sexta_24',
+                  'sabado', 'horario_sabado1', 'horario_sabado2', 'horario_sabado3', 'horario_sabado4',   'sabado_24',
+                  'domingo', 'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4',   'domingo_24',)
         
         labels = {
             

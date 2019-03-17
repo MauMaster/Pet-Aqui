@@ -13,7 +13,7 @@
          <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
          <a  class="text-white">Cadastro</a>
          
-      </small></a></p> Cadastro de Usúario 
+      </small></a></p> Cadastro da Empresa
 </div>
    <div class="card title  ">
   <div class="card-body text-secondary">  
@@ -34,6 +34,22 @@
            </div>
          </div>
          <hr>
+         <p><h5>Dados da empresa</h5></p>
+         <div class="form-row"> 
+          <div class="form-group col-md-6">
+          
+     
+                {{ form.username | as_crispy_field}}
+    
+   </div>
+          <div class="form-group col-md-6">
+          
+     
+                {{ form.site | as_crispy_field}}
+    
+   </div>
+ </div>
+         
 <div class="form-row"> 
          <div class="form-group col-md-8">
          
@@ -56,18 +72,32 @@
  <div class="form-group col-md-6">
 
     {{ form.email | as_crispy_field}}
-
+    <div id="message2"></div>
        
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-6">
    
-      {{ form.telefone | as_crispy_field}}
+    
+      {{ form.email2 | as_crispy_field}}
+      <div id="message"></div>
+      <div id="message3"></div>
+      
    </div>
-   <div class="form-group col-md-3">
-   
-      {{ form.whatsapp | as_crispy_field}}
-   </div>
+  
  
+    </div>
+    <div class="form-row"> 
+      <div class="form-group col-md-4">
+          {{ form.telefone | as_crispy_field}}
+          </div>
+          <div class="form-group col-md-4">
+   
+              {{ form.whatsapp | as_crispy_field}}
+           </div>
+           <div class="form-group col-md-4">
+   
+              {{ form.data | as_crispy_field}}
+           </div>
     </div>
     <div class="form-row"> 
  <div class="form-group col-md-6">
@@ -99,15 +129,16 @@
   </div>
     </div>
     <div class="form-row"> 
-         <div class="form-group col-md-9">
+         <div class="form-group col-md-6">
                {{ form.foto | as_crispy_field}}
             </div>
-            <div class="form-group col-md-3">
-                  {{ form.data | as_crispy_field}}
+            <div class="form-group col-md-6">
+             
                </div>
+               
          </div>
     <hr>
-    <p><h4>Horário de atendimento</h4></p>
+    <p><h5>Horário de atendimento</h5></p>
          <div class="form-row"> 
  <div class="form-group col-md-2">
 
@@ -314,36 +345,21 @@
        </div>
     </div>
    
-
-             <div class="form-check form-check-inline"> 
-<div class="form-group col-md-12">
-   
-    </div>
-   
-    
-     </div>
-     <div class="form-row"> 
-         <div class="form-group col-md-12">
-           
-             </div>
-            
-             
-              </div>
+    <div class="form-row"> 
+      <div class="form-group col-md-6">
      
-                 <div class="form-row"> 
- <div class="form-group col-md-6">
-
- 
-    </div>
-     <div class="form-group col-md-6">
- 
-    
-   
-    
-   
-    </div>
-    
-    </div>
+        {{ form.password1 | as_crispy_field}}
+         </div>
+          <div class="form-group col-md-6">
+      
+         {{ form.password2 | as_crispy_field}}
+         <div id="divCheckPassword"></div>
+         <div id="divCheckPassword2"></div>
+         
+        
+         </div>
+         
+         </div>
    
                 <button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
 

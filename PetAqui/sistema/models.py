@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from stdimage.models import StdImageField
+from django.conf import settings
+
 
 STATE_CHOICES = (
     ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
@@ -70,7 +72,8 @@ class Usuario(models.Model):
     password1 = models.CharField(max_length=15, blank=False)
     about = models.TextField(max_length=1000, blank=False, verbose_name="Sobre você")
 
-    
+    USERNAME_Filed = 'cpf'
+
     def __unicode__(self):
 	    return self.nome
         
@@ -87,7 +90,7 @@ class Usuario(models.Model):
 
 class Negocio(models.Model):
     id = models.AutoField(primary_key=True)
-    proprietario =  models.ForeignKey( Usuario, on_delete=models.CASCADE, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     empresa = models.CharField(max_length=50, blank=False, verbose_name="Nome da Empresa")
     data = models.DateField(max_length=10, verbose_name="Ano da Inauguração")
     cnpj = models.CharField(max_length=19)
@@ -151,6 +154,7 @@ class Negocio(models.Model):
     horario_domingo4 = models.TimeField(max_length=50, blank=True)
     domingo_24 = models.CharField(default='N', max_length=3, choices=HOUR_CHOICES)
     sobre = models.TextField(max_length=1000, blank=False)
+    password1 = models.CharField(max_length=15, blank=False)
 
 class Gallery(models.Model):
         gallery = StdImageField( blank=False,  variations={
@@ -160,3 +164,5 @@ class Gallery(models.Model):
         })
         titulo = models.CharField(max_length=50, blank=False)
         usuario_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+
