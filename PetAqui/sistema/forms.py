@@ -8,12 +8,12 @@ from django import forms
 from django.core.files import File
 from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
 from django import forms
+from django.db import transaction
 
 
 from .models import (
     Usuario,
-    Negocio,
-    Gallery
+    Negocio
 )
 
 PET_CHOICES = (
@@ -137,7 +137,7 @@ class UsuarioForm(UserCreationForm):
         labels = {
               "username": "Nome de usúario"
        }
-
+    
 
 class NegocioForm(UserCreationForm):
      empresa = forms.CharField(
@@ -281,22 +281,3 @@ class NegocioForm(UserCreationForm):
                        
         }
 
-class GalleryForm(forms.ModelForm):
-     gallery = forms.FileField(
-              widget=forms.ClearableFileInput(attrs={'multiple': 'True'}))
-     titulo = forms.CharField()
-
-     class Meta:
-        model = Gallery
-        fields = ( 'gallery', 'titulo')
-
-     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)
-        return super(GalleryForm, self).__init__(*args, **kwargs)
-
-     def save(self, commit=True, user=None):
-         form = super(GalleryForm, self).save(commit=False)
-         form.usario_id = user
-         if commit:
-            form.save()
-         return form

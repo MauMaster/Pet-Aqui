@@ -26,14 +26,12 @@ from django.http import Http404
 
 from .models import (
     Usuario, 
-    Negocio,
-    Gallery
+    Negocio
 )
 
 from .forms import (
     UsuarioForm, 
-    NegocioForm,
-    GalleryForm
+    NegocioForm
 )
 
 def profile_detail(request, username):
@@ -57,32 +55,10 @@ def perfil(request):
     usuario = Usuario.objects.all()
     form = UsuarioForm()
     data = {'usuario': usuario, 'form': form}
-    gallery = Gallery.objects.all()
-    form2 = GalleryForm()
-    data2 = {'gallery': gallery, 'form2': form2}
-    return render(request, 'perfil.html', data, data2)
+    return render(request, 'perfil.html', data)
 
 
 
-def gallery(request):
-    gallery = Gallery.objects.all()
-    form = GalleryForm()
-    data = {'gallery': gallery, 'form': form}
-    return render(request, 'gallery.html', data)   
-
-    
-
-def gallery_novo(request):
-    if request.method == 'POST':
-        form = GalleryForm(request.POST, request.FILES)
-        if form.is_valid():
-            my_novo_gallery = form.save(commit=False)  #save no commit
-            my_novo_gallery.user=request.user          #set user
-            my_novo_gallery.save()                     #save to db
-            return redirect('sistema_perfil')
-    else:
-        form = GalleryForm
-    return render(request, 'gallery.html', {'form': form})
 
 
 def cadastro(request):
@@ -97,6 +73,7 @@ def cadastro_novo(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.is_staff = True
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
             user.usuario.nome = form.cleaned_data.get('nome')

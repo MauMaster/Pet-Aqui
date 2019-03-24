@@ -46,6 +46,7 @@ HOUR_CHOICES = (
     ('N','Não'), ('S','Sim')
 )
 
+
 class Usuario(models.Model):
     
     nome = models.CharField(max_length=50, blank=False)
@@ -72,7 +73,8 @@ class Usuario(models.Model):
     password1 = models.CharField(max_length=15, blank=False)
     about = models.TextField(max_length=1000, blank=False, verbose_name="Sobre você")
 
-    
+    def __str__(self):
+        return str(self.nome) + ' - ' + str(self.email) + ' - ' + str(self.telefone)
 
     def __unicode__(self):
 	    return self.nome
@@ -161,14 +163,4 @@ class Negocio(models.Model):
         if created:
             Negocio.objects.create(user=instance)
         instance.negocio.save()
-
-class Gallery(models.Model):
-        gallery = StdImageField( blank=False,  variations={
-            'large': (600, 400),
-            'thumbnail': (100, 100, True),
-            'medium': (300, 200),
-        })
-        titulo = models.CharField(max_length=50, blank=False)
-        usuario_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-
 

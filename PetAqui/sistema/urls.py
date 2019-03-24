@@ -16,9 +16,7 @@ from .views import (
     account_activation_sent,
     perfil,
     profile_detail,
-    change_password,
-    gallery,
-    gallery_novo
+    change_password
     
     
 )
@@ -27,8 +25,6 @@ urlpatterns = [
     url(r'^index/$', index, name='sistema_index'),
     url(r'^cadastro/$', cadastro, name='sistema_cadastro'),
     url(r'perfil/$', perfil, name='sistema_perfil'),
-    url(r'gallery/$', gallery, name='sistema_gallery'),
-    url(r'gallery-novo/$', gallery_novo, name='sistema_gallery_novo'),
     url(r'^cadastro-novo/$', cadastro_novo, name='sistema_cadastro_novo'),
     url(r'^cadastro-negocio/$', cadastro_negocio, name='sistema_cadastro_negocio'),
     url(r'^cadastro-negocio-novo/$', cadastro_negocio_novo, name='sistema_cadastro_negocio_novo'),
