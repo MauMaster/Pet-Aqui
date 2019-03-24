@@ -73,8 +73,6 @@ class Usuario(models.Model):
     password1 = models.CharField(max_length=15, blank=False)
     about = models.TextField(max_length=1000, blank=False, verbose_name="Sobre você")
 
-    def __str__(self):
-        return str(self.nome) + ' - ' + str(self.email) + ' - ' + str(self.telefone)
 
     def __unicode__(self):
 	    return self.nome
@@ -86,7 +84,7 @@ class Usuario(models.Model):
         instance.usuario.save()
         
     def __str__(self):
-        return str(self.nome) + ' - ' + str(self.email) + ' - ' + str(self.telefone) 
+        return str(self.nome) + ' - ' + str(self.sobrenome) + ' - ' + str(self.email) + ' - ' + str(self.telefone) 
 
 
 
@@ -157,6 +155,8 @@ class Negocio(models.Model):
     sobre = models.TextField(max_length=1000, blank=False)
     password1 = models.CharField(max_length=15, blank=False)
 
+    def __str__(self):
+        return str(self.empresa) + ' - ' + str(self.email) + ' - ' + str(self.whatsapp) + ' - ' + str(self.cnpj) 
 
     @receiver(post_save, sender=User)
     def cadastro_negocio_novo(sender, instance, created, **kwargs):

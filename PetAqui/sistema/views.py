@@ -59,7 +59,7 @@ def perfil(request):
 
 
 
-
+# Cadastros de usúarios
 
 def cadastro(request):
     usuario = Usuario.objects.all()
@@ -213,7 +213,7 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
 
 class DataUpdate(LoginRequiredMixin, UpdateView):
     model= Usuario
-    fields = ['nome','sobrenome','cpf','telefone','data_nascimento','sexo','endereco','numero','bairro','cidade','estado', 'cep']
+    fields = ['nome','sobrenome','cpf','telefone','data_nascimento','sexo','endereco','numero','bairro','cidade','estado', 'cep', 'about']
     template_name='profile/change-data.html'
 
     def get_object(self, queryset=None):
@@ -252,6 +252,7 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'account_activation_invalid.html')
 
+ # Altera senha tando de usuarios quanto de negocios, pois lida direto no user
 @login_required
 def change_password(request):
     if request.method == 'POST':
@@ -259,7 +260,7 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Sua senha foi alterada com sucesso!!!')
             return redirect('change_password')
         else:
             messages.error(request, 'Corriga os erros.')
@@ -269,6 +270,8 @@ def change_password(request):
         'form': form
     })
     
+
+ # Cadastros de Negócios
 
 def cadastro_negocio(request):
     negocio = Negocio.objects.all()
@@ -360,3 +363,60 @@ def cadastro_negocio_novo(request):
     else:
         form = NegocioForm()
     return render(request, 'cadastro_negocio.html', {'form': form})
+
+#alterar dados da empresa
+class DataUpdateNegocio(LoginRequiredMixin, UpdateView):
+    model= Negocio
+    fields = ['empresa','cnpj','telefone','whatsapp','site','tipo','pet_aceitos','endereco','numero','bairro','cep', 'cidade','estado', 'sobre']
+    template_name='profile_negocio/change-data.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+#alterar dados de horario da empresa
+class HoraUpdateNegocio(LoginRequiredMixin, UpdateView):
+    model= Negocio
+    fields = ['horario_segunda1','horario_segunda2','horario_segunda3','horario_segunda4','segunda_24',
+              'horario_terca1','horario_terca2','horario_terca3','horario_terca4','terca_24',
+              'horario_quarta1','horario_quarta2','horario_quarta3','horario_quarta4','quarta_24',
+              'horario_quinta1','horario_quinta2','horario_quinta3','horario_quinta4','quinta_24',
+              'horario_sexta1','horario_sexta2','horario_sexta3','horario_sexta4','sexta_24',
+              'horario_sabado1','horario_sabado2','horario_sabado3','horario_sabado4','sabado_24',
+              'horario_domingo1','horario_domingo2','horario_domingo3','horario_domingo4','domingo_24',
+    ]
+    template_name='profile_negocio/change-hour.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')

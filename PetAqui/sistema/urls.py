@@ -42,6 +42,10 @@ urlpatterns = [
      name='sistema_change_data'),
     url(r'^change-pet/$', views.PetUpdate.as_view(), 
      name='sistema_change_pet'),
+    url(r'^change-data-negocio/$', views.DataUpdateNegocio.as_view(), 
+     name='sistema_change_data_negocio'),
+    url(r'^change-hora/$', views.HoraUpdateNegocio.as_view(), 
+     name='sistema_change_hora'),
   
     
      
