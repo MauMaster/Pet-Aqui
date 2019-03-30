@@ -1,0 +1,13 @@
+{%extends 'bases/base.html' %}
+{% load widget_tweaks %}
+{% block main %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for negocio in filter.qs %}
+    <li><img src="{{negocio.foto.medium.url}}"class="rounded-circle" width="50" height="50"> - {{ negocio.cidade }} - {{ negocio.estado }}- {{ negocio.pet_aceitos }} - {{ negocio.tipo }} - {{ negocio.telefone }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

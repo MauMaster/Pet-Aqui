@@ -22,6 +22,8 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 
+from .filters import NegocioFilter, UsuarioFilter
+
 
 
 from .models import (
@@ -33,6 +35,16 @@ from .forms import (
     UsuarioForm, 
     NegocioForm
 )
+
+def search(request):
+    negocio_list = Negocio.objects.all()
+    negocio_filter = NegocioFilter(request.GET, queryset=negocio_list)
+    return render(request, 'search/negocio_list.html', {'filter': negocio_filter})
+
+def search_usuario(request):
+    usuario_list = Usuario.objects.all()
+    usuario_filter = UsuarioFilter(request.GET, queryset=usuario_list)
+    return render(request, 'search/usuario_list.html', {'filter': usuario_filter})
 
 def profile_detail(request, username):
     if User.objects.get(username__iexact=username):
@@ -369,6 +381,7 @@ class DataUpdateNegocio(LoginRequiredMixin, UpdateView):
     model= Negocio
     fields = ['empresa','cnpj','telefone','whatsapp','site','tipo','pet_aceitos','endereco','numero','bairro','cep', 'cidade','estado', 'sobre']
     template_name='profile_negocio/change-data.html'
+    
 
     def get_object(self, queryset=None):
         if queryset is None:
@@ -401,13 +414,93 @@ class HoraUpdateNegocio(LoginRequiredMixin, UpdateView):
               'horario_domingo1','horario_domingo2','horario_domingo3','horario_domingo4','domingo_24',
     ]
     template_name='profile_negocio/change-hour.html'
+  
+
 
     def get_object(self, queryset=None):
         if queryset is None:
             queryset = self.get_queryset()   # This should help to get current user 
 
         # Next, try looking up by primary key of Usario model.
-        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+        queryset = queryset.filter(pk=self.request.user.negocio.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+#alterando Pet da Empresa
+class PetEmpresaUpdate(LoginRequiredMixin, UpdateView):
+    model= Negocio
+    fields = ['pet_aceitos']
+    template_name='profile_negocio/change-pet-empresa.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.negocio.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+#alterando a foto de perfil da empresa
+class PhotoEmpresaUpdate(LoginRequiredMixin, UpdateView):
+    model= Negocio  
+    fields = ['foto']
+    template_name='profile_negocio/change-foto-empresa.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.negocio.pk)
+
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404("No user matching this query")
+        return obj
+
+
+    def get_success_url(self):
+        return reverse('sistema_perfil')
+
+
+#alterando email da empresa
+
+
+class EmailEmpresaUpdate(LoginRequiredMixin, UpdateView):
+    model= Negocio
+    fields = ['email']
+    template_name='profile_negocio/change-email-empresa.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()   # This should help to get current user 
+
+        # Next, try looking up by primary key of Usario model.
+        queryset = queryset.filter(pk=self.request.user.negocio.pk)
 
 
         try:

@@ -26,11 +26,11 @@ STATE_CHOICES = (
 
 
 PET_CHOICES = (
-    ('dog','Cachorro'), ('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('rat','Roedores')
+    ('Cachorro','Cachorro'), ('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
 )
 
 PETN_CHOICES = (
-    ('PDog','Cachorro Pequeno Porte'), ('MDog','Cachorro Médio Porte'),('GDog','Cachorro Grande Porte'),('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('rat','Roedores')
+    ('Cachorro Pequeno Porte','Cachorro Pequeno Porte'), ('Cachorro Médio Porte','Cachorro Médio Porte'),('Cachorro Grande Porte','Cachorro Grande Porte'),('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
 )
 
 
@@ -39,11 +39,11 @@ SEXO_CHOICES = (
 )
 
 TIPO_CHOICES = (
-    ('H','Hotéis'), ('PS','PetShops'), ('V','Veterinários'), ('R','Restaurantes'), ('C','Cafés'), ('HP','HotéisPet'),
+    ('Hotéis','Hotéis'), ('PetShops','PetShops'), ('Veterinários','Veterinários'), ('Restaurantes','Restaurantes'), ('Cafés','Cafés'), ('HotéisPet','HotéisPet'),
 )
 
 HOUR_CHOICES = (
-    ('N','Não'), ('S','Sim')
+    ('Não','Não'), ('Sim','Sim')
 )
 
 
@@ -103,7 +103,7 @@ class Negocio(models.Model):
         'medium': (300, 200),
     })
     tipo = MultiSelectField( max_length=100, choices=TIPO_CHOICES, verbose_name="Tipo de negocio")
-    pet_aceitos = MultiSelectField(default='dog', max_length=255, choices=PETN_CHOICES)
+    pet_aceitos = MultiSelectField(max_length=255, choices=PETN_CHOICES)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)
@@ -163,4 +163,5 @@ class Negocio(models.Model):
         if created:
             Negocio.objects.create(user=instance)
         instance.negocio.save()
+
 

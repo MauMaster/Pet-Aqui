@@ -16,13 +16,20 @@ from .views import (
     account_activation_sent,
     perfil,
     profile_detail,
-    change_password
+    change_password,
+    PetEmpresaUpdate,
+    PhotoEmpresaUpdate,
+    EmailEmpresaUpdate,
+    search,
+    search_usuario
     
     
 )
 
 urlpatterns = [
     url(r'^index/$', index, name='sistema_index'),
+    url(r'^search-usuario/$', views.search_usuario, name='search_usuario'),
+    url(r'^search/$', views.search, name='search'),
     url(r'^cadastro/$', cadastro, name='sistema_cadastro'),
     url(r'perfil/$', perfil, name='sistema_perfil'),
     url(r'^cadastro-novo/$', cadastro_novo, name='sistema_cadastro_novo'),
@@ -46,8 +53,12 @@ urlpatterns = [
      name='sistema_change_data_negocio'),
     url(r'^change-hora/$', views.HoraUpdateNegocio.as_view(), 
      name='sistema_change_hora'),
-  
-    
+    url(r'^change-pet-empresa/$', views.PetEmpresaUpdate.as_view(), 
+     name='sistema_change_pet_empresa'),
+    url(r'^change-foto-empresa/$', views.PhotoEmpresaUpdate.as_view(), 
+     name='sistema_change_foto_empresa'),
+    url(r'^change-email-empresa/$', views.EmailEmpresaUpdate.as_view(), 
+     name='sistema_change_email_empresa'),
      
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

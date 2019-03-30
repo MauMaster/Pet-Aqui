@@ -16,11 +16,6 @@ from .models import (
     Negocio
 )
 
-PET_CHOICES = (
-    ('dog', 'Cachorro'), ('cat', 'Gato'), ('bird', 'Pássaros'), ('fish',
-     'Peixes'), ('rep', 'Reptéis'), ('rat', 'Roedores')
-)
-
 STATE_CHOICES = (
     ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
     ('AM', 'Amazonas'), ('BA', 'Bahia'), ('CE', 'Ceará'),
@@ -33,20 +28,27 @@ STATE_CHOICES = (
     ('RO', 'Rondônia'), ('RR', 'Roraima'), ('SC', 'Santa Catarina'),
     ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
 )
-SEXO_CHOICES = (
-    ('M', 'Masculino'), ('F', 'Feminino')
-)
 
-HOUR_CHOICES = (
-    ('N','Não'), ('S','Sim')
-)
 
-TIPO_CHOICES = (
-    ('H','Hotéis'), ('PS','PetShops'), ('V','Veterinários'), ('R','Restaurantes'), ('C','Cafés'), ('HP','HotéisPet'),
+PET_CHOICES = (
+    ('Cachorro','Cachorro'), ('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
 )
 
 PETN_CHOICES = (
-    ('PDog','Cachorro Pequeno Porte'), ('MDog','Cachorro Médio Porte'),('GDog','Cachorro Grande Porte'),('cat','Gato'), ('bird', 'Pássaros'), ('fish','Peixes'), ('rep','Reptéis'), ('rat','Roedores')
+    ('Cachorro Pequeno Porte','Cachorro Pequeno Porte'), ('Cachorro Médio Porte','Cachorro Médio Porte'),('Cachorro Grande Porte','Cachorro Grande Porte'),('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
+)
+
+
+SEXO_CHOICES = (
+    ('M','Masculino'), ('F','Feminino')
+)
+
+TIPO_CHOICES = (
+    ('Hotéis','Hotéis'), ('PetShops','PetShops'), ('Veterinários','Veterinários'), ('Restaurantes','Restaurantes'), ('Cafés','Cafés'), ('HotéisPet','HotéisPet'),
+)
+
+HOUR_CHOICES = (
+    ('Não','Não'), ('Sim','Sim')
 )
 
 class UsuarioForm(UserCreationForm):
@@ -280,4 +282,3 @@ class NegocioForm(UserCreationForm):
                 "username": "Nome de usúario"
                        
         }
-

@@ -1,0 +1,118 @@
+{%extends 'bases/base.html' %}
+{% load widget_tweaks %}
+{% block main %}
+<div class="card text-white bg-primary">
+        <div class="card-header"><p class="card-text">
+              <small class="text-muted">
+                 <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+                 <a class="text-white">Procurar usúarios </a>
+              </small></a>
+              <div class="row"> 
+              <div class=" col-md-10">
+              
+           
+              
+           </div>
+           
+        </div>
+                 
+        </div>
+        <div class="card title  ">
+                <div class="card-body text-secondary">
+  <form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Filtros</h4>
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.nome.label_tag }}
+          {% render_field filter.form.nome class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.sobrenome.label_tag }}
+          {% render_field filter.form.sobrenome class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-6">
+          {{ filter.form.email.label_tag }}
+          {% render_field filter.form.email class="form-control" %}
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group col-sm-4 col-md-5">
+                {{ filter.form.cidade.label_tag }}
+          {% render_field filter.form.cidade class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-5">
+                {{ filter.form.estado.label_tag }}
+                {% render_field filter.form.estado class="form-control" %}
+            </div>
+          
+         <div class="form-group col-sm-4 col-md-2">
+                    <br>
+      <button type="submit" class="btn btn-primary btn-lg "> Procurar</button>
+    </div>
+    </div>
+</div>
+  </form>
+
+
+  <div class="row">
+    <div class="form-group col-sm-4 col-md-12">
+
+      {% for usuario in filter.qs %}
+      <div class="card text-white bg-primary">
+            <div class="card-header"><p class="card-text text-justify">
+                  
+                     {{usuario.nome}} {{usuario.sobrenome}} -- {{usuario.email}} -- {{usuario.cidade}} -- {{usuario.estado}}
+                  
+                 
+                     
+            </div>
+            <div class="card title  ">
+                    <div class="card-body text-secondary">
+      <div class="row">
+            <div class="form-group col-sm-4 col-md-12">
+        <a href="" style="color:black"><img src="{{usuario.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+          <a href="" style="color:black">{{usuario.about}} </a>
+          
+          
+        </div>
+    </div>
+         </div>
+      </div>
+   </div>
+   <br>
+      {% empty %}
+      <div class="card text-white bg-warning">
+            <div class="card-header"><p class="card-text text-justify">
+                  
+                     
+                  
+                 
+                     
+            </div>
+            <div class="card title  ">
+                    <div class="card-body text-secondary">
+      <div class="row">
+            <div class="form-group col-sm-4 col-md-12">
+          <td colspan="5">Desculpa, não encontramos nada com essa busca, mas estamos trabalhando para melhor atender.
+              <br>
+              Por favor tente novamente.
+          </td>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+      {% endfor %}
+    
+      
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
