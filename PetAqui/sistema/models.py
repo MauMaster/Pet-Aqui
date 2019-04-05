@@ -26,13 +26,12 @@ STATE_CHOICES = (
 
 
 PET_CHOICES = (
-    ('Cachorro','Cachorro'), ('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
+    ('Cachorro','Cachorro'), ('Gato','Gato')
 )
 
 PETN_CHOICES = (
-    ('Cachorro Pequeno Porte','Cachorro Pequeno Porte'), ('Cachorro Médio Porte','Cachorro Médio Porte'),('Cachorro Grande Porte','Cachorro Grande Porte'),('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
+    ('Cachorro','Cachorro'), ('Gato','Gato'), ('Chachorro e  Gato','Chachorro'  +  ' - ' +  'Gato')
 )
-
 
 SEXO_CHOICES = (
     ('M','Masculino'), ('F','Feminino')
@@ -45,6 +44,9 @@ TIPO_CHOICES = (
 HOUR_CHOICES = (
     ('Não','Não'), ('Sim','Sim')
 )
+
+
+
 
 
 class Usuario(models.Model):
@@ -88,10 +90,10 @@ class Usuario(models.Model):
 
 
 
+
 class Negocio(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     empresa = models.CharField(max_length=50, blank=False, verbose_name="Nome da Empresa")
-    
     cnpj = models.CharField(max_length=19)
     telefone = models.CharField(max_length=20, blank=False)
     whatsapp = models.CharField(max_length=20, blank=False)
@@ -102,8 +104,8 @@ class Negocio(models.Model):
         'thumbnail': (100, 100, True),
         'medium': (300, 200),
     })
-    tipo = MultiSelectField( max_length=100, choices=TIPO_CHOICES, verbose_name="Tipo de negocio")
-    pet_aceitos = MultiSelectField(max_length=255, choices=PETN_CHOICES)
+    tipo = models.CharField( max_length=100, choices=TIPO_CHOICES, verbose_name="Tipo de negocio")
+    pet_aceitos = models.CharField(max_length=255, choices=PETN_CHOICES)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)
@@ -157,6 +159,8 @@ class Negocio(models.Model):
 
     def __str__(self):
         return str(self.empresa) + ' - ' + str(self.email) + ' - ' + str(self.whatsapp) + ' - ' + str(self.cnpj) 
+
+  
 
     @receiver(post_save, sender=User)
     def cadastro_negocio_novo(sender, instance, created, **kwargs):

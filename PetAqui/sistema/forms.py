@@ -31,11 +31,11 @@ STATE_CHOICES = (
 
 
 PET_CHOICES = (
-    ('Cachorro','Cachorro'), ('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
+    ('Cachorro','Cachorro'), ('Gato','Gato')
 )
 
 PETN_CHOICES = (
-    ('Cachorro Pequeno Porte','Cachorro Pequeno Porte'), ('Cachorro Médio Porte','Cachorro Médio Porte'),('Cachorro Grande Porte','Cachorro Grande Porte'),('Gato','Gato'), ('Pássaros', 'Pássaros'), ('Peixes','Peixes'), ('Reptéis','Reptéis'), ('Roedores','Roedores')
+('Cachorro','Cachorro'), ('Gato','Gato'), ('Chachorro e  Gato','Chachorro'  +  ' - ' +  'Gato')
 )
 
 
@@ -173,11 +173,13 @@ class NegocioForm(UserCreationForm):
      foto = forms.FileField(
             widget=forms.ClearableFileInput(attrs={'multiple': 'False'}))
 
-     tipo = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple, choices=TIPO_CHOICES, )
+     tipo = forms.ChoiceField(choices=TIPO_CHOICES)
 
-     pet_aceitos = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple, choices=PETN_CHOICES, )
+    
+
+     pet_aceitos = forms.ChoiceField(choices=PETN_CHOICES)
+
+
 
      endereco = forms.CharField(
             widget=forms.TextInput(
@@ -276,7 +278,7 @@ class NegocioForm(UserCreationForm):
                   'quinta', 'horario_quinta1', 'horario_quinta2', 'horario_quinta3', 'horario_quinta4',   'quinta_24',
                   'sexta', 'horario_sexta1', 'horario_sexta2', 'horario_sexta3', 'horario_sexta4',   'sexta_24',
                   'sabado', 'horario_sabado1', 'horario_sabado2', 'horario_sabado3', 'horario_sabado4',   'sabado_24',
-                  'domingo', 'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4',   'domingo_24',)
+                  'domingo', 'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4',   'domingo_24')
         
         labels = {
                 "username": "Nome de usúario"

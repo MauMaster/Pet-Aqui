@@ -70,7 +70,6 @@ def perfil(request):
     return render(request, 'perfil.html', data)
 
 
-
 # Cadastros de usúarios
 
 def cadastro(request):
@@ -307,6 +306,7 @@ def cadastro_negocio_novo(request):
             user.negocio.email = form.cleaned_data.get('email')
             user.negocio.site = form.cleaned_data.get('site')
             user.negocio.foto = form.cleaned_data.get('foto')
+            
             user.negocio.tipo = form.cleaned_data.get('tipo')
             user.negocio.pet_aceitos = form.cleaned_data.get('pet_aceitos')
             user.negocio.endereco = form.cleaned_data.get('endereco')
