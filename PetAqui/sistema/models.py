@@ -65,7 +65,7 @@ class Usuario(models.Model):
     cpf = models.CharField(max_length=19)
     data_nascimento = models.CharField(max_length=8, blank=False, verbose_name="Data de nascimento")
     sexo = models.CharField(default='M', max_length=2, choices=SEXO_CHOICES)
-    pet = MultiSelectField( max_length=100, choices=PET_CHOICES, verbose_name="Selecione seus pets")
+    pet = models.CharField(max_length=255, choices=PETN_CHOICES)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=10)
     bairro = models.CharField(max_length=30)

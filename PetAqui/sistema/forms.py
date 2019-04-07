@@ -117,8 +117,7 @@ class UsuarioForm(UserCreationForm):
                                     attrs={
                                             'placeholder': '00/00/000', 'class': 'data', }))
 
-     pet = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple, choices=PET_CHOICES, )
+     pet = forms.ChoiceField(choices=PETN_CHOICES)
 
      foto = forms.FileField(
             widget=forms.ClearableFileInput(attrs={'multiple': 'False'}))

@@ -65,7 +65,7 @@ def index(request):
     return render(request, 'index.html', data)
 
 
-def perfil(request, username):
+def perfil(request):
     usuario = Usuario.objects.all()
     form = UsuarioForm()
     data = {'usuario': usuario, 'form': form}
