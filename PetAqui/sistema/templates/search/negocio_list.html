@@ -55,14 +55,15 @@
   </form>
 
 
-  <div class="row">
+  
     <div class="form-group col-sm-4 col-md-12">
-
+     
       {% for negocio in filter.qs %}
+      <th scope="row">{{negocio.user.username }}</th>
       <div class="card text-white bg-primary">
             <div class="card-header"><p class="card-text text-justify">
                   
-                     {{negocio.cidade}} {{negocio.estado}} 
+               {{negocio.tipo}} : {{negocio.user.username}} 
                   
                  
                      
@@ -71,8 +72,8 @@
                     <div class="card-body text-secondary">
       <div class="row">
             <div class="form-group col-sm-4 col-md-12">
-        <a href="" style="color:black"><img src="{{negocio.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
-        -- {{negocio.pet_aceitos}} -- {{negocio.tipo}} -- {{negocio.telefone}}
+        <a href="{%  url 'profile' negocio.user.username  %}" style="color:black"><img src="{{negocio.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+        -- {{negocio.pet_aceitos}} -- {{negocio.tipo}} -- {{negocio.telefone}} {{negocio.cidade}} {{negocio.estado}} 
           
         </div>
     </div>
@@ -110,8 +111,5 @@
 
 </div>
 </div>
-</div>
-
-
 
 {% endblock %}

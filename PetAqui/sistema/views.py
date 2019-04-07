@@ -50,10 +50,12 @@ def profile_detail(request, username):
     if User.objects.get(username__iexact=username):
         user_details = User.objects.get(username__iexact=username)
         return render(request, "profile.html", {
-            "user_details": user_details,
+            "user_details": user_details
         })
     else:
         return render("User not found")
+
+
 
 
 def index(request):
@@ -63,7 +65,7 @@ def index(request):
     return render(request, 'index.html', data)
 
 
-def perfil(request):
+def perfil(request, username):
     usuario = Usuario.objects.all()
     form = UsuarioForm()
     data = {'usuario': usuario, 'form': form}

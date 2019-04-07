@@ -4,51 +4,190 @@
       {% load widget_tweaks %}
       {% load crispy_forms_tags %}
       {% block main %}
-    
+      
+      {% if user_details.usuario.nome%}
       <div class="card text-white bg-primary">
       <div class="card-header"><p class="card-text">
             <small class="text-muted">
                <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
                <a class="text-white">Perfil </a>
-            </small></a></p> {{ user_details.usuario.nome }}  {{ user_details.usuario.sobrenome }}
+            </small></a>
+            <div class="row"> 
+            <div class=" col-md-10">
+            {{ user_details.usuario.nome }}  
+         
+            {{ user_details.usuario.sobrenome }} 
+         </div>
+         
+      </div>
+               
       </div>
       <div class="card title  ">
       <div class="card-body text-secondary">
                   <div class="form-row"> 
-                  <div class="form-group col-md-43">
-
-   <img src="{{user_details.usuario.foto.medium.url}}"class="rounded-circle" width="150" height="150">
-</div>
-   <div class="form-group col-md-9">
-   {{ user_details.usuario.about}}
-</div>
-</div>
-
-<hr>
-<div class="form-row"> 
-<div class="form-group col-md-12">
-   <img src="{% static 'img/perfil/pet.svg' %}"  width="30" height="30" alt="">
-            {{ user_details.usuario.pet}}  
-              
-              
-                <img src="{% static 'img/perfil/map2.svg' %}"  width="40" height="40" alt="">
+                  <div class="form-group col-md-4">
+      <img src="{{user_details.usuario.foto.medium.url}}"class="img-thumbnail" width="220" height="220">
+      </div>
+      <div class="form-group col-md-8">
+      {{ user.usuario.about}}
+      </div>
+      </div>
+      
+      <hr>
+      <h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pets:</h6>
+      <div class="form-row"> 
+      <div class="form-group col-md-12">
+      
+            {{ user.usuario.pet}}  
+         </div>
+      </div>
+      <hr>
+      <h6> <img src="{% static 'img/perfil/map2.svg' %}"  width="20" height="20" alt=""> Localização:</h6>
+            <div class="form-row"> 
+               <div class="form-group col-md-12">
                 
-                 {{ user_details.usuario.cidade }} - {{ user_details.usuario.estado }}
+                
+                 {{ user.usuario.cidade }} - {{ user.usuario.estado }}
             </div></div>
                <hr>
             <label >Galeria: </label>
-           
             
-            
+        
+      </div>
+      </div>
+      </div>
+      {% elif user %}
+      <div class="card text-white bg-primary">
+            <div class="card-header"><p class="card-text">
+                  <small class="text-muted">
+                     <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+                     <a class="text-white">Perfil </a>
+                  </small></a>
+                  <div class="row"> 
+                  <div class=" col-md-10">
+                  {{ user_details.negocio.empresa }}  - {{ user_details.negocio.tipo }} 
+               </div>
           
-      
+            </div>
+                     
+            </div>
+            <div class="card title  ">
+            <div class="card-body text-secondary">
+                        <div class="form-row"> 
+                        <div class="form-group col-md-4">
+            <img src="{{user_details.negocio.foto.medium.url}}"class="img-thumbnail" width="220" height="220">
+            </div>
+            <div class="form-group col-md-8">
+            {{ user_details.negocio.sobre}}
+            </div>
+            </div>
+            
+            
+           
+                  <hr>
+            <h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pet Aceitos:</h6>
+            <div class=" form-row"> 
+            <div class="form-group col-md-12">
+               
+           
+                  {{ user_details.negocio.pet_aceitos}}  
+               </div>
+           
+         </div>
+            <hr>
+            <h6> <img src="{% static 'img/perfil/smartphone.svg' %}"  width="20" height="20" alt=""> Contatos:</h6>
+            <div class="form-row"> 
+                  
+                  <div class="form-group col-md-4">
+                        
+                        
+                        Whtassapp: {{ user_details.negocio.whatsapp }}
+                     </div>
+                     <div class="form-group col-md-4">
+                           Telefone: {{ user_details.negocio.telefone }}
+                        </div>
+                        <div class="form-group col-md-4">
+                              Site: {{ user_details.negocio.site }}
+                           </div>
+                  </div>
+                  <hr>
+                  <h6> <img src="{% static 'img/perfil/map2.svg' %}"  width="20" height="20" alt=""> Endereço:</h6>
+                  <div class="form-row"> 
+                     <div class="form-group col-md-12">
+                           
+                           
+                      
+                      
+                      {{ user_details.negocio.endereco }} - {{ user_details.negocio.numero }} - {{ user_details.negocio.bairro }} - {{ user_details.negocio.cidade }} - {{ user_details.negocio.estado }}
+                  </div></div>
+                  <hr>
+                  <h6> <img src="{% static 'img/perfil/clock.svg' %}"  width="20" height="20" alt=""> Horário Funcionamento:</h6>
+                  <div class="row"> 
+                     <div class="col-md-3">                
+                       <h5>Segunda-Feira: </h5>
+                  </div>
+                  <div class="col-md-9">
+                        <h5> dás : {{ user.negocio.horario_segunda1 }} - às : {{ user.negocio.horario_segunda2 }} - dás : {{ user.negocio.horario_segunda3 }} - às : {{ user.negocio.horario_segunda4 }} </h5>
+               </div>
+            </div>
+            <div class="row"> 
+                  <div class="col-md-3">                
+                    <h5>Terça-Feira : </h5>
+               </div>
+               <div class="col-md-9">
+                     <h5>dás : {{ user.negocio.horario_terca1 }} - às : {{ user.negocio.horario_terca2 }} - dás : {{ user.negocio.horario_terca3 }} - às : {{ user.negocio.horario_terca4 }}</h5>
+            </div>
+         </div>
+         <div class="row"> 
+         <div class="col-md-3">                
+               <h5>Quarta-Feira : </h5>
+          </div>
+          <div class="col-md-9">
+               <h5>dás : {{ user.negocio.horario_quarta1 }} - às : {{ user.negocio.horario_quarta2 }} - dás : {{ user.negocio.horario_quarta3 }} - às : {{ user.negocio.horario_quarta4 }}</h5>
+       </div>
       </div>
-      </div>
-      </div>
-
-     <script>
-
-</script>
+      <div class="row"> 
+            <div class="col-md-3">                
+                  <h5>Quinta-Feira : </h5>
+             </div>
+             <div class="col-md-9">
+                  <h5> dás : {{ user.negocio.horario_quinta1 }} - às : {{ user.negocio.horario_quinta2 }} - dás : {{ user.negocio.horario_quinta3 }} - às : {{ user.negocio.horario_quinta4 }}</h5>
+          </div>
+         </div>
+         <div class="row"> 
+               <div class="col-md-3">                
+                     <h5>Sexta-Feira : </h5>
+                </div>
+                <div class="col-md-9">
+                     <h5>dás : {{ user.negocio.horario_sexta1 }} - às : {{ user.negocio.horario_sexta2 }} - dás : {{ user.negocio.horario_sexta3 }} - às : {{ user.negocio.horario_sexta4 }}</h5>
+             </div>
+            </div>
+            <div class="row"> 
+                  <div class="col-md-3">                
+                        <h5>Sábado: </h5>
+                   </div>
+                   <div class="col-md-9">
+                        <h5>dás : {{ user.negocio.horario_sabado1 }} - às : {{ user.negocio.horario_sabado2 }} - dás : {{ user.negocio.horario_sabado3 }} - às : {{ user.negocio.horario_sabado4 }}</h5>
+                </div>
+               </div>
+               <div class="row"> 
+                     <div class="col-md-3">                
+                           <h5>Domingo: </h5> 
+                      </div>
+                      <div class="col-md-9">
+                           <h5>dás : {{ user.negocio.horario_domingo1 }} - às : {{ user.negocio.horario_domingo2 }} - dás : {{ user.negocio.horario_domingo3 }} - às : {{ user.negocio.horario_domingo4 }}</h5>
+                   </div>
+                  </div>
+                 
+               
+                     <hr>
+                  <label >Galeria: </label>
+                  
+              
+            </div>
+            </div>
+         </div>
+            {% endif %}
       {% endblock %}
 
       {% block rightcol %}

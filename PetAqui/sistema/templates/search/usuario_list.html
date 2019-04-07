@@ -59,10 +59,11 @@
     <div class="form-group col-sm-4 col-md-12">
 
       {% for usuario in filter.qs %}
+      
       <div class="card text-white bg-primary">
             <div class="card-header"><p class="card-text text-justify">
                   
-                     {{usuario.nome}} {{usuario.sobrenome}} -- {{usuario.email}} -- {{usuario.cidade}} -- {{usuario.estado}}
+                     {{usuario.nome}} {{usuario.sobrenome}} -- {{usuario.cidade}} -- {{usuario.estado}}
                   
                  
                      
@@ -71,8 +72,8 @@
                     <div class="card-body text-secondary">
       <div class="row">
             <div class="form-group col-sm-4 col-md-12">
-        <a href="" style="color:black"><img src="{{usuario.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
-          <a href="" style="color:black">{{usuario.about}} </a>
+        <a href="{%  url 'profile' usuario.user.username  %}" style="color:black"><img src="{{usuario.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+          <a href="" style="color:black">{{usuario.pet}} </a>
           
           
         </div>
