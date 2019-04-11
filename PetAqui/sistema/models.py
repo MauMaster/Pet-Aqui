@@ -61,6 +61,7 @@ class Usuario(models.Model):
         'thumbnail': (100, 100, True),
         'medium': (300, 200),
     })
+   
     telefone = models.CharField(max_length=20, blank=False, verbose_name="Celular")
     cpf = models.CharField(max_length=19)
     data_nascimento = models.CharField(max_length=8, blank=False, verbose_name="Data de nascimento")
@@ -169,3 +170,13 @@ class Negocio(models.Model):
         instance.negocio.save()
 
 
+class Photo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, blank=True)
+    file = StdImageField( upload_to='photos/', blank=False,  variations={
+        'large': (600, 400),
+        'thumbnail': (100, 100, True),
+        'medium': (300, 200),
+    })
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    

@@ -50,9 +50,18 @@
            {{ user.usuario.cidade }} - {{ user.usuario.estado }}
       </div></div>
          <hr>
-      <label >Galeria: </label>
+         <label >Galeria: </label>
+         <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
+               <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+         </a>
+   </br>
+         {% for photo in photos %}
+       
+         <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
       
-  
+       
+     
+   {% endfor %}
 </div>
 </div>
 </div>
@@ -182,7 +191,17 @@
          
                <hr>
             <label >Galeria: </label>
-            
+            <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
+                  <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+            </a>
+      </br>
+            {% for photo in photos %}
+          
+            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
+         
+          
+        
+      {% endfor %}
         
       </div>
       </div>

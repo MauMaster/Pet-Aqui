@@ -13,7 +13,8 @@ from django.db import transaction
 
 from .models import (
     Usuario,
-    Negocio
+    Negocio,
+    Photo
 )
 
 STATE_CHOICES = (
@@ -121,6 +122,9 @@ class UsuarioForm(UserCreationForm):
 
      foto = forms.FileField(
             widget=forms.ClearableFileInput(attrs={'multiple': 'False'}))
+       
+     gallery_usuario = forms.FileField(required=False,
+            widget=forms.ClearableFileInput(attrs={'multiple': 'True'}))
 
      sexo = forms.ChoiceField(choices=SEXO_CHOICES)
 
@@ -134,7 +138,7 @@ class UsuarioForm(UserCreationForm):
      class Meta:
         model = User
         fields = ('username', 'email', 'email2',  'telefone', 'data_nascimento', 'sexo', 'foto',
-                  'endereco', 'numero', 'bairro', 'cidade', 'estado',   'cep',  'pet', 'about')
+                  'endereco', 'numero', 'bairro', 'cidade', 'estado',   'cep',  'pet', 'about', 'gallery_usuario')
         labels = {
               "username": "Nome de usúario"
        }
@@ -283,3 +287,8 @@ class NegocioForm(UserCreationForm):
                 "username": "Nome de usúario"
                        
         }
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ('file', 'title')

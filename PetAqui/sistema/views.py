@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -21,20 +21,54 @@ from django.views import generic
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
-
+from django.views import View
 from .filters import NegocioFilter, UsuarioFilter
+import time
 
 
 
 from .models import (
     Usuario, 
-    Negocio
+    Negocio,
+    Photo
 )
 
 from .forms import (
     UsuarioForm, 
-    NegocioForm
+    NegocioForm,
+    PhotoForm
 )
+
+class BasicUploadView(View):
+    def get(self, request):
+        photos_list = Photo.objects.all()
+        return render(self.request, 'photos/basic_upload/index.html', {'photos': photos_list})
+
+    def post(self, request):
+        form = PhotoForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+class ProgressBarUploadView(View):
+    def get(self, request):
+        photos_list = Photo.objects.all()
+        return render(self.request, 'photos/progress_bar_upload/index.html', {'photos': photos_list})
+
+    def post(self, request):
+        time.sleep(2)  # You don't need this line. This is just to delay the process so you can see the progress bar testing locally.
+        form = PhotoForm(self.request.POST, self.request.FILES)
+        form.instance.user = request.user
+        if form.is_valid():
+            photo = form.save()
+            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+        else:
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
 
 def search(request):
     negocio_list = Negocio.objects.all()
@@ -66,13 +100,19 @@ def index(request):
 
 
 def perfil(request):
+    photos_list =  Photo.objects.filter(user=request.user.pk)
     usuario = Usuario.objects.all()
     form = UsuarioForm()
-    data = {'usuario': usuario, 'form': form}
+    data = {'usuario': usuario, 'form': form, 'photos': photos_list}
     return render(request, 'perfil.html', data)
 
 
 # Cadastros de usúarios
+
+
+
+def account_activation_sent(request):
+    return render(request, 'account_activation_sent.html')
 
 def cadastro(request):
     usuario = Usuario.objects.all()
@@ -101,6 +141,7 @@ def cadastro_novo(request):
             user.usuario.cep = form.cleaned_data.get('cep')
             user.usuario.password1 = form.cleaned_data.get('password1')
             user.usuario.data_nascimento = form.cleaned_data.get('data_nascimento')
+            user.usuario.gallery_usuario = form.cleaned_data.get('gallery_usuario')
             user.usuario.pet = form.cleaned_data.get('pet')
             user.usuario.foto = form.cleaned_data.get('foto')
             user.usuario.sexo = form.cleaned_data.get('sexo')
@@ -126,6 +167,7 @@ def cadastro_novo(request):
 
 def account_activation_sent(request):
     return render(request, 'account_activation_sent.html')
+
 
 class PhotoUpdate(LoginRequiredMixin, UpdateView):
     model= Usuario  

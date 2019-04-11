@@ -21,7 +21,8 @@ from .views import (
     PhotoEmpresaUpdate,
     EmailEmpresaUpdate,
     search,
-    search_usuario
+    search_usuario,
+    BasicUploadView
     
     
 )
@@ -59,6 +60,8 @@ urlpatterns = [
      name='sistema_change_foto_empresa'),
     url(r'^change-email-empresa/$', views.EmailEmpresaUpdate.as_view(), 
      name='sistema_change_email_empresa'),
+    url(r'^basic-upload/$', views.BasicUploadView.as_view(), name='basic_upload'),
+    url(r'^progress-bar-upload/$', views.ProgressBarUploadView.as_view(), name='progress_bar_upload')
      
     
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
