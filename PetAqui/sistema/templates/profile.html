@@ -29,7 +29,7 @@
       <img src="{{user_details.usuario.foto.medium.url}}"class="img-thumbnail" width="220" height="220">
       </div>
       <div class="form-group col-md-8">
-      {{ user.usuario.about}}
+      {{ user_details.usuario.about}}
       </div>
       </div>
       
@@ -47,11 +47,17 @@
                <div class="form-group col-md-12">
                 
                 
-                 {{ user.usuario.cidade }} - {{ user.usuario.estado }}
+                 {{ user_details.usuario.cidade }} - {{ user_details.usuario.estado }}
             </div></div>
                <hr>
             <label >Galeria: </label>
-            
+            {% for photo in photos %}
+          
+            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
+         
+          
+        
+      {% endfor %}      
         
       </div>
       </div>
@@ -183,7 +189,14 @@
                      <hr>
                   <label >Galeria: </label>
                   
-              
+            </br>
+            {% for photo in photos %}
+          
+            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
+         
+          
+        
+      {% endfor %}
             </div>
             </div>
          </div>

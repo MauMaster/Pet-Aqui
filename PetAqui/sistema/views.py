@@ -24,6 +24,7 @@ from django.http import Http404
 from django.views import View
 from .filters import NegocioFilter, UsuarioFilter
 import time
+from django.contrib import messages
 
 
 
@@ -55,7 +56,7 @@ class BasicUploadView(View):
 
 class ProgressBarUploadView(View):
     def get(self, request):
-        photos_list = Photo.objects.all()
+        photos_list =  Photo.objects.filter(user=request.user.pk)
         return render(self.request, 'photos/progress_bar_upload/index.html', {'photos': photos_list})
 
     def post(self, request):
@@ -65,6 +66,9 @@ class ProgressBarUploadView(View):
         if form.is_valid():
             photo = form.save()
             data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+          
+            
+            
         else:
             data = {'is_valid': False}
         return JsonResponse(data)
@@ -83,8 +87,9 @@ def search_usuario(request):
 def profile_detail(request, username):
     if User.objects.get(username__iexact=username):
         user_details = User.objects.get(username__iexact=username)
+        photos_list =  Photo.objects.filter(user=user_details)
         return render(request, "profile.html", {
-            "user_details": user_details
+            "user_details": user_details, 'photos': photos_list
         })
     else:
         return render("User not found")

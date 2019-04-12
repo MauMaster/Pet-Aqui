@@ -17,7 +17,7 @@
 
     <div style="margin-bottom: 20px;">
       <button type="button" class="btn btn-primary js-upload-photos">
-        <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+        <span class="glyphicon glyphicon-cloud-upload"></span> Envie suas fotos
       </button>
       <input id="fileupload" type="file" name="file" multiple
             style="display: none;"
@@ -28,7 +28,7 @@
     <table id="gallery" class="table table-bordered">
       <thead>
         <tr>
-          <th>Photo</th>
+          <th>Sua Galeria</th>
         </tr>
       </thead>
       <tbody>
@@ -47,7 +47,21 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Carregando...</h4>
+        <h4 class="modal-title">Relaxe enquanto enviamos suas fotos...</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-progress2" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Suas fotos foram enviadas com sucesso</h4>
       </div>
       <div class="modal-body">
         <div class="progress">
