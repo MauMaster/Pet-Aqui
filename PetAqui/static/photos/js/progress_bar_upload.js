@@ -22,7 +22,7 @@ setTimeout(function () {
 }, 3000);
     
 window.setTimeout(function (e) {
-  location.href = "http://127.0.0.1:8000/progress-bar-upload";
+  location.href = "http://127.0.0.1:8000/perfil";
 }, 2000);
       
     },

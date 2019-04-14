@@ -54,14 +54,49 @@
          <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
                <span class="glyphicon glyphicon-cloud-upload"></span> Enviar Fotos
          </a>
+        
    </br>
          {% for photo in photos %}
        
-         <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
+         <a class="pop" href="#"  data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+        
+      <!-- Modal Gallery-->
+   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                  <img src="{{ photo.file.large.url}}" class="imagepreview" style="width: 100%;" >
+                  <a class="pop2" href="{% url 'delete' photo.id %}" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
       
+          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                      
+                              <h2>Tem certeza que deseja deletar essa foto: </h2>
+                              <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
+                                          <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
+                                    </a>
+                        
+                    
+                </div>
+              </div>
+            </div>
+          </div>
        
      
    {% endfor %}
+
+   
+
+ 
 </div>
 </div>
 </div>
@@ -197,20 +232,50 @@
       </br>
             {% for photo in photos %}
           
-            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
-         
+            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+         <!-- Modal Gallery-->
+   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+                  <a class="pop2" href="#" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                      
+                              <h2>Tem certeza que deseja deletar essa foto: </h2>
+                              <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
+                                          <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
+                                    </a>
+                        
+                    
+                </div>
+              </div>
+            </div>
+          </div>
           
         
       {% endfor %}
-        
+      
+
       </div>
       </div>
    </div>
       {% endif %}
       {% endif %}
-<script>
-
-</script>
+      
+      <script src="{% static 'photos/modalgallery/modalgallery.js' %}"></script>
+      <script src="{% static 'photos/modalgallery/modalconfirmedelete.js' %}"></script>
 {% endblock %}
 
 {% block rightcol %}

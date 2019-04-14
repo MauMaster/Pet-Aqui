@@ -53,11 +53,24 @@
             <label >Galeria: </label>
             {% for photo in photos %}
           
-            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
+            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+          
          
           
         
-      {% endfor %}      
+      {% endfor %}     
+      
+      <!-- Modal Gallery-->
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+                </div>
+              </div>
+            </div>
+          </div>
         
       </div>
       </div>
@@ -192,15 +205,28 @@
             </br>
             {% for photo in photos %}
           
-            <img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> 
-         
+            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
           
         
       {% endfor %}
+      <!-- Modal Gallery-->
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">              
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+                </div>
+              </div>
+            </div>
+          </div>
+
             </div>
             </div>
          </div>
             {% endif %}
+            
+            <script src="{% static 'photos/modalgallery/modalgallery.js' %}"></script>
       {% endblock %}
 
       {% block rightcol %}

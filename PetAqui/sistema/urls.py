@@ -22,7 +22,8 @@ from .views import (
     EmailEmpresaUpdate,
     search,
     search_usuario,
-    BasicUploadView
+    BasicUploadView,
+    delete
     
     
 )
@@ -61,7 +62,9 @@ urlpatterns = [
     url(r'^change-email-empresa/$', views.EmailEmpresaUpdate.as_view(), 
      name='sistema_change_email_empresa'),
     url(r'^basic-upload/$', views.BasicUploadView.as_view(), name='basic_upload'),
-    url(r'^progress-bar-upload/$', views.ProgressBarUploadView.as_view(), name='progress_bar_upload')
+    url(r'^progress-bar-upload/$', views.ProgressBarUploadView.as_view(), name='progress_bar_upload'),
+    url(r'^delete/(?P<id>\d+)/$', views.delete, name='delete')
+   
      
     
 ]

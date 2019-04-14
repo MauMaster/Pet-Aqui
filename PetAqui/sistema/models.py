@@ -174,7 +174,7 @@ class Photo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, blank=True)
     file = StdImageField( upload_to='photos/', blank=False,  variations={
-        'large': (600, 400),
+        'large': (900, 700),
         'thumbnail': (100, 100, True),
         'medium': (300, 200),
     })

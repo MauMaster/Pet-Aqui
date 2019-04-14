@@ -66,8 +66,7 @@ class ProgressBarUploadView(View):
         if form.is_valid():
             photo = form.save()
             data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
-          
-            
+                     
             
         else:
             data = {'is_valid': False}
@@ -94,7 +93,11 @@ def profile_detail(request, username):
     else:
         return render("User not found")
 
-
+def delete(request, id):
+    photos = Photo.objects.get(id=id)
+    photos.delete()
+    return redirect('sistema_perfil')
+    
 
 
 def index(request):
