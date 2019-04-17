@@ -61,20 +61,20 @@
          <a class="pop" href="#"  data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
         
       <!-- Modal Gallery-->
-   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">              
                 <div class="modal-body">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                  <img src="{{ photo.file.large.url}}" class="imagepreview" style="width: 100%;" >
-                  <a class="pop2" href="{% url 'delete' photo.id %}" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+                  <a class="pop2" href="#" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
                   
                 </div>
               </div>
             </div>
           </div>
       
-          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">              
                 <div class="modal-body">
@@ -232,39 +232,40 @@
       </br>
             {% for photo in photos %}
           
-            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
-         <!-- Modal Gallery-->
-   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">              
-                <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                  <img src="" class="imagepreview" style="width: 100%;" >
-                  <a class="pop2" href="#" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">              
-                <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                      
-                              <h2>Tem certeza que deseja deletar essa foto: </h2>
-                              <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
-                                          <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
-                                    </a>
-                        
-                    
-                </div>
-              </div>
-            </div>
-          </div>
-          
+            <a class="pop" href="#"  data-img-url="{{ photo.file.large.url}}"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
         
+            <!-- Modal Gallery-->
+         <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">              
+                      <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                        <img src="" class="imagepreview" style="width: 100%;" >
+                        <a class="pop2" href="#" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">              
+                      <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                            
+                                    <h2>Tem certeza que deseja deletar essa foto: </h2>
+                                    <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
+                                                <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
+                                          </a>
+                              
+                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             
+           
       {% endfor %}
       
 

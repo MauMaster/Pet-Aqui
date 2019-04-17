@@ -1,7 +1,5 @@
 $(function() {
     $('.pop2').on('click', function() {
-          
-          $('#delete').modal('show');   
-          
-    });		
-});
+       $(this).closest(".imagemodal").next(".delete").modal('show');   
+    });     
+ });

@@ -94,7 +94,7 @@ def profile_detail(request, username):
         return render("User not found")
 
 def delete(request, id):
-    photos = Photo.objects.get(id=id)
+    photos = Photo.objects.get(pk=id)
     photos.delete()
     return redirect('sistema_perfil')
     
