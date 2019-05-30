@@ -1,0 +1,392 @@
+{%extends 'bases/base.html' %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load static %}
+     
+
+
+{% block main %}
+
+<div class="card text-white bg-primary">
+  <div class="card-header"><p class="card-text">
+      <small class="text-muted">
+         <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+         <a  class="text-white">Cadastro</a>
+         
+      </small></a></p> Cadastro da Empresa
+</div>
+   <div class="card title  ">
+  <div class="card-body text-secondary">  
+    <form class="exampleone" action="{%  url 'sistema_cadastro_negocio_novo'  %}" method="POST" enctype="multipart/form-data" id="form" name="form" novalidate >
+             {% csrf_token %}
+             <div class="form-row"> 
+                  <div class="form-group col-md-6">
+                  
+             
+                        {{ form.tipo | as_crispy_field}}
+            
+           </div>
+                  <div class="form-group col-md-6">
+                  
+                 
+                        {{ form.pet_aceitos | as_crispy_field}}
+            
+           </div>
+         </div>
+         <hr>
+         <p><h5>Dados da empresa</h5></p>
+         <div class="form-row"> 
+          <div class="form-group col-md-6">
+          
+     
+                {{ form.username | as_crispy_field}}
+    
+   </div>
+          <div class="form-group col-md-6">
+          
+     
+                {{ form.site | as_crispy_field}}
+    
+   </div>
+ </div>
+         
+<div class="form-row"> 
+         <div class="form-group col-md-8">
+         
+    
+    {{ form.empresa | as_crispy_field }}
+   
+  </div>
+         <div class="form-group col-md-4">
+         
+    
+    {{ form.cnpj | as_crispy_field }}
+   
+  </div>
+  
+ 
+ 
+  
+    </div>
+    <div class="form-row"> 
+ <div class="form-group col-md-6">
+
+    {{ form.email | as_crispy_field}}
+    <div id="message2"></div>
+       
+    </div>
+    <div class="form-group col-md-6">
+   
+    
+      {{ form.email2 | as_crispy_field}}
+      <div id="message"></div>
+      <div id="message3"></div>
+      
+   </div>
+  
+ 
+    </div>
+    <div class="form-row"> 
+      <div class="form-group col-md-4">
+          {{ form.telefone | as_crispy_field}}
+          </div>
+          <div class="form-group col-md-4">
+   
+              {{ form.whatsapp | as_crispy_field}}
+           </div>
+           <div class="form-group col-md-4">
+   
+             
+           </div>
+    </div>
+    <div class="form-row"> 
+ <div class="form-group col-md-6">
+   {{ form.endereco | as_crispy_field}}
+    
+    </div>
+     <div class="form-group col-md-2">
+
+      {{ form.numero | as_crispy_field}}
+    </div>
+    <div class="form-group col-md-4">
+{{ form.bairro | as_crispy_field}}
+    
+    </div>
+    </div>
+<div class="form-row"> 
+ <div class="form-group col-md-5">
+   
+     {{ form.cidade | as_crispy_field}}
+    
+  </div>
+  <div class="form-group col-md-4">
+
+   {{ form.estado | as_crispy_field}}
+  </div>
+   <div class="form-group col-md-3">
+
+  {{ form.cep | as_crispy_field}}
+  </div>
+    </div>
+    <div class="form-row"> 
+         <div class="form-group col-md-6">
+               {{ form.foto | as_crispy_field}}
+            </div>
+            <div class="form-group col-md-6">
+             
+               </div>
+               
+         </div>
+    <hr>
+    <p><h5>Horário de atendimento</h5></p>
+         <div class="form-row"> 
+ <div class="form-group col-md-2">
+
+   {{ form.segunda |  as_crispy_field}}
+    </div>
+     <div class="form-group col-md-2">
+
+      {{ form.horario_segunda1 |  as_crispy_field}}
+    </div>
+    
+    <div class="form-group col-md-2">
+
+      {{ form.horario_segunda2 |  as_crispy_field}}
+    </div>
+    <div class="form-group col-md-2">
+
+      {{ form.horario_segunda3 |  as_crispy_field}}
+    </div>
+    
+    <div class="form-group col-md-2">
+
+      {{ form.horario_segunda4 |  as_crispy_field}}
+    </div>
+    <div class="form-group col-md-2">
+
+     
+       </div>
+   </div>
+   <div class="form-row"> 
+      <div class="form-group col-md-2">
+     
+        {{ form.terca |  as_crispy_field}}
+         </div>
+          <div class="form-group col-md-2">
+     
+           {{ form.horario_terca1 |  as_crispy_field}}
+         </div>
+         
+         <div class="form-group col-md-2">
+     
+           {{ form.horario_terca2 |  as_crispy_field}}
+         </div>
+         <div class="form-group col-md-2">
+     
+           {{ form.horario_terca3 |  as_crispy_field}}
+         </div>
+         
+         <div class="form-group col-md-2">
+     
+           {{ form.horario_terca4 |  as_crispy_field}}
+         </div>
+         <div class="form-group col-md-2">
+
+             </div>
+        </div>
+        <div class="form-row"> 
+         <div class="form-group col-md-2">
+        
+           {{ form.quarta |  as_crispy_field}}
+            </div>
+             <div class="form-group col-md-2">
+        
+              {{ form.horario_quarta1 |  as_crispy_field}}
+            </div>
+            
+            <div class="form-group col-md-2">
+        
+              {{ form.horario_quarta2 |  as_crispy_field}}
+            </div>
+            <div class="form-group col-md-2">
+        
+              {{ form.horario_quarta3 |  as_crispy_field}}
+            </div>
+            
+            <div class="form-group col-md-2">
+        
+              {{ form.horario_quarta4 |  as_crispy_field}}
+            </div>
+            <div class="form-group col-md-2">
+
+                </div>
+           </div>
+           <div class="form-row"> 
+            <div class="form-group col-md-2">
+           
+              {{ form.quinta |  as_crispy_field}}
+               </div>
+                <div class="form-group col-md-2">
+           
+                 {{ form.horario_quinta1 |  as_crispy_field}}
+               </div>
+               
+               <div class="form-group col-md-2">
+           
+                 {{ form.horario_quinta2 |  as_crispy_field}}
+               </div>
+               <div class="form-group col-md-2">
+           
+                 {{ form.horario_quinta3 |  as_crispy_field}}
+               </div>
+               
+               <div class="form-group col-md-2">
+           
+                 {{ form.horario_quinta4 |  as_crispy_field}}
+               </div>
+               <div class="form-group col-md-2">
+
+                   
+                   </div>
+              </div>
+              <div class="form-row"> 
+               <div class="form-group col-md-2">
+              
+                 {{ form.sexta |  as_crispy_field}}
+                  </div>
+                   <div class="form-group col-md-2">
+              
+                    {{ form.horario_sexta1 |  as_crispy_field}}
+                  </div>
+                  
+                  <div class="form-group col-md-2">
+              
+                    {{ form.horario_sexta2 |  as_crispy_field}}
+                  </div>
+                  <div class="form-group col-md-2">
+              
+                    {{ form.horario_sexta3 |  as_crispy_field}}
+                  </div>
+                  
+                  <div class="form-group col-md-2">
+              
+                    {{ form.horario_sexta4 |  as_crispy_field}}
+                  </div>
+                  <div class="form-group col-md-2">
+
+                     
+                      </div>
+                 </div>
+                 <div class="form-row"> 
+                  <div class="form-group col-md-2">
+                 
+                    {{ form.sabado |  as_crispy_field}}
+                     </div>
+                      <div class="form-group col-md-2">
+                 
+                       {{ form.horario_sabado1 |  as_crispy_field}}
+                     </div>
+                     
+                     <div class="form-group col-md-2">
+                 
+                       {{ form.horario_sabado2 |  as_crispy_field}}
+                     </div>
+                     <div class="form-group col-md-2">
+                 
+                       {{ form.horario_sabado3 |  as_crispy_field}}
+                     </div>
+                     
+                     <div class="form-group col-md-2">
+                 
+                       {{ form.horario_sabado4 |  as_crispy_field}}
+                     </div>
+                     <div class="form-group col-md-2">
+
+                      
+                         </div>
+                    </div>
+                    <div class="form-row"> 
+                     <div class="form-group col-md-2">
+                    
+                       {{ form.domingo |  as_crispy_field}}
+                        </div>
+                         <div class="form-group col-md-2">
+                    
+                          {{ form.horario_domingo1 |  as_crispy_field}}
+                        </div>
+                        
+                        <div class="form-group col-md-2">
+                    
+                          {{ form.horario_domingo2 |  as_crispy_field}}
+                        </div>
+                        <div class="form-group col-md-2">
+                    
+                          {{ form.horario_domingo3 |  as_crispy_field}}
+                        </div>
+                        
+                        <div class="form-group col-md-2">
+                    
+                          {{ form.horario_domingo4 |  as_crispy_field}}
+                        </div>
+                        <div class="form-group col-md-2">
+
+                           
+                            </div>
+                       </div>
+    <div class="form-row"> 
+  
+      <div class="form-group col-md-12">
+         
+            {{ form.sobre | as_crispy_field}}
+            <span id="chars">255</span> caracteres restantes
+       
+        
+       </div>
+    </div>
+   
+    <div class="form-row"> 
+      <div class="form-group col-md-6">
+     
+        {{ form.password1 | as_crispy_field}}
+         </div>
+          <div class="form-group col-md-6">
+      
+         {{ form.password2 | as_crispy_field}}
+         <div id="divCheckPassword"></div>
+         <div id="divCheckPassword2"></div>
+         
+        
+         </div>
+         
+         </div>
+   
+                <button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
+
+        </form>
+        
+
+  </div>
+</div>
+</div>
+<script src="{% static 'myjs/mask.js' %}"></script>
+<script src="{% static 'myjs/password_and_email_validator.js' %}"></script>
+<script src="{% static 'myjs/contador255.js' %}"></script>
+<script>
+$("form").submit(function() {
+$('.data').unmask();
+$('.cep').unmask();
+$('.phone_with_ddd').unmask();
+$('.cpf').unmask();
+}); 
+</script>
+
+
+{% endblock %}
+
+{% block rightcol %}
+{% include 'bases/rightcol.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'bases/footer.html' %}
+{% endblock %}

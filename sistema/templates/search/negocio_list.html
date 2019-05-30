@@ -1,0 +1,117 @@
+{%extends 'bases/base.html' %}
+{% load widget_tweaks %}
+{% block main %}
+{% load static %}
+<div class="card text-white bg-primary">
+        <div class="card-header"><p class="card-text">
+              <small class="text-muted">
+                 <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
+                 <a class="text-white">Procurar Empresas </a>
+              </small></a>
+              <div class="row"> 
+              <div class=" col-md-10">
+              
+           
+              
+           </div>
+           
+        </div>
+                 
+        </div>
+        <div class="card title  ">
+                <div class="card-body text-secondary">
+  <form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Filtros</h4>
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.cidade.label_tag }}
+          {% render_field filter.form.cidade class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.estado.label_tag }}
+          {% render_field filter.form.estado class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-6">
+          {{ filter.form.telefone.label_tag }}
+          {% render_field filter.form.telefone class="form-control" %}
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group col-sm-4 col-md-5 ">
+                {{ filter.form.pet_aceitos.label_tag }}
+          {% render_field filter.form.pet_aceitos class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-5">
+                {{ filter.form.tipo.label_tag }}
+                {% render_field filter.form.tipo class="form-control" %}
+            </div>
+          
+         <div class="form-group col-sm-4 col-md-2">
+                    <br>
+      <button type="submit" class="btn btn-primary btn-lg "> Procurar</button>
+    </div>
+    </div>
+</div>
+  </form>
+
+
+  
+    <div class="form-group col-sm-4 col-md-12">
+     
+      {% for negocio in filter.qs %}
+      <th scope="row">{{negocio.user.username }}</th>
+      <div class="card text-white bg-primary">
+            <div class="card-header"><p class="card-text text-justify">
+                  
+               {{negocio.tipo}} : {{negocio.user.username}} 
+                  
+                 
+                     
+            </div>
+            <div class="card title  ">
+                    <div class="card-body text-secondary">
+      <div class="row">
+            <div class="form-group col-sm-4 col-md-12">
+        <a href="{%  url 'profile' negocio.user.username  %}" style="color:black"><img src="{{negocio.foto.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
+        -- {{negocio.pet_aceitos}} -- {{negocio.tipo}} -- {{negocio.telefone}} {{negocio.cidade}} {{negocio.estado}} 
+          
+        </div>
+    </div>
+         </div>
+      </div>
+   </div>
+   <br>
+      {% empty %}
+      <div class="card text-white bg-warning">
+            <div class="card-header"><p class="card-text text-justify">
+                  
+                     
+                  
+                 
+                     
+            </div>
+            <div class="card title  ">
+                    <div class="card-body text-secondary">
+      <div class="row">
+            <div class="form-group col-sm-4 col-md-12">
+          <td colspan="5">Ah Não!!!!! Não encontramos nada. Desculpe!!!!
+              <br>
+              Mas não desista, por favor tente novamente.
+              <img src="{% static 'img/404/error404.jpg' %}" class="img-fluid" alt="Responsive image" >
+          </td>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+      {% endfor %}
+    
+      
+    </div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

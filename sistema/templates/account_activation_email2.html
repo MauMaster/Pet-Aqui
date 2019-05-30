@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Por favor clique no link para confirmar seu registro e fazer parte da fampilia PetAqui
+
+http://127.0.0.1:8000{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
