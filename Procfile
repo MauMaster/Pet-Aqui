@@ -1,1 +1,1 @@
-web: python app:app
+web: gunicorn petaqui.wsgi --log-file -
