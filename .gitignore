@@ -6,3 +6,5 @@ myvenv
 /petaqui/img
 /static/media/photo
 /static/media/photos
+*.psd
+*.pdf
