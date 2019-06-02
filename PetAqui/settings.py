@@ -166,6 +166,3 @@ LOGIN_URL = 'sistema_index'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static','media')
 MEDIA_URL='http://127.0.0.1:8000/static/media/'
 
-# Configure o Django App para Heroku.
-import django_heroku
-django_heroku.settings (locals ())
