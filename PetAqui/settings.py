@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$n+6cd+9w+44=z*0o=8b#t&9*i!_ay%&6+kl=_cbq0%*sm0)c('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['.127.0.0.1',]
 
@@ -152,8 +152,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     
 )
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
