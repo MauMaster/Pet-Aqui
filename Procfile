@@ -1,2 +1,2 @@
 
-web: gunicorn PetAqui.wsgi
+web: gunicorn sistema.wsgi --log-file -
