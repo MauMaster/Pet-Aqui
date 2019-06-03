@@ -1,1 +1,2 @@
-web: gunicorn petaqui.wsgi
+
+web: python run.py
