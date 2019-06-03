@@ -1,2 +1,2 @@
 
-web: gunicorn sistema:app --log-file -
+web: gunicorn petaqui:app --log-file -
