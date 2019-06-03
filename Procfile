@@ -1,2 +1,2 @@
 
-web: gunicorn petaqui.wsgi
+web: gunicorn PetAqui.wsgi
