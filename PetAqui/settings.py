@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'stdimage',
     'bootstrap_datepicker_plus',
     'django_filters',
-    'django_heroku'
     
     
     
