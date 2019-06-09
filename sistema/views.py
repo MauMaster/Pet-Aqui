@@ -138,10 +138,9 @@ def delete_comentario(request,  id):
 
 
 def index(request):
-    usuario = Usuario.objects.all()
-    form = UsuarioForm()
-    data = {'usuario': usuario, 'form': form}
-    return render(request, 'index.html', data)
+    negocio_list = Negocio.objects.all()
+    negocio_filter = NegocioFilter(request.GET, queryset=negocio_list)
+    return render(request, 'search/negocio_list.html', {'filter': negocio_filter})
 
 
 def perfil(request):
@@ -432,7 +431,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Sua senha foi alterada com sucesso!!!')
-            return redirect('change_password')
+            return redirect('sistema_perfil')
         else:
             messages.error(request, 'Corriga os erros.')
     else:

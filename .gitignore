@@ -1,0 +1,8 @@
+/petaqui/settings.py
+myvenv
+.idea
+*.sqlite3
+*pyc
+/petaqui/img
+/static/media/photo
+/static/media/photos

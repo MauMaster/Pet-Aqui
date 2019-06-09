@@ -17,9 +17,6 @@
 
           
             <li class="nav-item">
-                <a class="nav-link" href="#">Mensagens |</a>
-            </li>
-            <li class="nav-item">
                <img src="{{ user.usuario.foto.thumbnail.url}}" class="rounded-circle" width="35" height="35">
             </li>
             <li class="nav-item dropdown">
@@ -30,8 +27,7 @@
                     
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{% url 'sistema_perfil'  %}">Ver perfil</a>
-                    <a class="dropdown-item" href="{% url 'change_password' %}">Avaliações</a>
-                    <a class="dropdown-item" href="#">Configurações</a>
+                   
                     <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
                 
             </li>
@@ -42,9 +38,7 @@
         <ul class="nav navbar-nav">
 
           
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mensagens |</a>
-                </li>
+                
                 <li class="nav-item">
                    <img src="{{ user.negocio.foto.thumbnail.url}}" class="rounded-circle" width="35" height="35">
                 </li>
@@ -56,8 +50,7 @@
                         
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'sistema_perfil' %}">Ver perfil</a>
-                        <a class="dropdown-item" href="{% url 'change_password' %}">Avaliações</a>
-                        <a class="dropdown-item" href="#">Configurações</a>
+                       
                         <a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'svg/log-out.svg' %}"  width="20" height="20" alt="">Sair</a>
                     
                 </li>
@@ -105,25 +98,25 @@
 
           
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=Hot%C3%A9is" ><img src="{% static 'svg/hotel.svg' %}" width="20" height="20" alt=""> Hotéis |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=Hot%C3%A9is" ><img src="{% static 'svg/hotel.svg' %}" width="20" height="20" alt=""> Hotéis |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=Restaurantes"><img src="{% static 'svg/fork.svg' %}" width="20" height="20" alt=""> Restaurantes |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=Restaurantes"><img src="{% static 'svg/fork.svg' %}" width="20" height="20" alt=""> Restaurantes |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=Caf%C3%A9s"><img src="{% static 'svg/coffee-cup.svg' %}" width="20" height="20" alt=""> Cafés |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=Caf%C3%A9s"><img src="{% static 'svg/coffee-cup.svg' %}" width="20" height="20" alt=""> Cafés |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=PetShops"><img src="{% static 'svg/pet-house.svg' %}" width="20" height="20" alt=""> PetShops |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=PetShops"><img src="{% static 'svg/pet-house.svg' %}" width="20" height="20" alt=""> PetShops |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=Hot%C3%A9isPet"><img src="{% static 'svg/veterinarian.svg' %}" width="20" height="20" alt=""> Hotel Pet |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=Hot%C3%A9isPet"><img src="{% static 'svg/veterinarian.svg' %}" width="20" height="20" alt=""> Hotel Pet |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=&telefone=&pet_aceitos=&tipo=Veterin%C3%A1rios"><img src="{% static 'svg/veterinariann.svg' %}" width="20" height="20" alt=""> Veterinários |</a>
+                <a class="nav-link" href="{% url 'search'%}?cidade=&estado=RS&telefone=&pet_aceitos=&tipo=Veterin%C3%A1rios"><img src="{% static 'svg/veterinariann.svg' %}" width="20" height="20" alt=""> Veterinários |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'search_usuario' %}"><img src="{% static 'svg/users.svg' %}" width="20" height="20" alt=""> Usuários </a>
+                <a class="nav-link" href="{% url 'search_usuario' %}?nome=&sobrenome=&email=&cidade=&estado=RS"><img src="{% static 'svg/users.svg' %}" width="20" height="20" alt=""> Usuários </a>
             </li>
 
            

@@ -17,7 +17,7 @@ class NegocioFilter(django_filters.FilterSet):
         
     class Meta:
         model = Negocio
-        fields = ['cidade', 'estado', 'pet_aceitos', 'tipo', 'telefone', ]
+        fields = ['cidade', 'estado', 'pet_aceitos', 'tipo' ]
 
 
 class UsuarioFilter(django_filters.FilterSet):

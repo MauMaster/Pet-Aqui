@@ -46,7 +46,7 @@ HOUR_CHOICES = (
 )
 
 NOTA_CHOICES = (
-    (1,'1'), (2,'2'), (3,'3'), (4,'4'), (5,'5')
+   (0,'0'), (1,'1'), (2,'2'), (3,'3'), (4,'4'), (5,'5')
 )
 
 
@@ -192,12 +192,15 @@ class Comentario(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     empresa = models.CharField(max_length=255, blank=False)
     comentario = models.TextField(max_length=255, blank=False)
-    nota = models.IntegerField( choices=NOTA_CHOICES, null=True)
+    nota = models.IntegerField( choices=NOTA_CHOICES, null=True, blank=True)
 
 
     def __str__(self):
         return str(self.empresa)
 
+    def clean(self):
+        if self.nota is None:
+            self.nota = 0
 
  
     
