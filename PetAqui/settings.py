@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'petaqui',
         'USER': 'petaqui',
-        'PASSWORD': 'gt1utff7st3re',
+        'PASSWORD': 'petaquipetaqui',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -154,8 +154,8 @@ STATICFILES_DIRS = (
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'estacioneaqui24@gmail.com'
-EMAIL_HOST_PASSWORD = '10038561003856'
+EMAIL_HOST_USER = 'petaqui.registro@gmail.com'
+EMAIL_HOST_PASSWORD = 'petaquipetaqui'
 EMAIL_PORT = 587
 
 
