@@ -1,78 +1,83 @@
 {% load static %}
 
 <div class="card text-white bg-info">
-  <div class="card-header">Lançamentos</div>
-  <div class="card bg-light  ">
-  <div class="card-body text-secondary">
-    
+    <div class="card-header">Lançamentos</div>
+    <div class="card bg-light  ">
+        <div class="card-body text-secondary">
 
-    {% if not user.is_authenticated%}
-    
-    <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
-    {% elif user.negocio.pet_aceitos != 'Gato' and user.negocio.pet_aceitos != 'Cachorro' and user.negocio.empresa %}
-    <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
+            {% if not user.is_authenticated%}
 
-    {% elif user.negocio.pet_aceitos == 'Gato' %}
-    <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato3.jpg' %}" class="img-fluid" alt="Responsive image">
-    <br>
-    <img src="{% static 'img/marketing/gato4.jpg' %}" class="img-fluid" alt="Responsive image">
+            <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% elif user.negocio.pet_aceitos != 'Gato' and user.negocio.pet_aceitos != 'Cachorro' and user.negocio.empresa %}
+          
+            <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% elif user.negocio.pet_aceitos == 'Gato' %}
+          
+            <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato3.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato4.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% elif user.negocio.pet_aceitos == 'Cachorro' %}
+          
+            <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro3.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro4.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          
+          {% elif user.usuario.pet != 'Gato' and user.usuario.pet != 'Cachorro' %}
+          
+            <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% elif user.usuario.pet == 'Gato' %}
+          
+            <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato3.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/gato4.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% elif user.usuario.pet == 'Cachorro' %}
+          
+            <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro3.jpg' %}" class="img-fluid" alt="Responsive image">
+            <br>
+            <img src="{% static 'img/marketing/cachorro4.jpg' %}" class="img-fluid" alt="Responsive image"> 
+          
+          {% endif %}
 
-   {% elif user.negocio.pet_aceitos == 'Cachorro' %}
-   <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/cachorro3.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-    <img src="{% static 'img/marketing/cachorro4.jpg' %}" class="img-fluid" alt="Responsive image">
-
-   
-   {% elif user.usuario.pet != 'Gato' and user.usuario.pet != 'Cachorro'  %}
-   <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
-
-   {% elif user.usuario.pet == 'Gato' %}
-   <img src="{% static 'img/marketing/gato1.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/gato2.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/gato3.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-    <img src="{% static 'img/marketing/gato4.jpg' %}" class="img-fluid" alt="Responsive image">
-
-   {% elif user.usuario.pet == 'Cachorro' %}
-   <img src="{% static 'img/marketing/cachorro1.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/cachorro2.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-   <img src="{% static 'img/marketing/cachorro3.jpg' %}" class="img-fluid" alt="Responsive image">
-   <br>
-    <img src="{% static 'img/marketing/cachorro4.jpg' %}" class="img-fluid" alt="Responsive image">
-
-    
-    {% endif %} 
-
-</div>
-</div>
+        </div>
+    </div>
 </div>

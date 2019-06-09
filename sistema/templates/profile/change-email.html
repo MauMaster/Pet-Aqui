@@ -1,43 +1,40 @@
 {%extends 'bases/base.html' %}
-{% load static %}
+{% load static %} 
 {% load bootstrap %}
-{% load widget_tweaks %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %} 
+{% load crispy_forms_tags %} 
 {% block main %}
 <div class="container">
-<div class="card text-white bg-primary mb-3">
+    <div class="card text-white bg-primary mb-3">
         <div class="card-header"><small class="text">
           <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
           <a href="{% url 'sistema_perfil' %}" class="text-white ">Perfil /</a>  
           <a  class="text-white">Email</a>
-            </small></a></p> Alterar Email</div>
-  <div class="card bg-light text-center ">
-  <div class="card-body text-secondary text-center">
-      
-        
-    
-<form method="post" action="{% url 'sistema_change_email' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
-{% csrf_token %}
-<div class="form-row "> 
-        <div class="form-group col-md-6 text-center">
-                {{ form.email| as_crispy_field}}
-    <div class="form-group col-md-6 text-center">
+            </small>
+             Alterar Email</div>
+        <div class="card bg-light text-center ">
+            <div class="card-body text-secondary text-center">
+
+                <form method="post" action="{% url 'sistema_change_email' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
+                    {% csrf_token %}
+                    <div class="form-row ">
+                        <div class="form-group col-md-6 text-center">
+                            {{ form.email| as_crispy_field}}
+                            <div class="form-group col-md-6 text-center">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-primary ">
+
+                </form>
+
+                <a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
+
+            </div>
         </div>
-      
-      </div>
-</div>
-
-<input type="submit" class="btn btn-primary " >
-
-</form>
-
-
-<a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
-
-  
-</div>
-</div>
-</div>
+    </div>
 </div>
 
 {% endblock %}

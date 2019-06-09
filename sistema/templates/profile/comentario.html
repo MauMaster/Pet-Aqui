@@ -1,54 +1,44 @@
-{%extends 'bases/base.html' %}
-{% load static %}
-{% load bootstrap %}
-{% load widget_tweaks %}
-{% load crispy_forms_tags %}
-{% block main %}
+{%extends 'bases/base.html' %} {% load static %} {% load bootstrap %} {% load widget_tweaks %} {% load crispy_forms_tags %} {% block main %}
 <div class="container">
-<div class="card text-white bg-primary mb-3">
+    <div class="card text-white bg-primary mb-3">
         <div class="card-header"><small class="text">
           <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
           <a href="{% url 'sistema_perfil' %}" class="text-white ">Perfil /</a>  
           <a  class="text-white">Avaliação</a>
-            </small></a></p> Deixe sua nota e comentários sobre a empresa</div>
-  <div class="card bg-light text-center ">
-  <div class="card-body text-secondary text-center">
-      
-       
-    
-        <form method="post" action="{% url 'cadastro_comentario' user.username  %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
-            {% csrf_token %}
-            <div class="form-row "> 
-                    <div class="form-group col-md-1 text-center">
-                        {{ form.nota| as_crispy_field}}
-                           
-                    </div>
-                </div>
-                     
-                            <div class="form-row "> 
-                <div class="form-group col-md-12">
-                                {{ form.comentario| as_crispy_field}}
-                                <span id="chars">255</span> caracteres restantes
-                    </div>
-                </div>
-                <div class="form-row "> 
-                    <div class="form-group col-md-12">
-                               
-                                <input type="submit" class="btn btn-primary btn-lg btn-block " >
-                        </div>    
-                  </div>
-           
-        
-           
-            
-            </form>
+            </small>
+            Deixe sua nota e comentários sobre a empresa</div>
+        <div class="card bg-light text-center ">
+            <div class="card-body text-secondary text-center">
 
-<a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
+                <form method="post" action="{% url 'cadastro_comentario' user.username  %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" validate>
+                    {% csrf_token %}
+                    <div class="form-row ">
+                        <div class="form-group col-md-1 text-center">
+                            {{ form.nota| as_crispy_field}}
 
-  
-</div>
-</div>
-</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row ">
+                        <div class="form-group col-md-12">
+                            {{ form.comentario| as_crispy_field}}
+                            <span id="chars">255</span> caracteres restantes
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="form-group col-md-12">
+
+                            <input type="submit" class="btn btn-primary btn-lg btn-block ">
+                        </div>
+                    </div>
+
+                </form>
+
+                <a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
+
+            </div>
+        </div>
+    </div>
 </div>
 <script src="{% static 'myjs/contador255.js' %}"></script>
 {% endblock %}

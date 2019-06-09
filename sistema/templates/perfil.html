@@ -4,663 +4,594 @@
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block main %}
-{% if user.is_authenticated %}
-  {% if user.is_staff %}
+{% if user.is_authenticated %} 
+{% if user.is_staff %}
 <div class="card text-white bg-primary">
-<div class="card-header"><p class="card-text">
-      <small class="text-muted">
+    <div class="card-header">
+        <p class="card-text">
+            <small class="text-muted">
          <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
          <a class="text-white">Perfil </a>
       </small></a>
-      <div class="row"> 
-      <div class=" col-md-10">
-      {{ user.usuario.nome }}  
-   
-      {{ user.usuario.sobrenome }} 
-   </div>
-   {% include 'bases/menu_perfil.html' %}
-</div>
-         
-</div>
-<div class="card title  ">
-<div class="card-body text-secondary">
-            <div class="form-row"> 
-            <div class="form-group col-md-4">
-                       
-                        <a class="pop" href="#"  data-img-url="{{ user.usuario.foto.large.url}}" data-toggle="modal"><img src="{{user.usuario.foto.medium.url}}"class="img-thumbnail" width="220" height="220"></a>
-                        <!-- Modal Gallery-->
-         <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">              
-                      <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                        <img src="" class="imagepreview" style="width: 100%;" >
-                        <br>
-                        <br>
-                        <a class="pop2" href="{% url 'sistema_change_photo' %}" alt="Alterar foto perfil"><img src="{% static 'svg/frame.svg' %}" width="25" height="25" alt="Alterar foto perfil"> Alterar sua foto </a>
-                       
-                        
-                      </div>
-                      
-                      
+            <div class="row">
+                <div class=" col-md-10">
+                    {{ user.usuario.nome }} {{ user.usuario.sobrenome }}
+                </div>
+                {% include 'bases/menu_perfil.html' %}
+            </div>
+
+    </div>
+    <div class="card title  ">
+        <div class="card-body text-secondary">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+
+                    <a class="pop" href="#" data-img-url="{{ user.usuario.foto.large.url}}" data-toggle="modal"><img src="{{user.usuario.foto.medium.url}}" class="img-thumbnail" width="220" height="220"></a>
+                    <!-- Modal Gallery-->
+                    <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                                    <img src="" class="imagepreview" style="width: 100%;">
+                                    <br>
+                                    <br>
+                                    <a class="pop2" href="{% url 'sistema_change_photo' %}" alt="Alterar foto perfil"><img src="{% static 'svg/frame.svg' %}" width="25" height="25" alt="Alterar foto perfil"> Alterar sua foto </a>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-            
-               
-</div>
-<div class="form-group col-md-8">
-{{ user.usuario.about}}
-</div>
-</div>
 
-<hr>
-<h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pets:</h6>
-<div class="form-row"> 
-<div class="form-group col-md-6">
-      {% if user.usuario.pet == 'Cachorro' %}
-      <img src="{% static 'svg/dog.svg' %}"  width="40" height="40" alt=""> 
-      
-      {% elif user.usuario.pet == 'Gato' %}
-      <img src="{% static 'svg/cat.svg' %}"  width="40" height="40" alt="">
-      {%  else %}
-      <img src="{% static 'svg/dog.svg' %}"  width="40" height="40" alt=""> <img src="{% static 'svg/cat.svg' %}"  width="40" height="40" alt="">
-      {% endif %} 
-      
-   </div>
-</div>
-<hr>
-<h6> <img src="{% static 'img/perfil/map2.svg' %}"  width="20" height="20" alt=""> Localização:</h6>
-      <div class="form-row"> 
-         <div class="form-group col-md-6">
-          
-          
-           {{ user.usuario.cidade }} - {{ user.usuario.estado }}
-      </div></div>
-         <hr>
-         
-         <label >Galeria: </label>
-         <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
-               <span class="glyphicon glyphicon-cloud-upload"></span> Enviar Fotos
-         </a>
-        
-   </br>
-         {% for photo in photos %}
-       
-         <a class="pop" href="#"  data-img-url="{{ photo.file.large.url}}" data-toggle="modal"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
-        
-      <!-- Modal Gallery-->
-   <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">              
-                <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                  <img src="" class="imagepreview" style="width: 100%;" >
-                  <a class="pop2" href="#" data-toggle="modal"><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
-                  
                 </div>
-              </div>
+                <div class="form-group col-md-8">
+                    {{ user.usuario.about}}
+                </div>
             </div>
-          </div>
-      
-          <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">              
-                <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                      
-                              <h2>Tem certeza que deseja deletar essa foto: </h2>
-                              <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
-                                          <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
-                                    </a>
-                        
-                    
+
+            <hr>
+            <h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pets:</h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {% if user.usuario.pet == 'Cachorro' %}
+                    <img src="{% static 'svg/dog.svg' %}" width="40" height="40" alt=""> 
+                  {% elif user.usuario.pet == 'Gato' %}
+                    <img src="{% static 'svg/cat.svg' %}" width="40" height="40" alt=""> 
+                  {% else %}
+                    <img src="{% static 'svg/dog.svg' %}" width="40" height="40" alt=""> <img src="{% static 'svg/cat.svg' %}" width="40" height="40" alt=""> {% endif %}
+
                 </div>
-              </div>
             </div>
-          </div>
-       
-     
-   {% endfor %}
+            <hr>
+            <h6> <img src="{% static 'img/perfil/map2.svg' %}"  width="20" height="20" alt=""> Localização:</h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
 
-   
+                    {{ user.usuario.cidade }} - {{ user.usuario.estado }}
+                </div>
+            </div>
+            <hr>
 
- 
-</div>
-</div>
+            <label>Galeria: </label>
+            <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
+                <span class="glyphicon glyphicon-cloud-upload"></span> Enviar Fotos
+            </a>
+
+            </br>
+            {% for photo in photos %}
+
+            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}" data-toggle="modal"><img src="{{ photo.file.medium.url}}" class="img-thumbnail" width="200" height="200"> </a>
+
+            <!-- Modal Gallery-->
+            <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                            <img src="" class="imagepreview" style="width: 100%;">
+                            <a class="pop2" href="#" data-toggle="modal"><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+
+                            <h2>Tem certeza que deseja deletar essa foto: </h2>
+                            <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
+                                <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
 </div>
 {% elif user %}
 <div class="card text-white bg-primary">
-            <div class="card-header"><p class="card-text">
-                  <small class="text-muted">
+    <div class="card-header">
+        <p class="card-text">
+            <small class="text-muted">
                      <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
                      <a class="text-white">Perfil </a>
                   </small></a>
-                  <div class="row"> 
-                  <div class=" col-md-6">
-                  {{ user.negocio.empresa }}  - {{ user.negocio.tipo }} 
-               </div>
-               <div class=" col-md-2">
-                        <h5>Nota Média</h5>
+            <div class="row">
+                <div class=" col-md-6">
+                    {{ user.negocio.empresa }} - {{ user.negocio.tipo }}
+                </div>
+                <div class=" col-md-2">
+                    <h5>Nota Média</h5>
+                </div>
+                <div class=" col-md-2">
+                    <h4>{{ media|floatformat:1}}   </h4>
+                </div>
+
+                {% include 'bases/menu_perfil_empresa.html' %}
+
             </div>
-            <div class=" col-md-2">
-                        <h4>{{ media|floatformat:1}}   </h4>
-            </div>
-            
-               {% include 'bases/menu_perfil_empresa.html' %}
-            
-            </div>
-                     
-            </div>
-      <div class="card title  ">
-      <div class="card-body text-secondary">
-                  <div class="form-row"> 
-                  <div class="form-group col-md-4">
-                              <a class="pop" href="#"  data-img-url="{{ user.negocio.foto.large.url}}" data-toggle="modal"><img src="{{user.negocio.foto.medium.url}}"class="img-thumbnail" width="220" height="220"></a>
-                              <!-- Modal Gallery-->
-               <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    </div>
+    <div class="card title  ">
+        <div class="card-body text-secondary">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <a class="pop" href="#" data-img-url="{{ user.negocio.foto.large.url}}" data-toggle="modal"><img src="{{user.negocio.foto.medium.url}}" class="img-thumbnail" width="220" height="220"></a>
+                    <!-- Modal Gallery-->
+                    <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                          <div class="modal-content">              
-                            <div class="modal-body">
-                                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                              <img src="" class="imagepreview" style="width: 100%;" >
-                              <br>
-                              <br>
-                              <a class="pop2" href="{% url 'sistema_change_foto_empresa' %}" alt="Alterar foto perfil"><img src="{% static 'svg/frame.svg' %}" width="25" height="25" alt="Alterar foto perfil"> Alterar sua foto </a>
-                             
-                              
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                                    <img src="" class="imagepreview" style="width: 100%;">
+                                    <br>
+                                    <br>
+                                    <a class="pop2" href="{% url 'sistema_change_foto_empresa' %}" alt="Alterar foto perfil"><img src="{% static 'svg/frame.svg' %}" width="25" height="25" alt="Alterar foto perfil"> Alterar sua foto </a>
+
+                                </div>
+
                             </div>
-                            
-                            
-                          </div>
                         </div>
-                      </div>
-    
-      </div>
-      <div class="form-group col-md-8">
-      {{ user.negocio.sobre}}
-      </div>
-      </div>
-      
-      
-     
+                    </div>
+
+                </div>
+                <div class="form-group col-md-8">
+                    {{ user.negocio.sobre}}
+                </div>
+            </div>
+
             <hr>
-      <h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pet Aceitos:</h6>
-      <div class=" form-row"> 
-      <div class="form-group col-md-12">
-         
-     
-        {% if user.negocio.pet_aceitos == 'Cachorro' %}
-        <img src="{% static 'svg/dog.svg' %}"  width="40" height="40" alt=""> 
-        
-        {% elif user.negocio.pet_aceitos == 'Gato' %}
-        <img src="{% static 'svg/cat.svg' %}"  width="40" height="40" alt="">
-        {%  else %}
-        <img src="{% static 'svg/dog.svg' %}"  width="40" height="40" alt=""> <img src="{% static 'svg/cat.svg' %}"  width="40" height="40" alt="">
-        {% endif %} 
-         </div>
-     
-   </div>
-      <hr>
-      <h6> <img src="{% static 'img/perfil/smartphone.svg' %}"  width="20" height="20" alt=""> Contatos:</h6>
-      <div class="form-row"> 
-            
-            <div class="form-group col-md-4">
-                  
-                  
-                  Whtassapp: {{ user.negocio.whatsapp }}
-               </div>
-               <div class="form-group col-md-4">
-                     Telefone: {{ user.negocio.telefone }}
-                  </div>
-                  <div class="form-group col-md-4">
-                        Site: {{ user.negocio.site }}
-                     </div>
+            <h6> <img src="{% static 'img/perfil/pet.svg' %}"  width="20" height="20" alt=""> Pet Aceitos:</h6>
+            <div class=" form-row">
+                <div class="form-group col-md-12">
+
+                    {% if user.negocio.pet_aceitos == 'Cachorro' %}
+                    <img src="{% static 'svg/dog.svg' %}" width="40" height="40" alt=""> 
+                  {% elif user.negocio.pet_aceitos == 'Gato' %}
+                    <img src="{% static 'svg/cat.svg' %}" width="40" height="40" alt=""> 
+                  {% else %}
+                    <img src="{% static 'svg/dog.svg' %}" width="40" height="40" alt=""> <img src="{% static 'svg/cat.svg' %}" width="40" height="40" alt=""> {% endif %}
+                </div>
+
+            </div>
+            <hr>
+            <h6> <img src="{% static 'img/perfil/smartphone.svg' %}"  width="20" height="20" alt=""> Contatos:</h6>
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+
+                    Whtassapp: {{ user.negocio.whatsapp }}
+                </div>
+                <div class="form-group col-md-4">
+                    Telefone: {{ user.negocio.telefone }}
+                </div>
+                <div class="form-group col-md-4">
+                    Site: {{ user.negocio.site }}
+                </div>
             </div>
             <hr>
             <h6> <img src="{% static 'img/perfil/map2.svg' %}"  width="20" height="20" alt=""> Endereço:</h6>
-            <div class="form-row"> 
-               <div class="form-group col-md-12">
-                     
-                     
-                
-                
-                {{ user.negocio.endereco }} - {{ user.negocio.numero }} - {{ user.negocio.bairro }} - {{ user.negocio.cidade }} - {{ user.negocio.estado }}
-            </div></div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+
+                    {{ user.negocio.endereco }} - {{ user.negocio.numero }} - {{ user.negocio.bairro }} - {{ user.negocio.cidade }} - {{ user.negocio.estado }}
+                </div>
+            </div>
             <hr>
             <h6> <img src="{% static 'img/perfil/clock.svg' %}"  width="20" height="20" alt=""> Horário Funcionamento:</h6>
-            <div class="row"> 
-                        <div class="col-md-3">     
-                                 {% if user.negocio.horario_segunda1 == None and user.negocio.horario_segunda2 == None and user.negocio.horario_segunda3 == None and user.negocio.horario_segunda4 == None%}  
-                                 {% elif user.negocio.horario_segunda1 != None or user.negocio.horario_segunda2 != None or user.negocio.horario_segunda3 != None or user.negocio.horario_segunda4 != None %}             
-                          <h5>Segunda-Feira: </h5>
-                          {% endif %} 
-                     </div>
-                     <div class="col-md-2">
-                     {% if user.negocio.horario_segunda1 != None %}
-                     <h5> dás: {{ user.negocio.horario_segunda1 }}  </h5>
-                     {% elif user.negocio.horario_segunda1 == None %}
-               
-                     {% endif %} 
-               </div>
-                     <div class="col-md-2">
-                     {% if user.negocio.horario_segunda2 != None %}
-                     <h5> ás: {{ user.negocio.horario_segunda2 }}  </h5>
-                     {% elif user.negocio.horario_segunda2 == None %}
-                    
-                     
-                     {% endif %} 
-               </div>
-                     <div class="col-md-2">
-                     {% if user.negocio.horario_segunda3 != None %}
-                     <h5> dás: {{ user.negocio.horario_segunda3 }}  </h5>
-                     {% elif user.negocio.horario_segunda3 == None %}
-               
-                     {% endif %} 
-               </div>
-                     <div class="col-md-2">
-                     {% if user.negocio.horario_segunda4 != None %}
-                     <h5> ás: {{ user.negocio.horario_segunda4 }}  </h5>
-                     {% elif user.negocio.horario_segunda4 == None %}
-                    
-                     {% endif %} 
-               </div>
-               </div>
-               
-               <div class="row"> 
-                     <div class="col-md-3">   
-                                 {% if user.negocio.horario_terca1 == None and user.negocio.horario_terca2 == None and user.negocio.horario_terca3 == None and user.negocio.horario_terca4 == None%}  
-                                 {% elif user.negocio.horario_terca1 != None or user.negocio.horario_terca2 != None or user.negocio.horario_terca3 != None or user.negocio.horario_terca4 != None %}           
-                       <h5>Terça-Feira : </h5>
-                       {% endif %}
-                  </div>
-                  <div class="col-md-2">
-                  {% if user.negocio.horario_terca1 != None %}
-                  <h5> dás: {{ user.negocio.horario_terca1 }}  </h5>
-                  {% elif user.negocio.horario_terca1 == None %}
-                  
-                  {% endif %} 
-               </div>
-                  <div class="col-md-2">
-                  {% if user.negocio.horario_terca2 != None %}
-                  <h5> ás: {{ user.negocio.horario_terca2 }}  </h5>
-                  {% elif user.negocio.horario_terca2 == None %}
-                 
-                  
-                  {% endif %} 
-               </div>
-                  <div class="col-md-2">
-                  {% if user.negocio.horario_terca3 != None %}
-                  <h5> dás: {{ user.negocio.horario_terca3 }}  </h5>
-                  {% elif user.negocio.horario_terca3 == None %}
-                  
-                  {% endif %} 
-               </div>
-                  <div class="col-md-2">
-                  {% if user.negocio.horario_terca4 != None %}
-                  <h5> ás: {{ user.negocio.horario_terca4 }}  </h5>
-                  {% elif user.negocio.horario_terca4 == None %}
-                 
-                  {% endif %} 
-            </div>
-         </div>
-            <div class="row"> 
-            <div class="col-md-3">           
-                        
-                     {% if user.negocio.horario_quarta1 == None and user.negocio.horario_quarta2 == None and user.negocio.horario_quarta3 == None and user.negocio.horario_quarta4 == None%}  
-                     {% elif user.negocio.horario_quarta1 != None or user.negocio.horario_quarta2 != None or user.negocio.horario_quarta3 != None or user.negocio.horario_quarta4 != None %}  
-                  <h5>Quarta-Feira : </h5>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_segunda1 == None and user.negocio.horario_segunda2 == None and user.negocio.horario_segunda3 == None and user.negocio.horario_segunda4 == None%} 
+                  {% elif user.negocio.horario_segunda1 != None or user.negocio.horario_segunda2 != None or user.negocio.horario_segunda3 != None or user.negocio.horario_segunda4 != None %}
+                    <h5>Segunda-Feira: </h5> 
                   {% endif %}
-             </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quarta1 != None %}
-             <h5> dás: {{ user.negocio.horario_quarta1 }}  </h5>
-             {% elif user.negocio.horario_quarta1 == None %}
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quarta2 != None %}
-             <h5> ás: {{ user.negocio.horario_quarta2 }}  </h5>
-             {% elif user.negocio.horario_quarta2 == None %}
-                  
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quarta3 != None %}
-             <h5> dás: {{ user.negocio.horario_quarta3 }}  </h5>
-             {% elif user.negocio.horario_quarta3 == None %}
-             
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quarta4 != None %}
-             <h5> ás: {{ user.negocio.horario_quarta4 }}  </h5>
-             {% elif user.negocio.horario_quarta4 == None %}
-            
-             {% endif %} 
-         </div>
-                  
-          
-         </div>
-         
-         <div class="row"> 
-               <div class="col-md-3">     
-                           {% if user.negocio.horario_quinta1 == None and user.negocio.horario_quinta2 == None and user.negocio.horario_quinta3 == None and user.negocio.horario_quinta4 == None%}  
-                           {% elif user.negocio.horario_quinta1 != None or user.negocio.horario_quinta2 != None or user.negocio.horario_quinta3 != None or user.negocio.horario_quinta4 != None %}            
-                     <h5>Quinta-Feira : </h5>
-                     {% endif %} 
                 </div>
                 <div class="col-md-2">
-                {% if user.negocio.horario_quinta1 != None %}
-             <h5> dás: {{ user.negocio.horario_quinta1 }}  </h5>
-             {% elif user.negocio.horario_quinta1 == None %}
-             
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quinta2 != None %}
-             <h5> ás: {{ user.negocio.horario_quinta2 }}  </h5>
-             {% elif user.negocio.horario_quinta2 == None %}
-            
-             
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quinta3 != None %}
-             <h5> dás: {{ user.negocio.horario_quinta3 }}  </h5>
-             {% elif user.negocio.horario_quinta3 == None %}
-             
-             {% endif %} 
-         </div>
-             <div class="col-md-2">
-             {% if user.negocio.horario_quinta4 != None %}
-             <h5> ás: {{ user.negocio.horario_quinta4 }}  </h5>
-             {% elif user.negocio.horario_quinta4 == None %}
-            
-             {% endif %} 
-         </div>
-            </div>
-            <div class="row"> 
-                  <div class="col-md-3">      
-                           {% if user.negocio.horario_sexta1 == None and user.negocio.horario_sexta2 == None and user.negocio.horario_sexta3 == None and user_dusertails.negocio.horario_sexta4 == None%}  
-                           {% elif user.negocio.horario_sexta1 != None or user.negocio.horario_sexta2 != None or user.negocio.horario_sexta3 != None or user.negocio.horario_sexta4 != None %}           
-                        <h5>Sexta-Feira : </h5>
-                        {% endif %} 
-                   </div>
-                   <div class="col-md-2">
-                   {% if user.negocio.horario_sexta1 != None %}
-                   <h5> dás: {{ user.negocio.horario_sexta1 }}  </h5>
-                   {% elif user.negocio.horario_sexta1 == None %}
-                   
-                   {% endif %} 
-               </div>
-                   <div class="col-md-2">
-                   {% if user.negocio.horario_sexta2 != None %}
-                   <h5> ás: {{ user.negocio.horario_sexta2 }}  </h5>
-                   {% elif user.negocio.horario_sexta2 == None %}
-                  
-                   
-                   {% endif %}
-               </div> 
-                   <div class="col-md-2">
-                   {% if user.negocio.horario_sexta3 != None %}
-                   <h5> dás: {{ user.negocio.horario_sexta3 }}  </h5>
-                   {% elif user.negocio.horario_sexta3 == None %}
-                   
-                   {% endif %} 
-               </div>
-                   <div class="col-md-2">
-                   {% if user.negocio.horario_sexta4 != None %}
-                   <h5> ás: {{ user.negocio.horario_sexta4 }}  </h5>
-                   {% elif user.negocio.horario_sexta4 == None %}
-                  
-                   {% endif %} 
-               </div>
-               </div>
-               <div class="row"> 
-                     <div class="col-md-3">     
-                                 {% if user.negocio.horario_sabado1 == None and user.negocio.horario_sabado2 == None and user.negocio.horario_sabado3 == None and user.negocio.horario_sabado4 == None%}  
-                                 {% elif user.negocio.horario_sabado1 != None or user.negocio.horario_sabado2 != None or user.negocio.horario_sabado3 != None or user.negocio.horario_sabado4 != None %}             
-                           <h5>Sábado: </h5>
-                           {% endif %}
-                      </div>
-                      <div class="col-md-2">
-                      {% if user.negocio.horario_sabado1 != None %}
-                      <h5> dás: {{ user.negocio.horario_sabado1 }}  </h5>
-                      {% elif user.negocio.horario_sabado1 == None %}
-                      
-                      {% endif %} 
-                     </div>
-                      <div class="col-md-2">
-                      {% if user.negocio.horario_sabado2 != None %}
-                      <h5> ás: {{ user.negocio.horario_sabado2 }}  </h5>
-                      {% elif user.negocio.horario_sabado2 == None %}
-                     
-                      
-                      {% endif %} 
-                     </div>
-                      <div class="col-md-2">
-                      {% if user.negocio.horario_sabado3 != None %}
-                      <h5> dás: {{ user.negocio.horario_sabado3 }}  </h5>
-                      {% elif user.negocio.horario_sabado3 == None %}
-                      
-                      {% endif %} 
-                     </div>
-                      <div class="col-md-2">
-                      {% if user.negocio.horario_sabado4 != None %}
-                      <h5> ás: {{ user.negocio.horario_sabado4 }}  </h5>
-                      {% elif user.negocio.horario_sabado4 == None %}
-                     
-                      {% endif %} 
-                     </div>
-                  </div>
-                  <div class="row"> 
-                        <div class="col-md-3">       
-                                 {% if user.negocio.horario_domingo1 == None and user.negocio.horario_domingo2 == None and user.negocio.horario_domingo3 == None and user.negocio.horario_domingo4 == None%}  
-                                 {% elif user.negocio.horario_domingo1 != None or user.negocio.horario_domingo2 != None or user.negocio.horario_domingo3 != None or user.negocio.horario_domingo4 != None %}            
-                              <h5>Domingo: </h5> 
-                              {% endif %} 
-                         </div>
-                         <div class="col-md-2">
-                         {% if user.negocio.horario_domingo1 != None %}
-                         <h5> dás: {{ user.negocio.horario_domingo1 }}  </h5>
-                         {% elif user.negocio.horario_domingo1 == None %}
-                         
-                         {% endif %} 
-                     </div>
-                         <div class="col-md-2">
-                         {% if user.negocio.horario_domingo2 != None %}
-                         <h5> ás: {{ user.negocio.horario_domingo2 }}  </h5>
-                         {% elif user.negocio.horario_domingo2 == None %}
-                        
-                         
-                         {% endif %} 
-                     </div>
-                         <div class="col-md-2">
-                         {% if user.negocio.horario_domingo3 != None %}
-                         <h5> dás: {{ user.negocio.horario_domingo3 }}  </h5>
-                         {% elif user.negocio.horario_domingo3 == None %}
-                         
-                         {% endif %} 
-                     </div>
-                         <div class="col-md-2">
-                         {% if user.negocio.horario_domingo4 != None %}
-                         <h5> ás: {{ user.negocio.horario_domingo4 }}  </h5>
-                         {% elif user.negocio.horario_domingo4 == None %}
-                        
-                         {% endif %} 
-                     </div>
-                     </div>
-               <hr>
-               <div class="row"> 
-                 
-                  <div class="col-md-3"> 
-                              <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
-                                          <span class="glyphicon glyphicon-cloud-upload"></span> Enviar Fotos
-                                    </a>
-                        </div>
-                     
-            </div>
-      </br>
-            <label ><h3>Galeria: </h3></label>  
-           
-                
-                
-            
-      </br>
-      
-            {% for photo in photos %}
-           
-                       
-            <a class="pop" href="#"  data-img-url="{{ photo.file.large.url}}" data-toggle="modal"><img src="{{ photo.file.medium.url}}"class="img-thumbnail" width="200" height="200"> </a>
-        
-            <!-- Modal Gallery-->
-         <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">              
-                      <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                        <img src="" class="imagepreview" style="width: 100%;" >
-                        <a class="pop2" href="#" data-toggle="modal" ><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
-                        
-                      </div>
-                      
-                      
-                    </div>
-                  </div>
+                    {% if user.negocio.horario_segunda1 != None %}
+                    <h5> dás: {{ user.negocio.horario_segunda1 }}  </h5> 
+                  {% elif user.negocio.horario_segunda1 == None %} 
+                  {% endif %}
                 </div>
-            
-                <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">              
-                      <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
-                            
-                                    <h2>Tem certeza que deseja deletar essa foto: </h2>
-                                    <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
-                                                <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
-                                          </a>
-                              
-                          
-                      </div>
-                    </div>
-                  </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_segunda2 != None %}
+                    <h5> ás: {{ user.negocio.horario_segunda2 }}  </h5> 
+                  {% elif user.negocio.horario_segunda2 == None %} {% endif %}
                 </div>
-                
-      {% endfor %}
-      <nav aria-label="...">
-            {% if photos.has_other_pages %}
-            <ul class="pagination">
-              {% if photos.has_previous %}
-                <li class="page-item"><a class="page-link"  href="?page={{ photos.previous_page_number }}">Anterior</a></li>
-              {% else %}
-                <li class="page-item disabled"><a class="page-link"><span>Anterior</span></a></li>
-              {% endif %}
-              {% for i in photos.paginator.page_range %}
-                {% if photos.number == i %}
-                <li class="page-item"> <a class="page-link" ><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
-                {% else %}
-                  <li class="page-item"><a class="page-link"  href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-              {% endfor %}
-              {% if photos.has_next %}
-                <li class="page-item"><a class="page-link"  href="?page={{ photos.next_page_number }}">Próximo</a></li>
-              {% else %}
-                <li class="page-item disabled"><a class="page-link"><span>Próximo</span></li></a>
-              {% endif %}
-            </ul>
-          {% endif %}
-      </nav>
-      
-      <hr>
-      <div class="row"> 
-                  <div class="col-md-3"> 
-                              <h4>Comentários:</h4>
-                        </div>
-                  <div class="col-md-3"> 
-                              <a href="{% url 'comentario_form' user.username %}" type="button" class="btn btn-primary js-upload-photos">
-                                          <span class="glyphicon glyphicon-cloud-upload"></span> Responder
-                                    </a>
-                        </div>
-                     
+                <div class="col-md-2">
+                    {% if user.negocio.horario_segunda3 != None %}
+                    <h5> dás: {{ user.negocio.horario_segunda3 }}  </h5> 
+                  {% elif user.negocio.horario_segunda3 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_segunda4 != None %}
+                    <h5> ás: {{ user.negocio.horario_segunda4 }}  </h5> 
+                  {% elif user.negocio.horario_segunda4 == None %} 
+                  {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_terca1 == None and user.negocio.horario_terca2 == None and user.negocio.horario_terca3 == None and user.negocio.horario_terca4 == None%} 
+                  {% elif user.negocio.horario_terca1 != None or user.negocio.horario_terca2 != None or user.negocio.horario_terca3 != None or user.negocio.horario_terca4 != None %}
+                    <h5>Terça-Feira : </h5> 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_terca1 != None %}
+                    <h5> dás: {{ user.negocio.horario_terca1 }}  </h5> 
+                  {% elif user.negocio.horario_terca1 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_terca2 != None %}
+                    <h5> ás: {{ user.negocio.horario_terca2 }}  </h5> 
+                  {% elif user.negocio.horario_terca2 == None %}
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_terca3 != None %}
+                    <h5> dás: {{ user.negocio.horario_terca3 }}  </h5> 
+                  {% elif user.negocio.horario_terca3 == None %}
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_terca4 != None %}
+                    <h5> ás: {{ user.negocio.horario_terca4 }}  </h5> 
+                  {% elif user.negocio.horario_terca4 == None %} 
+                  {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+
+                    {% if user.negocio.horario_quarta1 == None and user.negocio.horario_quarta2 == None and user.negocio.horario_quarta3 == None and user.negocio.horario_quarta4 == None%}
+                  {% elif user.negocio.horario_quarta1 != None or user.negocio.horario_quarta2 != None or user.negocio.horario_quarta3 != None or user.negocio.horario_quarta4 != None %}
+                    <h5>Quarta-Feira : </h5> 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quarta1 != None %}
+                    <h5> dás: {{ user.negocio.horario_quarta1 }}  </h5> 
+                  {% elif user.negocio.horario_quarta1 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quarta2 != None %}
+                    <h5> ás: {{ user.negocio.horario_quarta2 }}  </h5> 
+                  {% elif user.negocio.horario_quarta2 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quarta3 != None %}
+                    <h5> dás: {{ user.negocio.horario_quarta3 }}  </h5> 
+                  {% elif user.negocio.horario_quarta3 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quarta4 != None %}
+                    <h5> ás: {{ user.negocio.horario_quarta4 }}  </h5> 
+                  {% elif user.negocio.horario_quarta4 == None %} 
+                  {% endif %}
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_quinta1 == None and user.negocio.horario_quinta2 == None and user.negocio.horario_quinta3 == None and user.negocio.horario_quinta4 == None%} 
+                  {% elif user.negocio.horario_quinta1 != None or user.negocio.horario_quinta2 != None or user.negocio.horario_quinta3 != None or user.negocio.horario_quinta4 != None %}
+                    <h5>Quinta-Feira : </h5>
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quinta1 != None %}
+                    <h5> dás: {{ user.negocio.horario_quinta1 }}  </h5> 
+                  {% elif user.negocio.horario_quinta1 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quinta2 != None %}
+                    <h5> ás: {{ user.negocio.horario_quinta2 }}  </h5> 
+                  {% elif user.negocio.horario_quinta2 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quinta3 != None %}
+                    <h5> dás: {{ user.negocio.horario_quinta3 }}  </h5> 
+                  {% elif user.negocio.horario_quinta3 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_quinta4 != None %}
+                    <h5> ás: {{ user.negocio.horario_quinta4 }}  </h5> 
+                  {% elif user.negocio.horario_quinta4 == None %} 
+                  {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_sexta1 == None and user.negocio.horario_sexta2 == None and user.negocio.horario_sexta3 == None and user_dusertails.negocio.horario_sexta4 == None%} 
+                  {% elif user.negocio.horario_sexta1 != None or user.negocio.horario_sexta2 != None or user.negocio.horario_sexta3 != None or user.negocio.horario_sexta4 != None %}
+                    <h5>Sexta-Feira : </h5> 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sexta1 != None %}
+                    <h5> dás: {{ user.negocio.horario_sexta1 }}  </h5> 
+                  {% elif user.negocio.horario_sexta1 == None %}
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sexta2 != None %}
+                    <h5> ás: {{ user.negocio.horario_sexta2 }}  </h5> 
+                  {% elif user.negocio.horario_sexta2 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sexta3 != None %}
+                    <h5> dás: {{ user.negocio.horario_sexta3 }}  </h5> 
+                  {% elif user.negocio.horario_sexta3 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sexta4 != None %}
+                    <h5> ás: {{ user.negocio.horario_sexta4 }}  </h5> 
+                  {% elif user.negocio.horario_sexta4 == None %} 
+                  {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_sabado1 == None and user.negocio.horario_sabado2 == None and user.negocio.horario_sabado3 == None and user.negocio.horario_sabado4 == None%} 
+                  {% elif user.negocio.horario_sabado1 != None or user.negocio.horario_sabado2 != None or user.negocio.horario_sabado3 != None or user.negocio.horario_sabado4 != None %}
+                    <h5>Sábado: </h5> 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sabado1 != None %}
+                    <h5> dás: {{ user.negocio.horario_sabado1 }}  </h5>
+                  {% elif user.negocio.horario_sabado1 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sabado2 != None %}
+                    <h5> ás: {{ user.negocio.horario_sabado2 }}  </h5> 
+                  {% elif user.negocio.horario_sabado2 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sabado3 != None %}
+                    <h5> dás: {{ user.negocio.horario_sabado3 }}  </h5> 
+                  {% elif user.negocio.horario_sabado3 == None %}
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_sabado4 != None %}
+                    <h5> ás: {{ user.negocio.horario_sabado4 }}  </h5> 
+                  {% elif user.negocio.horario_sabado4 == None %}
+                  {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if user.negocio.horario_domingo1 == None and user.negocio.horario_domingo2 == None and user.negocio.horario_domingo3 == None and user.negocio.horario_domingo4 == None%} 
+                  {% elif user.negocio.horario_domingo1 != None or user.negocio.horario_domingo2 != None or user.negocio.horario_domingo3 != None or user.negocio.horario_domingo4 != None %}
+                    <h5>Domingo: </h5> 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_domingo1 != None %}
+                    <h5> dás: {{ user.negocio.horario_domingo1 }}  </h5>
+                  {% elif user.negocio.horario_domingo1 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_domingo2 != None %}
+                    <h5> ás: {{ user.negocio.horario_domingo2 }}  </h5> 
+                  {% elif user.negocio.horario_domingo2 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_domingo3 != None %}
+                    <h5> dás: {{ user.negocio.horario_domingo3 }}  </h5>
+                  {% elif user.negocio.horario_domingo3 == None %} 
+                  {% endif %}
+                </div>
+                <div class="col-md-2">
+                    {% if user.negocio.horario_domingo4 != None %}
+                    <h5> ás: {{ user.negocio.horario_domingo4 }}  </h5> 
+                  {% elif user.negocio.horario_domingo4 == None %} 
+                  {% endif %}
+                </div>
             </div>
             <hr>
-            {% for comentario in comentarios %}
-            <div class="container">
-                
-                  
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                                {% if comentario.user.usuario.foto%}
-                                                <img src="{{ comentario.user.usuario.foto.thumbnail.url}}" class="rounded" width="100" height="100">
-                                                {% elif comentario.user.negocio.foto %}
-                                                <img src="{{ comentario.user.negocio.foto.thumbnail.url}}" class="rounded" width="100" height="100">
-                                                {% endif %}     
-                                        
-                                    </div>
-                                    <div class="col-md-10">
-                                        <p>
-                                            <a class="float-left" href="{%  url 'profile' comentario.user  %}"><strong>{{ comentario.user }}</strong></a>
-                                            <span class="float-right"> Nota: <strong>{{ comentario.nota }}</strong><i class="text-warning fa fa-star"></i></span>
-                                          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  
-                                       </p>
-                                       <div class="clearfix"> </div>
-                                        <p> {{ comentario.comentario }}</p>
-                                        <p>
-                                                {% if user == comentario.user %}
-                                            <a class="float-right btn btn-outline-primary ml-2"  href="{%  url 'delete_comentario' comentario.id  %}"><img src="{% static 'svg/delete.svg' %}" width="15" height="15" alt=""> </a>
-                                            {% elif user %}
-                                           
-                                            {% endif %}  
-                                       </p>
-                                    </div>
-                                </div>
-                              </div>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <a href="{% url 'progress_bar_upload' %}" type="button" class="btn btn-primary js-upload-photos">
+                        <span class="glyphicon glyphicon-cloud-upload"></span> Enviar Fotos
+                    </a>
+                </div>
+
+            </div>
+            </br>
+            <label>
+                <h3>Galeria: </h3></label>
+
+            </br>
+
+            {% for photo in photos %}
+
+            <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}" data-toggle="modal"><img src="{{ photo.file.medium.url}}" class="img-thumbnail" width="200" height="200"> </a>
+
+            <!-- Modal Gallery-->
+            <div class="modal fade imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+                            <img src="" class="imagepreview" style="width: 100%;">
+                            <a class="pop2" href="#" data-toggle="modal"><img src="{% static 'svg/delete.svg' %}" width="20" height="20" alt="">Deletar </a>
+
                         </div>
-                  </div>
-     
-      {% endfor %}
-      <nav aria-label="...">
-            {% if comentarios.has_other_pages %}
-            <ul class="pagination">
-              {% if comentarios.has_previous %}
-                <li class="page-item"><a class="page-link"  href="?page={{ comentarios.previous_page_number }}">Anterior</a></li>
-              {% else %}
-                <li class="page-item disabled"><a class="page-link"><span>Anterior</span></a></li>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">X</span></button>
+
+                            <h2>Tem certeza que deseja deletar essa foto: </h2>
+                            <a href="{% url 'delete' photo.id %}" type="button" class="btn bg-danger text-white js-upload-photos">
+                                <span class="glyphicon glyphicon-cloud-upload"></span> Deletar
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            <nav aria-label="...">
+                {% if photos.has_other_pages %}
+                <ul class="pagination">
+                    {% if photos.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ photos.previous_page_number }}">Anterior</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link"><span>Anterior</span></a></li>
+                    {% endif %} 
+                  {% for i in photos.paginator.page_range %} 
+                  {% if photos.number == i %}
+                    <li class="page-item"> <a class="page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %} 
+                  {% endfor %} 
+                  {% if photos.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ photos.next_page_number }}">Próximo</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link"><span>Próximo</span></li></a> 
               {% endif %}
-              {% for i in comentarios.paginator.page_range %}
-                {% if comentarios.number == i %}
-                <li class="page-item"> <a class="page-link" ><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
-                {% else %}
-                  <li class="page-item"><a class="page-link"  href="?page={{ i }}">{{ i }}</a></li>
+                </ul>
                 {% endif %}
-              {% endfor %}
-              {% if comentarios.has_next %}
-                <li class="page-item"><a class="page-link"  href="?page={{ comentarios.next_page_number }}">Próximo</a></li>
-              {% else %}
-                <li class="page-item disabled"><a class="page-link"><span>Próximo</span></a></li>
-              {% endif %}
-            </ul>
-          {% endif %}
-      </nav>
+            </nav>
 
-      
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Comentários:</h4>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'comentario_form' user.username %}" type="button" class="btn btn-primary js-upload-photos">
+                        <span class="glyphicon glyphicon-cloud-upload"></span> Responder
+                    </a>
+                </div>
+
             </div>
+            <hr> {% for comentario in comentarios %}
+            <div class="container">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                {% if comentario.user.usuario.foto%}
+                                <img src="{{ comentario.user.usuario.foto.thumbnail.url}}" class="rounded" width="100" height="100"> {% elif comentario.user.negocio.foto %}
+                                <img src="{{ comentario.user.negocio.foto.thumbnail.url}}" class="rounded" width="100" height="100"> {% endif %}
+
+                            </div>
+                            <div class="col-md-10">
+                                <p>
+                                    <a class="float-left" href="{%  url 'profile' comentario.user  %}"><strong>{{ comentario.user }}</strong></a>
+                                    <span class="float-right"> Nota: <strong>{{ comentario.nota }}</strong><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                                </p>
+                                <div class="clearfix"> </div>
+                                <p> {{ comentario.comentario }}</p>
+                                <p>
+                                    {% if user == comentario.user %}
+                                    <a class="float-right btn btn-outline-primary ml-2" href="{%  url 'delete_comentario' comentario.id  %}"><img src="{% static 'svg/delete.svg' %}" width="15" height="15" alt=""> </a>
+                                    {% elif user %}
+                                  {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      
-            {% endif %}
-            
-                  {% endif %}
-      <script src="{% static 'photos/modalgallery/modalgallery.js' %}"></script>
-      <script src="{% static 'photos/modalgallery/modalconfirmedelete.js' %}"></script>
+
+            {% endfor %}
+            <nav aria-label="...">
+                {% if comentarios.has_other_pages %}
+                <ul class="pagination">
+                    {% if comentarios.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ comentarios.previous_page_number }}">Anterior</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link"><span>Anterior</span></a></li>
+                    {% endif %}
+                  {% for i in comentarios.paginator.page_range %} 
+                  {% if comentarios.number == i %}
+                    <li class="page-item"> <a class="page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                  {% if comentarios.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ comentarios.next_page_number }}">Próximo</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link"><span>Próximo</span></a></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+{% endif %} {% endif %}
+<script src="{% static 'photos/modalgallery/modalgallery.js' %}"></script>
+<script src="{% static 'photos/modalgallery/modalconfirmedelete.js' %}"></script>
 {% endblock %}
-
 {% block rightcol %}
 {% include 'bases/rightcol.html' %}
 {% endblock %}

@@ -1,41 +1,37 @@
-{%extends 'bases/base.html' %}
-{% load static %}
-{% load bootstrap %}
+{%extends 'bases/base.html' %} 
+{% load static %} 
+{% load bootstrap %} 
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block main %}
 <div class="container">
-<div class="card text-white bg-primary mb-3">
+    <div class="card text-white bg-primary mb-3">
         <div class="card-header"><small class="text">
           <a href="{% url 'sistema_index' %}" class="text-white ">Home /</a>  
           <a href="{% url 'sistema_perfil' %}" class="text-white ">Perfil /</a>  
           <a  class="text-white">Foto</a>
-            </small></a></p> Alterar a foto do perfil </div>
-  <div class="card bg-light text-center ">
-  <div class="card-body text-secondary text-center">
-      
-        
-    
-<form method="post" action="{% url 'sistema_gallery_usuario_novo' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" novalidate>
-{% csrf_token %}
-<div class="form-row "> 
-  
-  
-    <div class="form-group col-md-6">
-        {{ form.gallery_usuario | as_crispy_field}}
-      </div>
-</div>
+            </small>
+             Alterar a foto do perfil </div>
+        <div class="card bg-light text-center ">
+            <div class="card-body text-secondary text-center">
 
-<button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
+                <form method="post" action="{% url 'sistema_gallery_usuario_novo' %}" class="form-signin" enctype="multipart/form-data" id="form" name="form" novalidate>
+                    {% csrf_token %}
+                    <div class="form-row ">
 
-</form>
+                        <div class="form-group col-md-6">
+                            {{ form.gallery_usuario | as_crispy_field}}
+                        </div>
+                    </div>
 
+                    <button type="submit" id="validator" class="btn btn-primary btn-block">Cadastrar</button>
 
-<a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
+                </form>
 
-  
-</div>
-</div>
-</div>
+                <a class="btn btn-light float-left" href="sistema_perfil" role="button">Voltar</a>
+
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -3,23 +3,21 @@
 {% load static %}
  {% block main %}
  <br>
+
+ <p class="text-secondary">Home / Cadastro / Confirmação de Email</p>
+ <div class="card text-white bg-danger mb-3  ">
+     <div class="card-heade text-center">A ativação falhou</div>
+     <div class="card bg-light  ">
+         <div class="card-body text-secondary text-center">
+             <h5 class="card-title">Erro!!!</h5>
  
-<p class="text-secondary">Home / Cadastro / Confirmação de Email</p>
-<div class="card text-white bg-danger mb-3  ">
-  <div class="card-heade text-center">A ativação falhou</div>
-  <div class="card bg-light  ">
-  <div class="card-body text-secondary text-center">
-  <h5 class="card-title">Erro!!!</h5>
-
-   <p>A confirmação do link é inválida, possíveis causas:
-   <br>
-   * O email já foi ativado anteriormente
-   <br>
-   * O link de confirmação expirou
-   </p>
-
-  </div>
-</div>
-</div>
+             <p>A confirmação do link é inválida, possíveis causas:
+                 <br> * O email já foi ativado anteriormente
+                 <br> * O link de confirmação expirou
+             </p>
+ 
+         </div>
+     </div>
+ </div>
   
 {% endblock %}
