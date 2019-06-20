@@ -1,0 +1,7 @@
+[Desktop Entry]
+ Version=1.0
+ Name=trello
+ Exec=/opt/trello/Trello
+ Icon=/opt/trello/resources/app/static/Icon.png
+ Type=Application
+ Categories=Application

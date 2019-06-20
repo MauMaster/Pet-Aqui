@@ -133,8 +133,8 @@
                     <h5>Horário de atendimento</h5></p>
                 <div class="form-row">
                     <div class="form-group col-md-2">
-
-                        {{ form.segunda | as_crispy_field}}
+                        
+                       <br> <p> <h5>Segunda:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -161,7 +161,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.terca | as_crispy_field}}
+                        <br> <p> <h5>Terça:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -188,7 +188,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.quarta | as_crispy_field}}
+                        <br> <p> <h5>Quarta:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -215,7 +215,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.quinta | as_crispy_field}}
+                        <br> <p> <h5>Quinta:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -242,7 +242,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.sexta | as_crispy_field}}
+                        <br> <p> <h5>Sexta:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -269,7 +269,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.sabado | as_crispy_field}}
+                        <br> <p> <h5>Sábado:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -296,7 +296,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
 
-                        {{ form.domingo | as_crispy_field}}
+                        <br> <p> <h5>Domingo:</h5></p>
                     </div>
                     <div class="form-group col-md-2">
 
@@ -355,14 +355,7 @@
 <script src="{% static 'myjs/mask.js' %}"></script>
 <script src="{% static 'myjs/password_and_email_validator.js' %}"></script>
 <script src="{% static 'myjs/contador255.js' %}"></script>
-<script>
-    $("form").submit(function() {
-        $('.data').unmask();
-        $('.cep').unmask();
-        $('.phone_with_ddd').unmask();
-        $('.cpf').unmask();
-    });
-</script>
+
 
 {% endblock %}
 

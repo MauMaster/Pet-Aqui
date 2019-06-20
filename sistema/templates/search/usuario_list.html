@@ -58,16 +58,26 @@
                         <div class="card-header">
                             <p class="card-text text-justify">
 
-                                {{usuario.nome}} {{usuario.sobrenome}} -- {{usuario.cidade}} -- {{usuario.estado}}
+                                {{usuario.nome}} {{usuario.sobrenome}}
 
                         </div>
                         <div class="card title  ">
                             <div class="card-body text-secondary">
                                 <div class="row">
-                                    <div class="form-group col-sm-4 col-md-12">
+                                    <div class="form-group col-sm-4 col-md-4">
                                         <a href="{%  url 'profile' usuario.user.username  %}" style="color:black"><img src="{{usuario.foto.medium.url}}" class="img-thumbnail" width="200" height="200"> </a>
-                                        <a href="" style="color:black">{{usuario.pet}} </a>
+                                        <br>
+                                        <br>
+                                        <a  href="{%  url 'profile' usuario.user.username  %}" class="btn btn-primary">Visitar Perfil</a>
+                                       
 
+                                    </div>
+                                    <div class="form-group col-sm-4 col-md-8">
+                                        Pets que tenho: {{usuario.pet}}
+                                        <hr>
+                                        Localização: {{usuario.cidade}} - {{usuario.estado}}
+                                        <hr>
+                                        Sobre mim: {{usuario.about}}
                                     </div>
                                 </div>
                             </div>

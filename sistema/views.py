@@ -475,7 +475,6 @@ def cadastro_negocio_novo(request):
             user.negocio.cep = form.cleaned_data.get('cep')
             user.negocio.cidade = form.cleaned_data.get('cidade')
             user.negocio.estado = form.cleaned_data.get('estado')
-            user.negocio.segunda = form.cleaned_data.get('segunda')
             user.negocio.horario_segunda1 = form.cleaned_data.get(
                 'horario_segunda1')
             user.negocio.horario_segunda2 = form.cleaned_data.get(
@@ -484,8 +483,6 @@ def cadastro_negocio_novo(request):
                 'horario_segunda3')
             user.negocio.horario_segunda4 = form.cleaned_data.get(
                 'horario_segunda4')
-            
-            user.negocio.terca = form.cleaned_data.get('terca')
             user.negocio.horario_terca1 = form.cleaned_data.get(
                 'horario_terca1')
             user.negocio.horario_terca2 = form.cleaned_data.get(
@@ -494,8 +491,6 @@ def cadastro_negocio_novo(request):
                 'horario_terca3')
             user.negocio.horario_terca4 = form.cleaned_data.get(
                 'horario_terca4')
-            
-            user.negocio.quarta = form.cleaned_data.get('quarta')
             user.negocio.horario_quarta1 = form.cleaned_data.get(
                 'horario_quarta1')
             user.negocio.horario_quarta2 = form.cleaned_data.get(
@@ -504,8 +499,6 @@ def cadastro_negocio_novo(request):
                 'horario_quarta3')
             user.negocio.horario_quarta4 = form.cleaned_data.get(
                 'horario_quarta4')
-            
-            user.negocio.quinta = form.cleaned_data.get('quinta')
             user.negocio.horario_quinta1 = form.cleaned_data.get(
                 'horario_quinta1')
             user.negocio.horario_quinta2 = form.cleaned_data.get(
@@ -514,8 +507,6 @@ def cadastro_negocio_novo(request):
                 'horario_quinta3')
             user.negocio.horario_quinta4 = form.cleaned_data.get(
                 'horario_quinta4')
-            
-            user.negocio.sexta = form.cleaned_data.get('sexta')
             user.negocio.horario_sexta1 = form.cleaned_data.get(
                 'horario_sexta1')
             user.negocio.horario_sexta2 = form.cleaned_data.get(
@@ -524,8 +515,6 @@ def cadastro_negocio_novo(request):
                 'horario_sexta3')
             user.negocio.horario_sexta4 = form.cleaned_data.get(
                 'horario_sexta4')
-            
-            user.negocio.sabado = form.cleaned_data.get('sabado')
             user.negocio.horario_sabado1 = form.cleaned_data.get(
                 'horario_sabado1')
             user.negocio.horario_sabado2 = form.cleaned_data.get(
@@ -534,8 +523,6 @@ def cadastro_negocio_novo(request):
                 'horario_sabado3')
             user.negocio.horario_sabado4 = form.cleaned_data.get(
                 'horario_sabado4')
-            
-            user.negocio.domingo = form.cleaned_data.get('domingo')
             user.negocio.horario_domingo1 = form.cleaned_data.get(
                 'horario_domingo1')
             user.negocio.horario_domingo2 = form.cleaned_data.get(
@@ -544,7 +531,6 @@ def cadastro_negocio_novo(request):
                 'horario_domingo3')
             user.negocio.horario_domingo4 = form.cleaned_data.get(
                 'horario_domingo4')
-           
             user.negocio.sobre = form.cleaned_data.get('sobre')
             user.negocio.password1 = form.cleaned_data.get('password1')
             username = form.cleaned_data.get('username')

@@ -66,7 +66,7 @@ class Usuario(models.Model):
    
     telefone = models.CharField(max_length=20, blank=False)
     cpf = models.CharField(max_length=19)
-    data_nascimento = models.CharField(max_length=8, blank=False)
+    data_nascimento = models.CharField(max_length=10, blank=False)
     sexo = models.CharField(default='M', max_length=2, choices=SEXO_CHOICES)
     pet = models.CharField(max_length=255, choices=PETN_CHOICES)
     endereco = models.CharField(max_length=50)
@@ -100,6 +100,7 @@ class Negocio(models.Model):
     cnpj = models.CharField(max_length=19)
     telefone = models.CharField(max_length=20, blank=False)
     whatsapp = models.CharField(max_length=20, blank=False)
+    email_confirmed = models.BooleanField(default=False)
     email = models.EmailField(blank=False)
     site = models.CharField(max_length=50, blank=False)
     foto = StdImageField( blank=False,  variations={
@@ -115,48 +116,34 @@ class Negocio(models.Model):
     cep = models.CharField(max_length=25)
     cidade = models.CharField(max_length=20)
     estado = models.CharField(default='RS', max_length=55, choices=STATE_CHOICES)
-    segunda = models.CharField(max_length=50, default='Segunda')
     horario_segunda1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_segunda2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_segunda3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_segunda4 = models.TimeField(max_length=50, blank=True, null=True)
-    
-    terca = models.CharField(max_length=50, default='Terça')
     horario_terca1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_terca2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_terca3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_terca4 = models.TimeField(max_length=50, blank=True, null=True)
-    
-    quarta = models.CharField(max_length=50, default='Quarta')
     horario_quarta1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quarta2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quarta3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quarta4 = models.TimeField(max_length=50, blank=True, null=True)
-    
-    quinta = models.CharField(max_length=50, default='Quinta')
     horario_quinta1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quinta2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quinta3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_quinta4 = models.TimeField(max_length=50, blank=True, null=True)
-    
-    sexta = models.CharField(max_length=50, default='Sexta')
     horario_sexta1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sexta2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sexta3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sexta4 = models.TimeField(max_length=50, blank=True, null=True)
-   
-    sabado = models.CharField(max_length=50, default='Sábado')
     horario_sabado1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sabado2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sabado3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_sabado4 = models.TimeField(max_length=50, blank=True, null=True)
-    
-    domingo = models.CharField(max_length=50, default='Domingo')
     horario_domingo1 = models.TimeField(max_length=50, blank=True, null=True)
     horario_domingo2 = models.TimeField(max_length=50, blank=True, null=True)
     horario_domingo3 = models.TimeField(max_length=50, blank=True, null=True)
     horario_domingo4 = models.TimeField(max_length=50, blank=True, null=True)
-    
     sobre = models.TextField(max_length=1000, blank=False)
     password1 = models.CharField(max_length=15, blank=False)
 

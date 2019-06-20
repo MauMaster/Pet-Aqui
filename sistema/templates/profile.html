@@ -71,6 +71,7 @@
             </div>
             <hr>
             <label>Galeria: </label>
+            <br>
             {% for photo in photos %}
 
             <a class="pop" href="#" data-img-url="{{ photo.file.large.url}}" data-toggle="modal"><img src="{{ photo.file.medium.url}}" class="img-thumbnail" width="200" height="200"> </a>

@@ -224,70 +224,64 @@ class NegocioForm(UserCreationForm):
                                     attrs={
                                             'placeholder': 'Mínimo 8 digitos', 'id': 'password2', 'label': 'Repita a senha'}))
 
-     segunda = forms.CharField(initial="Segunda")
-     terca = forms.CharField(initial="Terça")
-     quarta = forms.CharField(initial="Quarta")
-     quinta = forms.CharField(initial="Quinta")
-     sexta = forms.CharField(initial="Sexta")
-     sabado = forms.CharField(initial="Sábado")
-     domingo = forms.CharField(initial="Domingo")
-
-     horario_segunda1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
-     horario_segunda2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
-     horario_segunda3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
-     horario_segunda4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-    
-
-     horario_terca1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
-     horario_terca2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
-     horario_terca3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
-     horario_terca4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-    
-
-     horario_quarta1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%I:%M'))
-     horario_quarta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-     horario_quarta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_quarta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-    
-
-     horario_quinta1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_quinta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-     horario_quinta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_quinta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-  
-
-     horario_sexta1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_sexta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-     horario_sexta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_sexta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-    
-
-     horario_sabado1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_sabado2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
-     horario_sabado3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_sabado4 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
      
 
-     horario_domingo1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_domingo2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%I:%M'))
-     horario_domingo3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%I:%M'))
-     horario_domingo4 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%I:%M'))
+     horario_segunda1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%H:%M'))
+     horario_segunda2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%H:%M'))
+     horario_segunda3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%H:%M'))
+     horario_segunda4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+    
+
+     horario_terca1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%H:%M'))
+     horario_terca2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%H:%M'))
+     horario_terca3 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%H:%M'))
+     horario_terca4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+    
+
+     horario_quarta1 = forms.TimeField(required=False, label='Abre', widget=TimePickerInput(format='%H:%M'))
+     horario_quarta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+     horario_quarta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_quarta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+    
+
+     horario_quinta1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_quinta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+     horario_quinta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_quinta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+  
+
+     horario_sexta1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_sexta2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+     horario_sexta3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_sexta4 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+    
+
+     horario_sabado1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_sabado2 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%H:%M'))
+     horario_sabado3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_sabado4 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%H:%M'))
+     
+
+     horario_domingo1 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_domingo2 = forms.TimeField(required=False, label='Fecha', widget=TimePickerInput(format='%H:%M'))
+     horario_domingo3 = forms.TimeField(required=False, label='Abre',  widget=TimePickerInput(format='%H:%M'))
+     horario_domingo4 = forms.TimeField(required=False, label='Fecha',  widget=TimePickerInput(format='%H:%M'))
      
      
 
      
      class Meta:
         model = User
-        fields = ('username', 'empresa',   'cnpj', 'telefone', 'whatsapp', 'email',
+        fields = ('username', 'empresa',   'cnpj', 'telefone', 'whatsapp', 'email', 'email2',
                   'site', 'foto', 'tipo', 'pet_aceitos', 'endereco',   'numero',  'bairro', 'cep',
                   'cidade', 'estado', 'sobre', 'password1',
-                  'segunda', 'horario_segunda1', 'horario_segunda2', 'horario_segunda3', 'horario_segunda4', 
-                  'terca', 'horario_terca1', 'horario_terca2', 'horario_terca3', 'horario_terca4',
-                  'quarta', 'horario_quarta1', 'horario_quarta2', 'horario_quarta3', 'horario_quarta4',
-                  'quinta', 'horario_quinta1', 'horario_quinta2', 'horario_quinta3', 'horario_quinta4',
-                  'sexta', 'horario_sexta1', 'horario_sexta2', 'horario_sexta3', 'horario_sexta4',
-                  'sabado', 'horario_sabado1', 'horario_sabado2', 'horario_sabado3', 'horario_sabado4',
-                  'domingo', 'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4')
+                   'horario_segunda1', 'horario_segunda2', 'horario_segunda3', 'horario_segunda4', 
+                   'horario_terca1', 'horario_terca2', 'horario_terca3', 'horario_terca4',
+                   'horario_quarta1', 'horario_quarta2', 'horario_quarta3', 'horario_quarta4',
+                   'horario_quinta1', 'horario_quinta2', 'horario_quinta3', 'horario_quinta4',
+                   'horario_sexta1', 'horario_sexta2', 'horario_sexta3', 'horario_sexta4',
+                   'horario_sabado1', 'horario_sabado2', 'horario_sabado3', 'horario_sabado4',
+                   'horario_domingo1', 'horario_domingo2', 'horario_domingo3', 'horario_domingo4')
         
         labels = {
                 "username": "Nome de usúario"

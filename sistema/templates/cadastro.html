@@ -143,13 +143,7 @@
 <script src="{% static 'myjs/mask.js' %}"></script>
 <script src="{% static 'myjs/password_and_email_validator.js' %}"></script>
 <script src="{% static 'myjs/contador255.js' %}"></script>
-<script>
-    $("form").submit(function() {
-        $('.data').unmask();
-        $('.cep').unmask();
-        $('.phone_with_ddd').unmask();
-        $('.cpf').unmask();
-    });
-</script>
+
+
 
 {% endblock %} {% block rightcol %} {% include 'bases/rightcol.html' %} {% endblock %} {% block footer %} {% include 'bases/footer.html' %} {% endblock %}
