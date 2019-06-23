@@ -1,17 +1,17 @@
 $(function(){
    // declaro variáveis de controle
-   var  val_senha, val_senha2;
+   var val_senha, val_senha2;
    
    function valida(){
       
       $('#validator')
-      .prop('disabled', val_senha && val_senha2 ? false : true);
+      .prop('disabled',val_senha && val_senha2 ? false : true);
       
    }
-
+   
    function validarSenha(){
-      var senha = $("#password1").val();
-      var senha2 = $("#password2").val();
+      var senha = $("#id_new_password1").val();
+      var senha2 = $("#id_new_password2").val();
       // só irá verificar se os campos tiverem algo
       if(senha && senha2){
     
@@ -50,6 +50,6 @@ $(function(){
       }
    }
   
-  
-   $('#password1, #password2').on('keyup', validarSenha);
+   
+   $('#id_new_password1, #id_new_password2').on('keyup', validarSenha);
 });

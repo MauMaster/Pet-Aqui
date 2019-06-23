@@ -564,7 +564,7 @@ class DataUpdateNegocio(LoginRequiredMixin, UpdateView):
             queryset = self.get_queryset()   # This should help to get current user
 
         # Next, try looking up by primary key of Usario model.
-        queryset = queryset.filter(pk=self.request.user.usuario.pk)
+        queryset = queryset.filter(pk=self.request.user.negocio.pk)
 
         try:
             # Get the single item from the filtered queryset
