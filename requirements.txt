@@ -23,7 +23,7 @@ django-rest-auth==0.9.3
 django-starcross-gallery==1.0.1
 django-stdimage==4.0.1
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 docutils==0.14
 gunicorn==19.9.0
 idna==2.8
